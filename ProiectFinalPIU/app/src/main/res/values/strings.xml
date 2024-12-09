@@ -1,0 +1,61 @@
+<resources>
+    <string name="app_name">ProiectPIU_ManagementFinanciar</string>
+
+    <!-- Mesaje pentru StartActivity -->
+    <string name="welcome_message">Monitorizează și planifică bugetul</string>
+    <string name="sub_message">Urmărește și îmbunătățește venitul în siguranță, fără efort</string>
+    <string name="start_button">Să începem</string>
+
+    <!-- Textul din SelectionActivity -->
+    <string name="title_text">Selectează tipul contului</string>
+    <string name="adolescent">Adolescent</string>
+    <string name="adolescent_description">Permite unui adolescent să își vizualizeze soldul și tranzacțiile. Efectuează plăți și transferuri folosind restricțiile prestabilite de către părinți.</string>
+    <string name="parent">Părinte</string>
+    <string name="parent_description">Permite unui părinte să stabilească și să controleze limitele financiare și setările pentru contul unui adolescent. Vizualizează tranzacțiile și soldul.</string>
+    <string name="register_button">Înregistrează-te</string>
+    <string name="authenticate_button">Autentificare</string>
+    <string name="adolescent_selected">Adolescent selectat</string>
+    <string name="parent_selected">Părinte selectat</string>
+    <string name="adolescent_deselected">Adolescent deselectat</string>
+    <string name="parent_deselected">Părinte deselectat</string>
+    <string name="select_account_type">Te rugăm să selectezi un tip de cont!</string>
+
+
+    <!-- Textul din RegisterActivity -->
+
+    <string name="register_title">Înregistrează-te</string>
+    <string name="register_description">Hei, introdu detaliile tale pentru a te înregistra.</string>
+    <string name="full_name">Nume și prenume</string>
+    <string name="email">Email</string>
+    <string name="phone_number">Număr de telefon</string>
+    <string name="password">Parola</string>
+    <string name="confirm_password">Introdu din nou parola</string>
+    <string name="google_login">Autentificare cu Google</string>
+    <string name="or_text">Sau</string>
+
+    <!-- Mesaje pentru validare -->
+    <string name="name_required">Numele este obligatoriu!</string>
+    <string name="name_capital_required">Numele trebuie să înceapă cu literă mare!</string>
+    <string name="email_required">Email-ul este obligatoriu!</string>
+    <string name="invalid_email">Email invalid! (Formatul trebuie să fie de tipul @gmail.com, @yahoo.com, @gmail.ro sau @yahoo.ro)</string>
+    <string name="phone_required">Numărul de telefon este obligatoriu!</string>
+    <string name="phone_invalid">Numărul de telefon trebuie să aibă 10 cifre!</string>
+    <string name="password_required">Parola este obligatorie!</string>
+    <string name="password_minimum_length">Parola trebuie să fie de minim 5 caractere!</string>
+    <string name="confirm_password_required">Confirmarea parolei este obligatorie!</string>
+    <string name="passwords_do_not_match">Parolele nu se potrivesc!</string>
+
+    <string name="redirect_to_google">Redirecționare spre Google...</string>
+
+    <!-- Textul din AuthenticationActivity -->
+
+    <string name="authentication_title">Autentifică-te</string>
+    <string name="authentication_subtitle">Hei, introdu detaliile tale pentru a te autentifica în contul tău.</string>
+    <string name="forgot_password">Ai uitat parola?</string>
+    <string name="register_message">Nu ai cont? </string>
+    <string name="register_link"> Înregistrează-te</string>
+    <string name="check">Verifică-ți email-ul introdus anterior...</string>
+    <string name="verify_all">Toate câmpurile trebuie completate!</string>
+    <string name="loginFail">Autentificare fără succes. Email sau parolă incorecte!</string>
+    <string name="loginSucces">"Autentificare cu succes!"</string>
+</resources>
