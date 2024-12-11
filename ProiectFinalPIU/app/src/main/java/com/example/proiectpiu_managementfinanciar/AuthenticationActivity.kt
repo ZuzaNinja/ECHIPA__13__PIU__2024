@@ -69,7 +69,8 @@ class AuthenticationActivity : AppCompatActivity() {
                     afisareTemporaraMesaje(textViewSignInMessage, 3000)
 
                     handler.postDelayed({
-                        val intent = Intent(this, EmptyActivity::class.java)
+//                        val intent = Intent(this, EmptyActivity::class.java)
+                        val intent = Intent(this, BudgetActivity::class.java)
                         intent.putExtra("EXTRA_EMAIL", enteredEmail)
                         intent.putExtra("EXTRA_PASSWORD", enteredPassword)
                         startActivity(intent)

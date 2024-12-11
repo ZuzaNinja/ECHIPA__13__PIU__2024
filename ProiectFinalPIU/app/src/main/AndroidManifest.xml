@@ -34,6 +34,9 @@
         <activity
             android:name=".EmptyActivity"
             android:exported="false" />
+        <activity
+            android:name=".BudgetActivity"
+            android:exported="false" />
 
     </application>
 

@@ -58,4 +58,24 @@
     <string name="verify_all">Toate câmpurile trebuie completate!</string>
     <string name="loginFail">Autentificare fără succes. Email sau parolă incorecte!</string>
     <string name="loginSucces">"Autentificare cu succes!"</string>
+
+    <!--  Text pentru bugete  -->
+    <string name="facturi">Facturi</string>
+    <string name="alimente">Alimente</string>
+    <string name="buget_salvat_succes">Bugetul a fost salvat cu succes!</string>
+    <string name="noua_sectiune">Noua secțiune:</string>
+    <string name="denumire">Denumire</string>
+    <string name="suma">Suma(RON)</string>
+    <string name="salveaza">Salvează ✓</string>
+    <string name="anuleaza">Anulează ✗</string>
+    <string name="add_section">Adaugă secțiune</string>
+    <string name="modify_section">Modifică secțiune</string>
+    <string name="fond_urgenta">Fond de urgență</string>
+    <string name="invata">Învață </string>
+    <string name="completeaza_campuri">Completeaza toate câmpurile!</string>
+    <string name="rate">Rate</string>
+    <string name="selecteaza_categorie">Selecteaza o categorie</string>
+    <string name="modifica">Modifică</string>
+    <string name="noua_valoare_suma">Adaugă noua valoare a sumei!</string>
+    <string name="sectiune_modificata">Secțiunea a fost modificată!</string>
 </resources>
