@@ -11,6 +11,7 @@ import android.widget.Toast
 import android.os.Handler
 import android.os.Looper
 import androidx.appcompat.app.AppCompatActivity
+import com.example.proiectpiu_managementfinanciar.home_dashboard.ParentDashboardActivity
 
 class AuthenticationActivity : AppCompatActivity() {
 
@@ -69,8 +70,7 @@ class AuthenticationActivity : AppCompatActivity() {
                     afisareTemporaraMesaje(textViewSignInMessage, 3000)
 
                     handler.postDelayed({
-//                        val intent = Intent(this, EmptyActivity::class.java)
-                        val intent = Intent(this, BudgetActivity::class.java)
+                        val intent = Intent(this, ParentDashboardActivity::class.java)
                         intent.putExtra("EXTRA_EMAIL", enteredEmail)
                         intent.putExtra("EXTRA_PASSWORD", enteredPassword)
                         startActivity(intent)

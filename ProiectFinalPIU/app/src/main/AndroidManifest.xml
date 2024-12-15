@@ -38,6 +38,14 @@
             android:name=".BudgetActivity"
             android:exported="false" />
 
+        <activity
+            android:name=".home_dashboard.AdolescentDashboardActivity"
+            android:exported="false" />
+        <activity
+            android:name=".home_dashboard.ParentDashboardActivity"
+            android:exported="false" />
+
+
     </application>
 
 </manifest>

@@ -1,6 +1,8 @@
 package com.example.proiectpiu_managementfinanciar
 
+import android.graphics.Rect
 import android.os.Bundle
+import android.view.View
 import androidx.appcompat.app.AppCompatActivity
 import androidx.recyclerview.widget.LinearLayoutManager
 import androidx.recyclerview.widget.RecyclerView
@@ -27,5 +29,30 @@ class BudgetActivity : AppCompatActivity() {
         // Set adapter
         val adapter = BudgetListAdapter(budgetItems)
         recyclerView.adapter = adapter
+
+        setKeyboardVisibilityListener()
     }
+
+    private fun setKeyboardVisibilityListener() {
+        val rootView = findViewById<View>(android.R.id.content)
+        val footerMenu = findViewById<View>(R.id.footer_menu)
+        val navigationMenu = findViewById<View>(R.id.navigationMenu)
+
+        rootView.viewTreeObserver.addOnGlobalLayoutListener {
+            val rect = Rect()
+            rootView.getWindowVisibleDisplayFrame(rect)
+
+            val screenHeight = rootView.rootView.height
+            val keypadHeight = screenHeight - rect.bottom
+
+            if (keypadHeight > screenHeight * 0.15) {
+                footerMenu.visibility = View.GONE
+                navigationMenu.visibility = View.GONE
+            } else {
+                footerMenu.visibility = View.VISIBLE
+                navigationMenu.visibility = View.VISIBLE
+            }
+        }
+    }
+
 }
