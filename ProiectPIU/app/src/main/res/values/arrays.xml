@@ -1,10 +1,11 @@
 <?xml version="1.0" encoding="utf-8"?>
-<resources>
-    <string-array name="spinner_options">
-        <item>Facturi</item>
-        <item>Alimente</item>
-        <item>Rate</item>
-        <item>Meditatii</item>
-        <item>Inca ceva</item>
+<resources xmlns:android="http://schemas.android.com/apk/res/android">
+    <string-array
+        name="spinner_options">
+        <item android:background="@drawable/rounded_edittext">Facturi</item>
+        <item android:background="@drawable/rounded_edittext">Alimente</item>
+        <item android:background="@drawable/rounded_edittext">Rate</item>
+        <item android:background="@drawable/rounded_edittext">Meditatii</item>
+        <item android:background="@drawable/rounded_edittext">Inca ceva</item>
     </string-array>
 </resources>

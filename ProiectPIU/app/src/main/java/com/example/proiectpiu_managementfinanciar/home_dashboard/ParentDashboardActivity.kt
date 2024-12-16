@@ -3,9 +3,8 @@ package com.example.proiectpiu_managementfinanciar.home_dashboard
 import android.content.Intent
 import android.os.Bundle
 import android.view.View
-import android.widget.LinearLayout
 import androidx.appcompat.app.AppCompatActivity
-import com.example.proiectpiu_managementfinanciar.BudgetActivity
+import com.example.proiectpiu_managementfinanciar.budget.BudgetActivity
 import com.example.proiectpiu_managementfinanciar.R
 
 class ParentDashboardActivity : AppCompatActivity() {

@@ -35,7 +35,7 @@
             android:name=".EmptyActivity"
             android:exported="false" />
         <activity
-            android:name=".BudgetActivity"
+            android:name=".budget.BudgetActivity"
             android:exported="false" />
 
         <activity
@@ -45,7 +45,9 @@
             android:name=".home_dashboard.ParentDashboardActivity"
             android:exported="false" />
 
-
+        <activity
+            android:name=".budget.ModifyBudgetsActivity"
+            android:exported="false" />
     </application>
 
 </manifest>

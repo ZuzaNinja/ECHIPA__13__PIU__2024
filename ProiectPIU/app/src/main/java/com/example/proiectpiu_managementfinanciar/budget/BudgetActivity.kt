@@ -1,8 +1,11 @@
-package com.example.proiectpiu_managementfinanciar
+package com.example.proiectpiu_managementfinanciar.budget
 
+import android.content.Intent
 import android.graphics.Rect
 import android.os.Bundle
 import android.view.View
+import android.widget.ImageButton
+import android.widget.Toast
 import androidx.appcompat.app.AppCompatActivity
 import androidx.recyclerview.widget.LinearLayoutManager
 import androidx.recyclerview.widget.RecyclerView
@@ -14,6 +17,21 @@ class BudgetActivity : AppCompatActivity() {
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.budget_add_section) // Your main layout file
+
+        val addBudgetsButton : ImageButton = findViewById(R.id.add_section_button)
+
+        addBudgetsButton.setOnClickListener {
+            val intent = Intent(this, BudgetActivity::class.java)
+            intent.flags = Intent.FLAG_ACTIVITY_NEW_TASK or Intent.FLAG_ACTIVITY_CLEAR_TASK
+            startActivity(intent)
+        }
+
+        val editBudgetsButton : ImageButton = findViewById(R.id.modify_section_button)
+        editBudgetsButton.setOnClickListener {
+            val intent = Intent(this, ModifyBudgetsActivity::class.java)
+            intent.flags = Intent.FLAG_ACTIVITY_NEW_TASK or Intent.FLAG_ACTIVITY_CLEAR_TASK
+            startActivity(intent)
+        }
 
         // Initialize RecyclerView
         val recyclerView: RecyclerView = findViewById(R.id.budgets_recycler)
