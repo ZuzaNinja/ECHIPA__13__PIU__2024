@@ -11,7 +11,6 @@
     android:background="@color/white"
     tools:ignore="ExtraText">
 
-    <!-- Header Section (Top Section) -->
     <RelativeLayout
         android:id="@+id/headerSection"
         android:layout_width="match_parent"
@@ -60,132 +59,84 @@
         </RelativeLayout>
     </RelativeLayout>
 
-    <!-- RecyclerView Section -->
-
-    <!-- Success and Warning Messages -->
-    <androidx.recyclerview.widget.RecyclerView
-        android:id="@+id/budgets_recycler"
-        android:layout_width="match_parent"
-        android:layout_height="100dp"
-        android:scrollbars="vertical"
+    <!-- Section 1: Dropdown -->
+    <androidx.constraintlayout.widget.ConstraintLayout
+        android:id="@+id/budgets_dropdown_section"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="175dp"
         app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="0.0"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@id/headerSection" />
-
-    <LinearLayout
-        android:id="@+id/succes_section"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:orientation="horizontal"
-        android:padding="8dp"
-        app:layout_constraintTop_toBottomOf="@id/budgets_recycler"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintStart_toStartOf="parent">
-
-        <ImageView
-            android:id="@+id/success_message_icon"
-            android:layout_width="24dp"
-            android:layout_height="24dp"
-            android:src="@drawable/bell" />
-
+        app:layout_constraintTop_toTopOf="parent"
+        android:orientation="vertical">
         <TextView
-            android:id="@+id/success_message"
+            android:id="@+id/info_message"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:text="@string/buget_salvat_succes"
+            android:text="@string/selecteaza_categorie"
             android:gravity="center"
-            android:textColor="@color/orange"
+            android:textColor="@color/black"
             android:textStyle="bold"
-            android:visibility="visible" />
-    </LinearLayout>
+            android:visibility="visible"
+            android:textSize="22sp"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toTopOf="parent"/>
 
-    <!-- New Budget Section -->
-    <LinearLayout
-        android:id="@+id/new_budget_section"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:orientation="vertical"
-        app:layout_constraintTop_toBottomOf="@id/succes_section"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintStart_toStartOf="parent">
+        <Spinner
+            android:id="@+id/modify_budgets_dropdown"
+            android:layout_width="150dp"
+            android:layout_height="30dp"
+            android:gravity="center"
+            android:entries="@array/spinner_options"
+            android:background="@drawable/rounded_edittext"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@id/info_message"
+            android:layout_marginTop="5dp"/>
 
-        <TextView
-            android:id="@+id/newSectionTitle"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:text="@string/noua_sectiune"
-            android:textSize="16sp"
-            android:textStyle="bold"
-            android:layout_gravity="center" />
-
+        <!-- Section 2: Amount Field -->
         <LinearLayout
+            android:id="@+id/amount_field"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:orientation="vertical"
-            android:layout_marginVertical="16dp"
-            android:padding="8dp">
+            android:orientation="horizontal"
+            android:gravity="center_vertical"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@id/modify_budgets_dropdown"
+            android:layout_marginTop="150dp">
 
-            <!-- Section for Denumire -->
-            <LinearLayout
-                android:layout_width="match_parent"
+            <TextView
+                android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:orientation="horizontal"
-                android:gravity="center_vertical"
-                android:layout_marginBottom="8dp">
+                android:text="Suma(RON):"
+                android:textColor="@color/black"
+                android:textSize="16sp"
+                android:layout_marginEnd="8dp" />
 
-                <TextView
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
-                    android:text="Denumire:"
-                    android:textColor="@color/black"
-                    android:textSize="16sp"
-                    android:layout_marginEnd="8dp" />
-
-                <EditText
-                    android:id="@+id/sectionName"
-                    android:layout_width="0dp"
-                    android:layout_height="wrap_content"
-                    android:layout_weight="1"
-                    android:padding="10dp"
-                    android:background="@drawable/rounded_edittext"
-                    android:textColor="@color/black"
-                    android:textSize="16sp" />
-            </LinearLayout>
-
-            <!-- Section for Suma(RON) -->
-            <LinearLayout
-                android:layout_width="match_parent"
+            <EditText
+                android:id="@+id/sectionAmount"
+                android:layout_width="150dp"
                 android:layout_height="wrap_content"
-                android:orientation="horizontal"
-                android:gravity="center_vertical">
-
-                <TextView
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
-                    android:text="Suma(RON):"
-                    android:textColor="@color/black"
-                    android:textSize="16sp"
-                    android:layout_marginEnd="8dp" />
-
-                <EditText
-                    android:id="@+id/sectionAmount"
-                    android:layout_width="0dp"
-                    android:layout_height="wrap_content"
-                    android:layout_weight="1"
-                    android:padding="10dp"
-                    android:background="@drawable/rounded_edittext"
-                    android:textColor="@color/black"
-                    android:textSize="16sp"
-                    android:inputType="number" />
-            </LinearLayout>
+                android:layout_weight="1"
+                android:padding="10dp"
+                android:background="@drawable/rounded_edittext"
+                android:textColor="@color/black"
+                android:textSize="16sp"
+                android:inputType="number" />
         </LinearLayout>
 
         <LinearLayout
+            android:id="@+id/button_section"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:orientation="horizontal"
-            android:gravity="center">
+            android:gravity="center"
+            android:layout_marginTop="25dp"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@id/amount_field">
 
             <Button
                 android:id="@+id/save_button"
@@ -202,8 +153,38 @@
                 android:text="@string/anuleaza"
                 android:backgroundTint="@color/orange" />
         </LinearLayout>
-    </LinearLayout>
 
+        <LinearLayout
+            android:id="@+id/succes_section"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:orientation="horizontal"
+            android:padding="8dp"
+            app:layout_constraintTop_toBottomOf="@id/button_section"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toStartOf="parent">
+
+            <ImageView
+                android:id="@+id/success_message_icon"
+                android:layout_width="24dp"
+                android:layout_height="24dp"
+                android:src="@drawable/important"
+                android:layout_marginBottom="10dp"
+                android:layout_marginRight="5dp"/>
+
+            <TextView
+                android:id="@+id/success_message"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="@string/noua_valoare_suma"
+                android:gravity="center"
+                android:textColor="@color/orange"
+                android:textStyle="bold"
+                android:visibility="visible" />
+        </LinearLayout>
+    </androidx.constraintlayout.widget.ConstraintLayout>
+
+    <!-- Section 5: Footer Navigation -->
     <LinearLayout
         android:id="@+id/footer_menu"
         android:layout_width="match_parent"
@@ -521,6 +502,4 @@
                 android:textSize="12sp" />
         </LinearLayout>
     </LinearLayout>
-
-
 </androidx.constraintlayout.widget.ConstraintLayout>
