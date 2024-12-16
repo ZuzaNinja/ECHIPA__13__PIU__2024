@@ -16,6 +16,10 @@ class ParentDashboardActivity : AppCompatActivity() {
 
         fun onNavigationClick(view: View) {
             when (view.id) {
+                R.id.adolescentButton -> {
+                    //val intent = Intent(this, ContAdolescentActivity::class.java)
+                    startActivity(intent)
+                }
                 R.id.homeButton -> {
                     val intent = Intent(this, ParentDashboardActivity::class.java)
                     startActivity(intent)

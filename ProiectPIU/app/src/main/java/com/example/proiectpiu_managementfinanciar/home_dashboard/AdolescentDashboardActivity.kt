@@ -9,6 +9,5 @@ class AdolescentDashboardActivity : AppCompatActivity() {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_adolescent_dashboard)
 
-        // Additional setup for adolescent-specific features
     }
 }

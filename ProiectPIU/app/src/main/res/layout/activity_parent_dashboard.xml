@@ -133,18 +133,20 @@
                         android:textSize="14sp" />
 
                     <RelativeLayout
+                        android:id="@+id/adolescentButton"
                         android:layout_width="70dp"
                         android:layout_height="70dp"
                         android:layout_marginStart="26dp"
-
                         android:background="@drawable/circle_shape_2"
-                        android:gravity="center">
+                        android:gravity="center"
+                        android:onClick="onNavigationClick">
 
                         <ImageView
                             android:layout_width="wrap_content"
                             android:layout_height="wrap_content"
                             android:src="@drawable/white_rocket" />
                     </RelativeLayout>
+
 
                 </LinearLayout>
 
@@ -200,7 +202,7 @@
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_below="@id/headerShape"
-            android:layout_marginTop="153dp"
+            android:layout_marginTop="200dp"
             android:src="@drawable/family_adult_dashboard" />
 
         <LinearLayout

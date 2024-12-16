@@ -11,6 +11,7 @@ import android.widget.Toast
 import android.os.Handler
 import android.os.Looper
 import androidx.appcompat.app.AppCompatActivity
+import com.example.proiectpiu_managementfinanciar.home_dashboard.AdolescentDashboardActivity
 import com.example.proiectpiu_managementfinanciar.home_dashboard.ParentDashboardActivity
 
 class AuthenticationActivity : AppCompatActivity() {
@@ -27,8 +28,11 @@ class AuthenticationActivity : AppCompatActivity() {
 
     private val handler = Handler(Looper.getMainLooper())
 
-    private val validEmail = "admin@gmail.com"
-    private val validPassword = "12345"
+    private val parentEmail = "parent@gmail.com"
+    private val parentPassword = "12345"
+
+    private val adolescentEmail = "adolescent@gmail.com"
+    private val adolescentPassword = "12345"
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
@@ -66,7 +70,7 @@ class AuthenticationActivity : AppCompatActivity() {
                 val enteredEmail = emailInput.text.toString()
                 val enteredPassword = passwordInput.text.toString()
 
-                if (enteredEmail == validEmail && enteredPassword == validPassword) {
+                if (enteredEmail == parentEmail && enteredPassword == parentPassword) {
                     afisareTemporaraMesaje(textViewSignInMessage, 3000)
 
                     handler.postDelayed({
@@ -75,10 +79,18 @@ class AuthenticationActivity : AppCompatActivity() {
                         intent.putExtra("EXTRA_PASSWORD", enteredPassword)
                         startActivity(intent)
                     }, 1000)
+                } else if (enteredEmail == adolescentEmail && enteredPassword == adolescentPassword) {
+                    afisareTemporaraMesaje(textViewSignInMessage, 3000)
+
+                    handler.postDelayed({
+                        val intent = Intent(this, AdolescentDashboardActivity::class.java)
+                        intent.putExtra("EXTRA_EMAIL", enteredEmail)
+                        intent.putExtra("EXTRA_PASSWORD", enteredPassword)
+                        startActivity(intent)
+                    }, 1000)
                 } else {
                     afisareTemporaraMesaje(textViewLoginFailed, 3000)
                 }
-
             }
         }
 
