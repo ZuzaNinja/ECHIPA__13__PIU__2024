@@ -60,52 +60,112 @@
         </RelativeLayout>
     </RelativeLayout>
 
-    <!-- RecyclerView Section -->
-
-    <!-- Success and Warning Messages -->
-    <androidx.recyclerview.widget.RecyclerView
-        android:id="@+id/budgets_recycler"
-        android:layout_width="match_parent"
-        android:layout_height="250dp"
-        android:scrollbars="vertical"
+    <TextView
+        android:id="@+id/emergency_text"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        app:layout_constraintTop_toBottomOf="@id/headerSection"
         app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="0.0"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@id/headerSection" />
+        android:text="Fond de urgență"
+        android:textStyle="bold"
+        android:textSize="22sp"/>
 
-    <androidx.constraintlayout.widget.ConstraintLayout
+    <LinearLayout
+        android:id="@+id/info_section"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        app:layout_constraintTop_toBottomOf="@id/budgets_recycler"
-        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@id/emergency_text"
         app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintBottom_toTopOf="@id/footer_menu"
-        android:layout_marginStart="8dp">
-
-        <Button
-            android:id="@+id/plan_button"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:text="Planifica pe termen lung"
-            android:textColor="@color/black"
-            android:textSize="18sp"
-            android:paddingTop="10dp"
-            android:paddingBottom="10dp"
-            android:backgroundTint="@color/peach"
-            app:layout_constraintTop_toTopOf="parent"
-            app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintBottom_toBottomOf="parent"/>
+        app:layout_constraintStart_toStartOf="parent"
+        android:orientation="horizontal">
 
         <ImageView
-            android:layout_width="100dp"
-            android:layout_height="100dp"
-            android:src="@drawable/dollar_stack"
-            app:layout_constraintTop_toTopOf="parent"
-            app:layout_constraintEnd_toEndOf="parent"
-            app:layout_constraintStart_toEndOf="@id/plan_button"
-            app:layout_constraintBottom_toBottomOf="parent"/>
+            android:id="@+id/info_icon"
+            android:layout_width="20dp"
+            android:layout_height="20dp"
+            android:src="@drawable/info"
+            android:layout_marginBottom="10dp"
+            android:layout_marginTop="10dp"
+            android:layout_marginStart="10dp"/>
 
-    </androidx.constraintlayout.widget.ConstraintLayout>
+        <TextView
+            android:id="@+id/info_text"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            app:layout_constraintTop_toBottomOf="@id/headerSection"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            android:text="Alocând o sumă dedicată pentru ..."
+            android:layout_marginTop="5dp"
+            android:layout_marginBottom="5dp"
+            android:layout_marginStart="10dp"
+            android:textSize="20sp"/>
+    </LinearLayout>
+
+    <EditText
+        android:id="@+id/sectionAmount"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_weight="1"
+        android:layout_marginStart="20dp"
+        android:layout_marginEnd="20dp"
+        android:layout_marginTop="20dp"
+        android:background="@drawable/rounded_edittext2"
+        android:textColor="@color/black"
+        android:hint="Suma pentru fond"
+        android:padding="5dp"
+        android:textSize="24sp"
+        android:inputType="number"
+        app:layout_constraintTop_toBottomOf="@id/info_section"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"/>
+
+    <Button
+        android:id="@+id/save_button"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="@string/salveaza"
+        android:layout_marginTop="50dp"
+        android:backgroundTint="@color/orange"
+        app:layout_constraintTop_toBottomOf="@id/sectionAmount"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"/>
+
+    <LinearLayout
+        android:id="@+id/whatever_message_section"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        app:layout_constraintTop_toBottomOf="@id/save_button"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintBottom_toTopOf="@id/footer_menu"
+        android:orientation="horizontal"
+        android:layout_marginBottom="5dp"
+        android:layout_marginStart="10dp">
+
+        <ImageView
+            android:id="@+id/important_icon"
+            android:layout_width="20dp"
+            android:layout_height="20dp"
+            android:src="@drawable/important"
+            android:layout_marginBottom="10dp"
+            android:layout_marginTop="10dp"
+            android:layout_marginStart="115dp"/>
+
+        <TextView
+            android:id="@+id/whatever_text"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            app:layout_constraintTop_toBottomOf="@id/headerSection"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            android:text="Introdu suma dorită!"
+            android:textColor="@color/orange"
+            android:layout_marginTop="8dp"
+            android:layout_marginStart="8dp"
+            android:textSize="16sp"/>
+    </LinearLayout>
 
     <LinearLayout
         android:id="@+id/footer_menu"

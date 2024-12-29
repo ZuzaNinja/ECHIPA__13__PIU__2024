@@ -32,6 +32,13 @@ class MainBudgetActivity : AppCompatActivity() {
             startActivity(intent)
         }
 
+        val emergencyBudgetButton : ImageButton = findViewById(R.id.emergency_fund_button)
+        emergencyBudgetButton.setOnClickListener {
+            val intent = Intent(this, EmergencyBudgetActivity::class.java)
+            intent.flags = Intent.FLAG_ACTIVITY_NEW_TASK or Intent.FLAG_ACTIVITY_CLEAR_TASK
+            startActivity(intent)
+        }
+
         val recyclerView: RecyclerView = findViewById(R.id.budgets_recycler)
         recyclerView.layoutManager = LinearLayoutManager(this)
 

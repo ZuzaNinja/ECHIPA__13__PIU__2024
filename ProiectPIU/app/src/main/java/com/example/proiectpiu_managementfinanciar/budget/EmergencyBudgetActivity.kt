@@ -1,6 +1,7 @@
 package com.example.proiectpiu_managementfinanciar.budget
 
 import android.content.Intent
+import android.graphics.Rect
 import android.os.Bundle
 import android.view.View
 import android.widget.ImageButton
@@ -8,10 +9,10 @@ import androidx.appcompat.app.AppCompatActivity
 import com.example.proiectpiu_managementfinanciar.R
 import com.example.proiectpiu_managementfinanciar.home_dashboard.ParentDashboardActivity
 
-class ModifyBudgetsActivity : AppCompatActivity() {
+class EmergencyBudgetActivity : AppCompatActivity() {
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
-        setContentView(R.layout.budget_modify_section)
+        setContentView(R.layout.emergency_fund)
 
         val addBudgetsButton : ImageButton = findViewById(R.id.add_section_button)
         addBudgetsButton.setOnClickListener {
@@ -32,6 +33,30 @@ class ModifyBudgetsActivity : AppCompatActivity() {
             val intent = Intent(this, EmergencyBudgetActivity::class.java)
             intent.flags = Intent.FLAG_ACTIVITY_NEW_TASK or Intent.FLAG_ACTIVITY_CLEAR_TASK
             startActivity(intent)
+        }
+
+        setKeyboardVisibilityListener()
+    }
+
+    private fun setKeyboardVisibilityListener() {
+        val rootView = findViewById<View>(android.R.id.content)
+        val footerMenu = findViewById<View>(R.id.footer_menu)
+        val navigationMenu = findViewById<View>(R.id.navigationMenu)
+
+        rootView.viewTreeObserver.addOnGlobalLayoutListener {
+            val rect = Rect()
+            rootView.getWindowVisibleDisplayFrame(rect)
+
+            val screenHeight = rootView.rootView.height
+            val keypadHeight = screenHeight - rect.bottom
+
+            if (keypadHeight > screenHeight * 0.15) {
+                footerMenu.visibility = View.GONE
+                navigationMenu.visibility = View.GONE
+            } else {
+                footerMenu.visibility = View.VISIBLE
+                navigationMenu.visibility = View.VISIBLE
+            }
         }
     }
 

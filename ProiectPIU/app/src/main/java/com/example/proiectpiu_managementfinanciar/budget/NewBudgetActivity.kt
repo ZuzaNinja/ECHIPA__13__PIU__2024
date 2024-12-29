@@ -19,7 +19,6 @@ class NewBudgetActivity : AppCompatActivity() {
         setContentView(R.layout.budget_add_section) // Your main layout file
 
         val addBudgetsButton : ImageButton = findViewById(R.id.add_section_button)
-
         addBudgetsButton.setOnClickListener {
             val intent = Intent(this, NewBudgetActivity::class.java)
             intent.flags = Intent.FLAG_ACTIVITY_NEW_TASK or Intent.FLAG_ACTIVITY_CLEAR_TASK
@@ -29,6 +28,13 @@ class NewBudgetActivity : AppCompatActivity() {
         val editBudgetsButton : ImageButton = findViewById(R.id.modify_section_button)
         editBudgetsButton.setOnClickListener {
             val intent = Intent(this, ModifyBudgetsActivity::class.java)
+            intent.flags = Intent.FLAG_ACTIVITY_NEW_TASK or Intent.FLAG_ACTIVITY_CLEAR_TASK
+            startActivity(intent)
+        }
+
+        val emergencyBudgetButton : ImageButton = findViewById(R.id.emergency_fund_button)
+        emergencyBudgetButton.setOnClickListener {
+            val intent = Intent(this, EmergencyBudgetActivity::class.java)
             intent.flags = Intent.FLAG_ACTIVITY_NEW_TASK or Intent.FLAG_ACTIVITY_CLEAR_TASK
             startActivity(intent)
         }
