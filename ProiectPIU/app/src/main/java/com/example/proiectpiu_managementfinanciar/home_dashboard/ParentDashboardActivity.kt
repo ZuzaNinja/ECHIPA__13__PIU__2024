@@ -4,7 +4,7 @@ import android.content.Intent
 import android.os.Bundle
 import android.view.View
 import androidx.appcompat.app.AppCompatActivity
-import com.example.proiectpiu_managementfinanciar.budget.BudgetActivity
+import com.example.proiectpiu_managementfinanciar.budget.MainBudgetActivity
 import com.example.proiectpiu_managementfinanciar.R
 
 class ParentDashboardActivity : AppCompatActivity() {
@@ -24,7 +24,7 @@ class ParentDashboardActivity : AppCompatActivity() {
                     startActivity(intent)
                 }
                 R.id.budgetButton -> {
-                    val intent = Intent(this, BudgetActivity::class.java)
+                    val intent = Intent(this, MainBudgetActivity::class.java)
                     startActivity(intent)
                 }
                 R.id.goalsButton -> {

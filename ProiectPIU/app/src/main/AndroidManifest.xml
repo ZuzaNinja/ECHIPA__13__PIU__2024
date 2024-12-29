@@ -35,7 +35,7 @@
             android:name=".EmptyActivity"
             android:exported="false" />
         <activity
-            android:name=".budget.BudgetActivity"
+            android:name=".budget.NewBudgetActivity"
             android:exported="false" />
 
         <activity
@@ -47,6 +47,10 @@
 
         <activity
             android:name=".budget.ModifyBudgetsActivity"
+            android:exported="false" />
+
+        <activity
+            android:name=".budget.MainBudgetActivity"
             android:exported="false" />
     </application>
 

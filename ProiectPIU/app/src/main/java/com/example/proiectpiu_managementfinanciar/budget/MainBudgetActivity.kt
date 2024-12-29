@@ -5,23 +5,22 @@ import android.graphics.Rect
 import android.os.Bundle
 import android.view.View
 import android.widget.ImageButton
-import android.widget.Toast
 import androidx.appcompat.app.AppCompatActivity
 import androidx.recyclerview.widget.LinearLayoutManager
 import androidx.recyclerview.widget.RecyclerView
 import com.example.proiectpiu_managementfinanciar.R
 import com.example.proiectpiu_managementfinanciar.adapters.BudgetListAdapter
 import com.example.proiectpiu_managementfinanciar.models.BudgetItem
+import com.example.proiectpiu_managementfinanciar.home_dashboard.ParentDashboardActivity
 
-class BudgetActivity : AppCompatActivity() {
+class MainBudgetActivity : AppCompatActivity() {
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
-        setContentView(R.layout.budget_add_section) // Your main layout file
+        setContentView(R.layout.budget_start_page)
 
         val addBudgetsButton : ImageButton = findViewById(R.id.add_section_button)
-
         addBudgetsButton.setOnClickListener {
-            val intent = Intent(this, BudgetActivity::class.java)
+            val intent = Intent(this, NewBudgetActivity::class.java)
             intent.flags = Intent.FLAG_ACTIVITY_NEW_TASK or Intent.FLAG_ACTIVITY_CLEAR_TASK
             startActivity(intent)
         }
@@ -33,18 +32,15 @@ class BudgetActivity : AppCompatActivity() {
             startActivity(intent)
         }
 
-        // Initialize RecyclerView
         val recyclerView: RecyclerView = findViewById(R.id.budgets_recycler)
         recyclerView.layoutManager = LinearLayoutManager(this)
 
-        // Example data for the budget list
         val budgetItems = listOf(
             BudgetItem("Groceries", 300),
             BudgetItem("Rent", 1200),
             BudgetItem("Utilities", 150)
         )
 
-        // Set adapter
         val adapter = BudgetListAdapter(budgetItems)
         recyclerView.adapter = adapter
 
@@ -73,4 +69,32 @@ class BudgetActivity : AppCompatActivity() {
         }
     }
 
+    fun onNavigationClick(view: View) {
+        when (view.id) {
+            R.id.adolescentButton -> {
+                //val intent = Intent(this, ContAdolescentActivity::class.java)
+                startActivity(intent)
+            }
+            R.id.homeButton -> {
+                val intent = Intent(this, ParentDashboardActivity::class.java)
+                startActivity(intent)
+            }
+            R.id.budgetButton -> {
+                val intent = Intent(this, MainBudgetActivity::class.java)
+                startActivity(intent)
+            }
+            R.id.goalsButton -> {
+                //val intent = Intent(this, GoalsActivity::class.java)
+                startActivity(intent)
+            }
+            R.id.reportsButton -> {
+                //val intent = Intent(this, ReportsActivity::class.java)
+                startActivity(intent)
+            }
+            R.id.settingsButton -> {
+                //val intent = Intent(this, SettingsActivity::class.java)
+                startActivity(intent)
+            }
+        }
+    }
 }
