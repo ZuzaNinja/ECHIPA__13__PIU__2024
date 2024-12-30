@@ -100,7 +100,23 @@
             android:layout_marginTop="5dp"
             android:layout_marginBottom="5dp"
             android:layout_marginStart="10dp"
-            android:textSize="20sp"/>
+            android:textSize="20sp"
+            android:visibility="visible"/>
+
+        <TextView
+            android:id="@+id/info_text_lung"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            app:layout_constraintTop_toBottomOf="@id/headerSection"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            android:text="@string/text_lung_bugete"
+            android:layout_marginTop="5dp"
+            android:layout_marginBottom="5dp"
+            android:layout_marginStart="0dp"
+            android:gravity="center"
+            android:textSize="21sp"
+            android:visibility="gone"/>
     </LinearLayout>
 
     <EditText
@@ -119,7 +135,8 @@
         android:inputType="number"
         app:layout_constraintTop_toBottomOf="@id/info_section"
         app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintStart_toStartOf="parent"/>
+        app:layout_constraintStart_toStartOf="parent"
+        android:visibility="visible"/>
 
     <Button
         android:id="@+id/save_button"
@@ -130,7 +147,8 @@
         android:backgroundTint="@color/orange"
         app:layout_constraintTop_toBottomOf="@id/sectionAmount"
         app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintStart_toStartOf="parent"/>
+        app:layout_constraintStart_toStartOf="parent"
+        android:visibility="visible"/>
 
     <LinearLayout
         android:id="@+id/whatever_message_section"
@@ -142,7 +160,9 @@
         app:layout_constraintBottom_toTopOf="@id/footer_menu"
         android:orientation="horizontal"
         android:layout_marginBottom="5dp"
-        android:layout_marginStart="10dp">
+        android:layout_marginStart="0dp"
+        android:layout_marginTop="-50dp"
+        android:visibility="visible">
 
         <ImageView
             android:id="@+id/important_icon"
@@ -151,7 +171,8 @@
             android:src="@drawable/important"
             android:layout_marginBottom="10dp"
             android:layout_marginTop="10dp"
-            android:layout_marginStart="115dp"/>
+            android:layout_marginStart="115dp"
+            android:visibility="gone"/>
 
         <TextView
             android:id="@+id/whatever_text"
@@ -164,7 +185,32 @@
             android:textColor="@color/orange"
             android:layout_marginTop="8dp"
             android:layout_marginStart="8dp"
-            android:textSize="16sp"/>
+            android:textSize="16sp"
+            android:visibility="gone"/>
+
+        <ImageView
+            android:id="@+id/bell"
+            android:layout_width="20dp"
+            android:layout_height="20dp"
+            android:src="@drawable/bell"
+            android:layout_marginBottom="10dp"
+            android:layout_marginTop="10dp"
+            android:layout_marginStart="140dp"
+            android:visibility="gone"/>
+
+        <TextView
+            android:id="@+id/whatever_text2"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            app:layout_constraintTop_toBottomOf="@id/headerSection"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            android:text="Fond creat!"
+            android:textColor="@color/orange"
+            android:layout_marginTop="8dp"
+            android:layout_marginStart="8dp"
+            android:textSize="16sp"
+            android:visibility="gone"/>
     </LinearLayout>
 
     <LinearLayout
