@@ -6,3 +6,4 @@ data class Objective(
     val sumaTotala: Double,
     val iconita: String
 )
+

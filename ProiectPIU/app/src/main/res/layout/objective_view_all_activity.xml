@@ -81,6 +81,7 @@
         android:textSize="20sp"
         android:textStyle="bold"
         android:gravity="center"
+        android:visibility="visible"
         app:layout_constraintTop_toBottomOf="@id/objectivesRecyclerView"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
@@ -95,126 +96,284 @@
         android:contentDescription="Gestionează obiectiv"
         android:scaleType="centerInside"
         android:src="@drawable/rocket"
+        android:visibility="visible"
         app:layout_constraintTop_toBottomOf="@id/manageObjectiveTitle"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintHorizontal_bias="0.5"/>
 
     <LinearLayout
-        android:id="@+id/navigationMenu"
+        android:id="@+id/manageObjectiveSection"
+        android:orientation="vertical"
         android:layout_width="match_parent"
-        android:layout_height="60dp"
-        android:background="#F59227"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="-20dp"
         android:gravity="center"
-        android:orientation="horizontal"
-        app:layout_constraintBottom_toBottomOf="parent">
+        android:padding="16dp"
+        android:visibility="gone"
+        app:layout_constraintTop_toBottomOf="@id/objectivesRecyclerView"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.5">
 
         <LinearLayout
-            android:id="@+id/homeButton"
-            android:layout_width="0dp"
-            android:layout_height="match_parent"
-            android:layout_weight="1"
-            android:gravity="center"
-            android:orientation="vertical">
-
-            <ImageView
-                android:layout_width="24dp"
-                android:layout_height="24dp"
-                android:src="@drawable/black_home" />
+            android:orientation="horizontal"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:gravity="center">
 
             <TextView
+                android:id="@+id/sumaText"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:text="Acasă"
-                android:textColor="#000000"
-                android:textSize="12sp" />
-        </LinearLayout>
+                android:text="Suma adăugată (RON):"
+                android:textSize="18sp"
+                android:textColor="@color/black"/>
 
-        <LinearLayout
-            android:id="@+id/budgetButton"
-            android:layout_width="0dp"
-            android:layout_height="match_parent"
-            android:layout_weight="1"
-            android:gravity="center"
-            android:orientation="vertical">
-
-            <ImageView
-                android:layout_width="24dp"
-                android:layout_height="24dp"
-                android:src="@drawable/black_card" />
-
-            <TextView
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:text="Bugete"
+            <EditText
+                android:id="@+id/sumaInput"
+                android:layout_width="0dp"
+                android:layout_height="40dp"
+                android:layout_weight="1"
+                android:background="@drawable/rounded_edittext"
+                android:padding="8dp"
+                android:textSize="14sp"
                 android:textColor="@color/black"
-                android:textSize="12sp" />
+                android:gravity="center_vertical"
+                android:inputType="numberDecimal"/>
+
         </LinearLayout>
 
         <LinearLayout
-            android:id="@+id/goalsButton"
-            android:layout_width="0dp"
-            android:layout_height="match_parent"
-            android:layout_weight="1"
-            android:gravity="center"
-            android:orientation="vertical">
+                android:orientation="horizontal"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="20dp"
+                android:gravity="center">
 
-            <ImageView
-                android:layout_width="24dp"
-                android:layout_height="24dp"
-                android:src="@drawable/white_lightning" />
+                <Button
+                    android:id="@+id/adaugaSumaButton"
+                    android:text="Adaugă"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_marginRight="10dp"
+                    android:backgroundTint="@color/orange"/>
 
-            <TextView
+                <Button
+                    android:id="@+id/anuleazaSumaButton"
+                    android:text="Anulează"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_marginLeft="10dp"
+                    android:backgroundTint="@color/orange"/>
+        </LinearLayout>
+
+        <!-- Mesaj de Eroare și Succes -->
+        <LinearLayout
+            android:orientation="vertical"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="10dp"
+            android:gravity="center">
+
+            <!-- Mesaj Eroare -->
+            <LinearLayout
+                android:id="@+id/errorMessage1"
+                android:orientation="horizontal"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:text="Obiective"
-                android:textColor="@color/white"
-                android:textSize="12sp" />
+                android:gravity="center"
+                android:visibility="gone">
+
+                <ImageView
+                    android:layout_width="24dp"
+                    android:layout_height="24dp"
+                    android:src="@drawable/important"
+                    app:tint="@color/red" />
+
+                <TextView
+                    android:id="@+id/errorMessageText1"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:text="Specifică suma de adăugat!"
+                    android:textColor="@color/red"
+                    android:textSize="16sp"
+                    android:gravity="center"
+                    android:layout_marginStart="8dp"/>
+            </LinearLayout>
+
+            <LinearLayout
+                android:id="@+id/errorMessage2"
+                android:orientation="horizontal"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:gravity="center"
+                android:visibility="gone">
+
+                <ImageView
+                    android:layout_width="24dp"
+                    android:layout_height="24dp"
+                    android:src="@drawable/important"
+                    app:tint="@color/red" />
+
+                <TextView
+                    android:id="@+id/errorMessageText2"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:text="Suma adăugată depășește obiectivul ales!"
+                    android:textColor="@color/red"
+                    android:textSize="16sp"
+                    android:gravity="center"
+                    android:layout_marginStart="8dp"/>
+            </LinearLayout>
+
+            <!-- Mesaj Succes -->
+            <LinearLayout
+                android:id="@+id/successMessage"
+                android:orientation="horizontal"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:gravity="center"
+                android:visibility="gone">
+
+                <ImageView
+                    android:layout_width="24dp"
+                    android:layout_height="24dp"
+                    android:src="@drawable/bell"
+                    app:tint="@color/green"/>
+
+                <TextView
+                    android:id="@+id/successMessageText"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:text="Suma a fost adăugată cu succes!"
+                    android:textColor="@color/green"
+                    android:textSize="16sp"
+                    android:gravity="center"
+                    android:layout_marginStart="8dp"/>
+            </LinearLayout>
+
         </LinearLayout>
+
+
+        </LinearLayout>
+
 
         <LinearLayout
-            android:id="@+id/reportsButton"
-            android:layout_width="0dp"
-            android:layout_height="match_parent"
-            android:layout_weight="1"
+            android:id="@+id/navigationMenu"
+            android:layout_width="match_parent"
+            android:layout_height="60dp"
+            android:background="#F59227"
             android:gravity="center"
-            android:orientation="vertical">
+            android:orientation="horizontal"
+            app:layout_constraintBottom_toBottomOf="parent">
 
-            <ImageView
-                android:layout_width="24dp"
-                android:layout_height="24dp"
-                android:src="@drawable/black_bar_chart" />
+            <LinearLayout
+                android:id="@+id/homeButton"
+                android:layout_width="0dp"
+                android:layout_height="match_parent"
+                android:layout_weight="1"
+                android:gravity="center"
+                android:orientation="vertical">
 
-            <TextView
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:text="Rapoarte"
-                android:textColor="#000000"
-                android:textSize="12sp" />
+                <ImageView
+                    android:layout_width="24dp"
+                    android:layout_height="24dp"
+                    android:src="@drawable/black_home" />
+
+                <TextView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:text="Acasă"
+                    android:textColor="#000000"
+                    android:textSize="12sp" />
+            </LinearLayout>
+
+            <LinearLayout
+                android:id="@+id/budgetButton"
+                android:layout_width="0dp"
+                android:layout_height="match_parent"
+                android:layout_weight="1"
+                android:gravity="center"
+                android:orientation="vertical">
+
+                <ImageView
+                    android:layout_width="24dp"
+                    android:layout_height="24dp"
+                    android:src="@drawable/black_card" />
+
+                <TextView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:text="Bugete"
+                    android:textColor="@color/black"
+                    android:textSize="12sp" />
+            </LinearLayout>
+
+            <LinearLayout
+                android:id="@+id/goalsButton"
+                android:layout_width="0dp"
+                android:layout_height="match_parent"
+                android:layout_weight="1"
+                android:gravity="center"
+                android:orientation="vertical">
+
+                <ImageView
+                    android:layout_width="24dp"
+                    android:layout_height="24dp"
+                    android:src="@drawable/white_lightning" />
+
+                <TextView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:text="Obiective"
+                    android:textColor="@color/white"
+                    android:textSize="12sp" />
+            </LinearLayout>
+
+            <LinearLayout
+                android:id="@+id/reportsButton"
+                android:layout_width="0dp"
+                android:layout_height="match_parent"
+                android:layout_weight="1"
+                android:gravity="center"
+                android:orientation="vertical">
+
+                <ImageView
+                    android:layout_width="24dp"
+                    android:layout_height="24dp"
+                    android:src="@drawable/black_bar_chart" />
+
+                <TextView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:text="Rapoarte"
+                    android:textColor="#000000"
+                    android:textSize="12sp" />
+            </LinearLayout>
+
+            <LinearLayout
+                android:id="@+id/settingsButton"
+                android:layout_width="0dp"
+                android:layout_height="match_parent"
+                android:layout_weight="1"
+                android:gravity="center"
+                android:orientation="vertical">
+
+                <ImageView
+                    android:layout_width="24dp"
+                    android:layout_height="24dp"
+                    android:src="@drawable/black_settings" />
+
+                <TextView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:text="Setări"
+                    android:textColor="#000000"
+                    android:textSize="12sp" />
+            </LinearLayout>
         </LinearLayout>
 
-        <LinearLayout
-            android:id="@+id/settingsButton"
-            android:layout_width="0dp"
-            android:layout_height="match_parent"
-            android:layout_weight="1"
-            android:gravity="center"
-            android:orientation="vertical">
-
-            <ImageView
-                android:layout_width="24dp"
-                android:layout_height="24dp"
-                android:src="@drawable/black_settings" />
-
-            <TextView
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:text="Setări"
-                android:textColor="#000000"
-                android:textSize="12sp" />
-        </LinearLayout>
-    </LinearLayout>
 
 
-
-</androidx.constraintlayout.widget.ConstraintLayout>
+    </androidx.constraintlayout.widget.ConstraintLayout>
