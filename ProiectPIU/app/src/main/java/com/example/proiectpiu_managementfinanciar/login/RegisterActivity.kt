@@ -1,4 +1,4 @@
-package com.example.proiectpiu_managementfinanciar
+package com.example.proiectpiu_managementfinanciar.login
 
 import android.content.Intent
 import android.os.Bundle
@@ -11,6 +11,7 @@ import android.widget.ImageView
 import android.widget.TextView
 import android.widget.Toast
 import androidx.appcompat.app.AppCompatActivity
+import com.example.proiectpiu_managementfinanciar.R
 import com.example.proiectpiu_managementfinanciar.models.UserRegistration
 import com.example.proiectpiu_managementfinanciar.util.RegistrationList
 

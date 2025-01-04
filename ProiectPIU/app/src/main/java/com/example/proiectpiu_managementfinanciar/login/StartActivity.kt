@@ -1,10 +1,11 @@
-package com.example.proiectpiu_managementfinanciar
+package com.example.proiectpiu_managementfinanciar.login
 
 import android.content.Intent
 import android.os.Bundle
 import android.view.View
 import androidx.appcompat.app.AppCompatActivity
 import android.widget.Button
+import com.example.proiectpiu_managementfinanciar.R
 
 class StartActivity : AppCompatActivity(), View.OnClickListener {
 

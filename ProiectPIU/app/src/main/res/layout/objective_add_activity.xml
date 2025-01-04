@@ -91,12 +91,15 @@
 
             <EditText
                 android:id="@+id/denumire_input"
-                android:layout_width="30dp"
-                android:layout_height="35dp"
+                android:layout_width="0dp"
+                android:layout_height="50dp"
                 android:layout_weight="1"
                 android:background="@drawable/rounded_edittext"
-                android:padding="12dp"
-                android:textColor="@color/black"/>
+                android:padding="8dp"
+                android:textSize="16sp"
+                android:textColor="@color/black"
+                android:gravity="center_vertical"/>
+
         </LinearLayout>
 
         <!-- Suma Section -->
@@ -117,13 +120,16 @@
 
             <EditText
                 android:id="@+id/suma_input"
-                android:layout_width="30dp"
-                android:layout_height="35dp"
+                android:layout_width="0dp"
+                android:layout_height="50dp"
                 android:layout_weight="1"
                 android:background="@drawable/rounded_edittext"
-                android:padding="12dp"
-                android:inputType="number"
-                android:textColor="@color/black"/>
+                android:padding="8dp"
+                android:textSize="16sp"
+                android:textColor="@color/black"
+                android:gravity="center_vertical"
+                android:inputType="numberDecimal"/>
+
         </LinearLayout>
 
         <!-- Iconiță Section -->
@@ -144,10 +150,16 @@
 
             <Spinner
                 android:id="@+id/iconita_spinner"
-                android:layout_width="30dp"
-                android:layout_height="35dp"
+                android:layout_width="0dp"
+                android:layout_height="50dp"
                 android:layout_weight="1"
-                android:background="@drawable/rounded_edittext"/>
+                android:background="@drawable/rounded_edittext"
+                android:padding="2dp"
+                android:textSize="16sp"
+                android:textColor="@color/black"
+                android:gravity="center_vertical"
+                android:popupBackground="@color/white"
+                android:scrollbars="vertical"/>
         </LinearLayout>
 
         <!-- Mesaj de Eroare și Succes -->
@@ -164,6 +176,7 @@
                 android:orientation="horizontal"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
+                android:gravity="center"
                 android:visibility="gone">
 
                 <ImageView
@@ -174,11 +187,12 @@
 
                 <TextView
                     android:id="@+id/errorMessageText"
-                    android:layout_width="200dp"
-                    android:layout_height="30dp"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
                     android:text="Completează toate câmpurile!"
                     android:textColor="@color/red"
                     android:textSize="16sp"
+                    android:gravity="center"
                     android:layout_marginStart="8dp"/>
             </LinearLayout>
 
@@ -188,6 +202,7 @@
                 android:orientation="horizontal"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
+                android:gravity="center"
                 android:visibility="gone">
 
                 <ImageView
@@ -198,13 +213,15 @@
 
                 <TextView
                     android:id="@+id/successMessageText"
-                    android:layout_width="200dp"
-                    android:layout_height="30dp"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
                     android:text="Obiectivul a fost adăugat!"
                     android:textColor="@color/green"
                     android:textSize="16sp"
+                    android:gravity="center"
                     android:layout_marginStart="8dp"/>
             </LinearLayout>
+
         </LinearLayout>
 
         <!-- Butoane -->
@@ -217,28 +234,26 @@
 
             <Button
                 android:id="@+id/addObjectiveButton"
-                android:layout_width="125dp"
-                android:layout_height="65dp"
+                android:layout_width="150dp"
+                android:layout_height="90dp"
+                android:backgroundTint="@color/orange"
                 android:text="Adaugă"
                 android:textColor="@color/white"
                 android:textSize="18sp"
                 android:textStyle="bold"
-                android:fontFamily="@font/inria_serif_regular"
-                android:background="@drawable/oval_button"
-                />
+                android:fontFamily="@font/inria_serif_regular" />
 
             <Button
                 android:id="@+id/cancelButton"
                 android:text="Anulează"
-                android:layout_width="125dp"
-                android:layout_height="65dp"
+                android:layout_width="150dp"
+                android:layout_height="90dp"
                 android:textColor="@color/white"
                 android:layout_marginStart="16dp"
                 android:textSize="18sp"
                 android:textStyle="bold"
                 android:fontFamily="@font/inria_serif_regular"
-                android:background="@drawable/oval_button"
-
+                android:backgroundTint="@color/orange"
                 />
         </LinearLayout>
     </LinearLayout>

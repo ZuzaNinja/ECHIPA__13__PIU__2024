@@ -1,4 +1,4 @@
-package com.example.proiectpiu_managementfinanciar
+package com.example.proiectpiu_managementfinanciar.login
 
 import android.content.Intent
 import android.os.Bundle
@@ -11,6 +11,7 @@ import android.widget.Toast
 import android.os.Handler
 import android.os.Looper
 import androidx.appcompat.app.AppCompatActivity
+import com.example.proiectpiu_managementfinanciar.R
 import com.example.proiectpiu_managementfinanciar.home_dashboard.AdolescentDashboardActivity
 import com.example.proiectpiu_managementfinanciar.home_dashboard.ParentDashboardActivity
 

@@ -1,4 +1,4 @@
-package com.example.proiectpiu_managementfinanciar
+package com.example.proiectpiu_managementfinanciar.login
 
 import android.content.Intent
 import android.os.Bundle
@@ -6,6 +6,7 @@ import android.view.View
 import android.widget.RadioButton
 import android.widget.Toast
 import androidx.appcompat.app.AppCompatActivity
+import com.example.proiectpiu_managementfinanciar.R
 
 class SelectionActivity : AppCompatActivity(), View.OnClickListener {
 

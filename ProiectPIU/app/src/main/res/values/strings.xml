@@ -79,4 +79,10 @@
     <string name="noua_valoare_suma">Adaugă noua valoare a sumei!</string>
     <string name="sectiune_modificata">Secțiunea a fost modificată!</string>
     <string name="text_lung_bugete">Alocând o sumă dedicată pentru situații neprevăzute, precum reparații, cheltuieli medicale sau alte evenimente neaşteptate, vă asigurati că aveți resurse la îndemână fără a afecta alte obiective financiare. Stabilirea unui fond de urgență vă ajută să reduceți stresul şi să vă menţineţi controlul asupra finanţelor, indiferent de circumstanțe. Începeţi acum prin a adăuga o sumă, oricât de mică, pentru a construi o rezervă de siguranță!</string>
+
+    <string name="icon1">Snikers</string>
+    <string name="icon2">Headphones</string>
+    <string name="icon3">Car</string>
+
+
 </resources>

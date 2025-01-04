@@ -15,6 +15,7 @@ import androidx.appcompat.app.AppCompatActivity
 import androidx.core.content.ContextCompat
 import com.example.proiectpiu_managementfinanciar.R
 import com.example.proiectpiu_managementfinanciar.home_dashboard.ParentDashboardActivity
+import com.example.proiectpiu_managementfinanciar.objective.ObjectiveStartPageActivity
 
 class EmergencyBudgetActivity : AppCompatActivity() {
     override fun onCreate(savedInstanceState: Bundle?) {
@@ -137,7 +138,7 @@ class EmergencyBudgetActivity : AppCompatActivity() {
                 startActivity(intent)
             }
             R.id.goalsButton -> {
-                //val intent = Intent(this, GoalsActivity::class.java)
+                val intent = Intent(this, ObjectiveStartPageActivity::class.java)
                 startActivity(intent)
             }
             R.id.reportsButton -> {

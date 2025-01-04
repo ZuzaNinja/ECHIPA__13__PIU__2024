@@ -13,7 +13,7 @@
         android:theme="@style/Theme.ProiectPIU_ManagementFinanciar"
         tools:targetApi="31">
         <activity
-            android:name=".StartActivity"
+            android:name=".login.StartActivity"
             android:exported="true">
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />
@@ -23,16 +23,13 @@
         </activity>
 
         <activity
-            android:name=".SelectionActivity"
+            android:name=".login.SelectionActivity"
             android:exported="false" />
         <activity
-            android:name=".RegisterActivity"
+            android:name=".login.RegisterActivity"
             android:exported="false" />
         <activity
-            android:name=".AuthenticationActivity"
-            android:exported="false" />
-        <activity
-            android:name=".EmptyActivity"
+            android:name=".login.AuthenticationActivity"
             android:exported="false" />
         <activity
             android:name=".budget.NewBudgetActivity"
@@ -55,6 +52,16 @@
 
         <activity
             android:name=".budget.EmergencyBudgetActivity"
+            android:exported="false" />
+
+        <activity android:name=".objective.ObjectiveStartPageActivity"
+            android:exported="false" />
+
+        <activity android:name=".objective.AddObjectiveActivity"
+            android:windowSoftInputMode="adjustPan"
+            android:exported="false" />
+
+        <activity android:name=".objective.ViewObjectivesActivity"
             android:exported="false" />
     </application>
 

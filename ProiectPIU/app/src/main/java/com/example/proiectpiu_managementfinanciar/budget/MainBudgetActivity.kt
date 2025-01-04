@@ -12,6 +12,7 @@ import com.example.proiectpiu_managementfinanciar.R
 import com.example.proiectpiu_managementfinanciar.adapters.BudgetListAdapter
 import com.example.proiectpiu_managementfinanciar.models.BudgetItem
 import com.example.proiectpiu_managementfinanciar.home_dashboard.ParentDashboardActivity
+import com.example.proiectpiu_managementfinanciar.objective.ObjectiveStartPageActivity
 
 class MainBudgetActivity : AppCompatActivity() {
     override fun onCreate(savedInstanceState: Bundle?) {
@@ -91,7 +92,7 @@ class MainBudgetActivity : AppCompatActivity() {
                 startActivity(intent)
             }
             R.id.goalsButton -> {
-                //val intent = Intent(this, GoalsActivity::class.java)
+                val intent = Intent(this, ObjectiveStartPageActivity::class.java)
                 startActivity(intent)
             }
             R.id.reportsButton -> {
