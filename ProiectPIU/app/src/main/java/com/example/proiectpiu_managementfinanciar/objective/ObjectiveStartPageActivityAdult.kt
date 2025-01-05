@@ -10,6 +10,7 @@ import androidx.appcompat.app.AppCompatActivity
 import com.example.proiectpiu_managementfinanciar.R
 import com.example.proiectpiu_managementfinanciar.budget.MainBudgetActivity
 import com.example.proiectpiu_managementfinanciar.home_dashboard.ParentDashboardActivity
+import com.example.proiectpiu_managementfinanciar.login.MyAccountActivity
 import com.example.proiectpiu_managementfinanciar.settings.SettingsStartActivity
 
 class ObjectiveStartPageActivityAdult : AppCompatActivity(), View.OnClickListener {
@@ -22,6 +23,9 @@ class ObjectiveStartPageActivityAdult : AppCompatActivity(), View.OnClickListene
     private lateinit var goalsButton: View
     private lateinit var reportsButton: View
     private lateinit var settingsButton: View
+
+    private lateinit var profile: View
+
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
@@ -41,6 +45,9 @@ class ObjectiveStartPageActivityAdult : AppCompatActivity(), View.OnClickListene
         goalsButton = findViewById(R.id.goalsButton)
         reportsButton = findViewById(R.id.reportsButton)
         settingsButton = findViewById(R.id.settingsButton)
+
+        profile = findViewById(R.id.profile)
+
     }
 
     private fun setListeners() {
@@ -52,6 +59,9 @@ class ObjectiveStartPageActivityAdult : AppCompatActivity(), View.OnClickListene
         goalsButton.setOnClickListener(this)
         reportsButton.setOnClickListener(this)
         settingsButton.setOnClickListener(this)
+
+        profile.setOnClickListener(this)
+
     }
 
     override fun onClick(view: View?) {
@@ -77,6 +87,11 @@ class ObjectiveStartPageActivityAdult : AppCompatActivity(), View.OnClickListene
             R.id.settingsButton -> {
                 startActivity(Intent(this, SettingsStartActivity::class.java))
             }
+
+            R.id.profile -> {
+                startActivity(Intent(this, MyAccountActivity::class.java))
+            }
+
             else -> {
                 Toast.makeText(this, "Acțiune necunoscută", Toast.LENGTH_SHORT).show()
             }

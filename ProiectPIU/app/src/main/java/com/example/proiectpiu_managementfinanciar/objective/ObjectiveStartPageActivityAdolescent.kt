@@ -17,6 +17,7 @@ import com.example.proiectpiu_managementfinanciar.R
 import com.example.proiectpiu_managementfinanciar.adapters.ObjectiveAdapterAdolescent
 import com.example.proiectpiu_managementfinanciar.util.ObjectiveManagerAdolescent
 import com.example.proiectpiu_managementfinanciar.home_dashboard.AdolescentDashboardActivity
+import com.example.proiectpiu_managementfinanciar.login.MyAccountActivity
 import com.example.proiectpiu_managementfinanciar.settings.NotificationActivityAdolescent
 
 class ObjectiveStartPageActivityAdolescent : AppCompatActivity(), View.OnClickListener {
@@ -35,6 +36,8 @@ class ObjectiveStartPageActivityAdolescent : AppCompatActivity(), View.OnClickLi
     private lateinit var pusculitaButton: View
     private lateinit var goalsButton: View
     private lateinit var learnButton: View
+
+    private lateinit var profileSection: View
 
     private lateinit var sumaInput: EditText
     private lateinit var adaugaSumaButton: Button
@@ -92,6 +95,8 @@ class ObjectiveStartPageActivityAdolescent : AppCompatActivity(), View.OnClickLi
         goalsButton = findViewById(R.id.goalsButton)
         learnButton = findViewById(R.id.learnButton)
 
+        profileSection = findViewById(R.id.profile_section)
+
         sumaInput = findViewById(R.id.sumaInput)
         adaugaSumaButton = findViewById(R.id.adaugaSumaButton)
         anuleazaSumaButton = findViewById(R.id.anuleazaSumaButton)
@@ -126,6 +131,9 @@ class ObjectiveStartPageActivityAdolescent : AppCompatActivity(), View.OnClickLi
             }
             R.id.learnButton -> {
                 Toast.makeText(this, "Învățare (în lucru)", Toast.LENGTH_SHORT).show()
+            }
+            R.id.profile_section -> {
+                startActivity(Intent(this, MyAccountActivity::class.java))
             }
             else -> {
                 Toast.makeText(this, "Acțiune necunoscută", Toast.LENGTH_SHORT).show()
@@ -189,6 +197,8 @@ class ObjectiveStartPageActivityAdolescent : AppCompatActivity(), View.OnClickLi
         pusculitaButton.setOnClickListener(this)
         goalsButton.setOnClickListener(this)
         learnButton.setOnClickListener(this)
+
+        profileSection.setOnClickListener(this)
 
         notificationIcon.setOnClickListener {
             startActivity(Intent(this, NotificationActivityAdolescent::class.java))

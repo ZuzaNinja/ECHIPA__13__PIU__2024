@@ -6,40 +6,55 @@ import android.view.View
 import androidx.appcompat.app.AppCompatActivity
 import com.example.proiectpiu_managementfinanciar.budget.MainBudgetActivity
 import com.example.proiectpiu_managementfinanciar.R
+import com.example.proiectpiu_managementfinanciar.login.MyAccountActivity
 import com.example.proiectpiu_managementfinanciar.objective.ObjectiveStartPageActivityAdult
 import com.example.proiectpiu_managementfinanciar.settings.SettingsStartActivity
 
-class ParentDashboardActivity : AppCompatActivity() {
+class ParentDashboardActivity : AppCompatActivity(), View.OnClickListener {
+
+    private lateinit var profile: View
+    private lateinit var homeButton: View
+    private lateinit var budgetButton: View
+    private lateinit var goalsButton: View
+    private lateinit var reportsButton: View
+    private lateinit var settingsButton: View
+
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_parent_dashboard)
+
+        val sharedPreferences = getSharedPreferences("UserPrefs", MODE_PRIVATE)
+        val userEmail = sharedPreferences.getString("USER_EMAIL", "N/A")
+        val userType = sharedPreferences.getString("USER_TYPE", "N/A")
+
+        println("User Email: $userEmail")
+        println("User Type: $userType")
+
+        profile = findViewById(R.id.profile)
+        homeButton = findViewById(R.id.homeButton)
+        budgetButton = findViewById(R.id.budgetButton)
+        goalsButton = findViewById(R.id.goalsButton)
+        reportsButton = findViewById(R.id.reportsButton)
+        settingsButton = findViewById(R.id.settingsButton)
+
+        profile.setOnClickListener(this)
+        homeButton.setOnClickListener(this)
+        budgetButton.setOnClickListener(this)
+        goalsButton.setOnClickListener(this)
+        reportsButton.setOnClickListener(this)
+        settingsButton.setOnClickListener(this)
     }
 
-        fun onNavigationClick(view: View) {
-            when (view.id) {
-                R.id.adolescentButton -> {
-                    //val intent = Intent(this, ContAdolescentActivity::class.java)
-                    startActivity(intent)
-                }
-                R.id.homeButton -> {
-                    val intent = Intent(this, ParentDashboardActivity::class.java)
-                    startActivity(intent)
-                }
-                R.id.budgetButton -> {
-                    val intent = Intent(this, MainBudgetActivity::class.java)
-                    startActivity(intent)
-                }
-                R.id.goalsButton -> {
-                    val intent = Intent(this, ObjectiveStartPageActivityAdult::class.java)
-                    startActivity(intent)
-                }
-                R.id.reportsButton -> {
-                    //val intent = Intent(this, ReportsActivity::class.java)
-                    startActivity(intent)
-                }
-                R.id.settingsButton -> {
-                    startActivity(Intent(this, SettingsStartActivity::class.java))
-                }
+    override fun onClick(v: View?) {
+        when (v?.id) {
+            R.id.homeButton -> startActivity(Intent(this, ParentDashboardActivity::class.java))
+            R.id.budgetButton -> startActivity(Intent(this, MainBudgetActivity::class.java))
+            R.id.goalsButton -> startActivity(Intent(this, ObjectiveStartPageActivityAdult::class.java))
+            R.id.reportsButton -> {
+                println("Repoartele nu sunt implementate încă!")
             }
+            R.id.settingsButton -> startActivity(Intent(this, SettingsStartActivity::class.java))
+            R.id.profile -> startActivity(Intent(this, MyAccountActivity::class.java))
+        }
     }
 }

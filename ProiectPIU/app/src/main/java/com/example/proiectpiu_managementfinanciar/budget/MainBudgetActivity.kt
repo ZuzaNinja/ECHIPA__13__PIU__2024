@@ -12,10 +12,18 @@ import com.example.proiectpiu_managementfinanciar.R
 import com.example.proiectpiu_managementfinanciar.adapters.BudgetListAdapter
 import com.example.proiectpiu_managementfinanciar.models.BudgetItem
 import com.example.proiectpiu_managementfinanciar.home_dashboard.ParentDashboardActivity
+import com.example.proiectpiu_managementfinanciar.login.MyAccountActivity
 import com.example.proiectpiu_managementfinanciar.objective.ObjectiveStartPageActivityAdult
 import com.example.proiectpiu_managementfinanciar.settings.SettingsStartActivity
 
-class MainBudgetActivity : AppCompatActivity() {
+class MainBudgetActivity : AppCompatActivity(), View.OnClickListener {
+    private lateinit var profile: View
+    private lateinit var homeButton: View
+    private lateinit var budgetButton: View
+    private lateinit var goalsButton: View
+    private lateinit var reportsButton: View
+    private lateinit var settingsButton: View
+
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.budget_start_page)
@@ -54,6 +62,20 @@ class MainBudgetActivity : AppCompatActivity() {
         recyclerView.adapter = adapter
 
         setKeyboardVisibilityListener()
+
+        profile = findViewById(R.id.profile)
+        homeButton = findViewById(R.id.homeButton)
+        budgetButton = findViewById(R.id.budgetButton)
+        goalsButton = findViewById(R.id.goalsButton)
+        reportsButton = findViewById(R.id.reportsButton)
+        settingsButton = findViewById(R.id.settingsButton)
+
+        profile.setOnClickListener(this)
+        homeButton.setOnClickListener(this)
+        budgetButton.setOnClickListener(this)
+        goalsButton.setOnClickListener(this)
+        reportsButton.setOnClickListener(this)
+        settingsButton.setOnClickListener(this)
     }
 
     private fun setKeyboardVisibilityListener() {
@@ -78,8 +100,8 @@ class MainBudgetActivity : AppCompatActivity() {
         }
     }
 
-    fun onNavigationClick(view: View) {
-        when (view.id) {
+    override fun onClick(v: View?) {
+        when (v?.id) {
             R.id.adolescentButton -> {
                 //val intent = Intent(this, ContAdolescentActivity::class.java)
                 startActivity(intent)
@@ -102,6 +124,10 @@ class MainBudgetActivity : AppCompatActivity() {
             }
             R.id.settingsButton -> {
                 startActivity(Intent(this, SettingsStartActivity::class.java))
+            }
+
+            R.id.profile -> {
+                startActivity(Intent(this, MyAccountActivity::class.java))
             }
         }
     }

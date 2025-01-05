@@ -16,6 +16,7 @@ import com.example.proiectpiu_managementfinanciar.R
 import com.example.proiectpiu_managementfinanciar.adapters.ObjectiveAdapter
 import com.example.proiectpiu_managementfinanciar.budget.MainBudgetActivity
 import com.example.proiectpiu_managementfinanciar.home_dashboard.ParentDashboardActivity
+import com.example.proiectpiu_managementfinanciar.login.MyAccountActivity
 import com.example.proiectpiu_managementfinanciar.models.Notification
 import com.example.proiectpiu_managementfinanciar.settings.SettingsStartActivity
 import com.example.proiectpiu_managementfinanciar.util.NotificationManager
@@ -46,6 +47,9 @@ class ViewObjectivesActivity : AppCompatActivity(), View.OnClickListener {
     private lateinit var errorMessageText2: TextView
     private lateinit var successMessage: LinearLayout
     private lateinit var successMessageText: TextView
+
+    private lateinit var profile: View
+
 
     private val handler = android.os.Handler()
 
@@ -93,6 +97,7 @@ class ViewObjectivesActivity : AppCompatActivity(), View.OnClickListener {
         successMessage = findViewById(R.id.successMessage)
         successMessageText = findViewById(R.id.successMessageText)
 
+        profile = findViewById(R.id.profile)
     }
 
     private fun setListeners() {
@@ -102,6 +107,7 @@ class ViewObjectivesActivity : AppCompatActivity(), View.OnClickListener {
         reportsButton.setOnClickListener(this)
         settingsButton.setOnClickListener(this)
 
+        profile.setOnClickListener(this)
 
         manageObjectiveButton.setOnClickListener {
             if (adapter.getSelectedPosition() != RecyclerView.NO_POSITION) {
@@ -207,6 +213,11 @@ class ViewObjectivesActivity : AppCompatActivity(), View.OnClickListener {
             R.id.settingsButton -> {
                 startActivity(Intent(this, SettingsStartActivity::class.java))
             }
+
+            R.id.profile -> {
+                startActivity(Intent(this, MyAccountActivity::class.java))
+            }
+
             else -> {
                 Toast.makeText(this, "Acțiune necunoscută", Toast.LENGTH_SHORT).show()
             }

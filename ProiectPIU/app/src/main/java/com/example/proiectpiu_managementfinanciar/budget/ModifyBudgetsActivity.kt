@@ -7,10 +7,18 @@ import android.widget.ImageButton
 import androidx.appcompat.app.AppCompatActivity
 import com.example.proiectpiu_managementfinanciar.R
 import com.example.proiectpiu_managementfinanciar.home_dashboard.ParentDashboardActivity
+import com.example.proiectpiu_managementfinanciar.login.MyAccountActivity
 import com.example.proiectpiu_managementfinanciar.objective.ObjectiveStartPageActivityAdult
 import com.example.proiectpiu_managementfinanciar.settings.SettingsStartActivity
 
-class ModifyBudgetsActivity : AppCompatActivity() {
+class ModifyBudgetsActivity : AppCompatActivity(), View.OnClickListener {
+    private lateinit var profile: View
+    private lateinit var homeButton: View
+    private lateinit var budgetButton: View
+    private lateinit var goalsButton: View
+    private lateinit var reportsButton: View
+    private lateinit var settingsButton: View
+
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.budget_modify_section)
@@ -35,10 +43,25 @@ class ModifyBudgetsActivity : AppCompatActivity() {
             intent.flags = Intent.FLAG_ACTIVITY_NEW_TASK or Intent.FLAG_ACTIVITY_CLEAR_TASK
             startActivity(intent)
         }
+
+        profile = findViewById(R.id.profile)
+        homeButton = findViewById(R.id.homeButton)
+        budgetButton = findViewById(R.id.budgetButton)
+        goalsButton = findViewById(R.id.goalsButton)
+        reportsButton = findViewById(R.id.reportsButton)
+        settingsButton = findViewById(R.id.settingsButton)
+
+        profile.setOnClickListener(this)
+        homeButton.setOnClickListener(this)
+        budgetButton.setOnClickListener(this)
+        goalsButton.setOnClickListener(this)
+        reportsButton.setOnClickListener(this)
+        settingsButton.setOnClickListener(this)
+
     }
 
-    fun onNavigationClick(view: View) {
-        when (view.id) {
+    override fun onClick(v: View?) {
+        when (v?.id) {
             R.id.adolescentButton -> {
                 //val intent = Intent(this, ContAdolescentActivity::class.java)
                 startActivity(intent)
@@ -61,6 +84,10 @@ class ModifyBudgetsActivity : AppCompatActivity() {
             }
             R.id.settingsButton -> {
                 startActivity(Intent(this, SettingsStartActivity::class.java))
+            }
+
+            R.id.profile -> {
+                startActivity(Intent(this, MyAccountActivity::class.java))
             }
         }
     }

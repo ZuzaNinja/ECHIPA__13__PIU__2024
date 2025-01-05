@@ -11,6 +11,7 @@ import com.example.proiectpiu_managementfinanciar.R
 import com.example.proiectpiu_managementfinanciar.adapters.IconSpinnerAdapter
 import com.example.proiectpiu_managementfinanciar.budget.MainBudgetActivity
 import com.example.proiectpiu_managementfinanciar.home_dashboard.ParentDashboardActivity
+import com.example.proiectpiu_managementfinanciar.login.MyAccountActivity
 import com.example.proiectpiu_managementfinanciar.models.Notification
 import com.example.proiectpiu_managementfinanciar.models.Objective
 import com.example.proiectpiu_managementfinanciar.util.NotificationManager
@@ -35,6 +36,9 @@ class AddObjectiveActivityAdult : AppCompatActivity(), View.OnClickListener {
     private lateinit var errorMessageText: TextView
     private lateinit var successMessageSection: LinearLayout
     private lateinit var successMessageText: TextView
+
+    private lateinit var profile: View
+
 
     private val iconResources = listOf(
         R.drawable.object_icon,
@@ -102,6 +106,9 @@ class AddObjectiveActivityAdult : AppCompatActivity(), View.OnClickListener {
         errorMessageText = findViewById(R.id.errorMessageText)
         successMessageSection = findViewById(R.id.successMessageSection)
         successMessageText = findViewById(R.id.successMessageText)
+
+        profile = findViewById(R.id.profile)
+
     }
 
     private fun setupSpinner() {
@@ -119,6 +126,9 @@ class AddObjectiveActivityAdult : AppCompatActivity(), View.OnClickListener {
         goalsButton.setOnClickListener(this)
         reportsButton.setOnClickListener(this)
         settingsButton.setOnClickListener(this)
+
+        profile.setOnClickListener(this)
+
     }
 
     private fun afisareTemporaraMesaje(view: View, durata: Long) {
@@ -137,6 +147,9 @@ class AddObjectiveActivityAdult : AppCompatActivity(), View.OnClickListener {
             R.id.goalsButton -> startActivity(Intent(this, ObjectiveStartPageActivityAdult::class.java))
             R.id.reportsButton -> Toast.makeText(this, "Rapoarte (în lucru)", Toast.LENGTH_SHORT).show()
             R.id.settingsButton -> Toast.makeText(this, "Setări (în lucru)", Toast.LENGTH_SHORT).show()
+            R.id.profile -> {
+                startActivity(Intent(this, MyAccountActivity::class.java))
+            }
         }
     }
 

@@ -7,6 +7,7 @@ import android.widget.ImageView
 import android.widget.Toast
 import androidx.appcompat.app.AppCompatActivity
 import com.example.proiectpiu_managementfinanciar.R
+import com.example.proiectpiu_managementfinanciar.login.MyAccountActivity
 import com.example.proiectpiu_managementfinanciar.objective.ObjectiveStartPageActivityAdolescent
 import com.example.proiectpiu_managementfinanciar.settings.NotificationActivityAdolescent
 
@@ -14,25 +15,36 @@ class AdolescentDashboardActivity : AppCompatActivity(), View.OnClickListener {
 
     private lateinit var notificationIcon: ImageView
 
+    private lateinit var profileSection: View
+    private lateinit var homeButton: View
+    private lateinit var pusculitaButton: View
+    private lateinit var goalsButton: View
+    private lateinit var learnButton: View
+
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_adolescent_dashboard)
 
         initializeViews()
 
-        notificationIcon.setOnClickListener {
-            startActivity(Intent(this, NotificationActivityAdolescent::class.java))
-        }
     }
 
     private fun initializeViews() {
-        findViewById<View>(R.id.homeButton).setOnClickListener(this)
-        findViewById<View>(R.id.pusculitaButton).setOnClickListener(this)
-        findViewById<View>(R.id.goalsButton).setOnClickListener(this)
-        findViewById<View>(R.id.learnButton).setOnClickListener(this)
-
+        profileSection = findViewById(R.id.profile_section)
+        homeButton = findViewById(R.id.homeButton)
+        pusculitaButton = findViewById(R.id.pusculitaButton)
+        goalsButton = findViewById(R.id.goalsButton)
+        learnButton = findViewById(R.id.learnButton)
         notificationIcon = findViewById(R.id.notification_icon)
 
+        profileSection.setOnClickListener(this)
+        homeButton.setOnClickListener(this)
+        pusculitaButton.setOnClickListener(this)
+        goalsButton.setOnClickListener(this)
+        learnButton.setOnClickListener(this)
+        notificationIcon.setOnClickListener {
+            startActivity(Intent(this, NotificationActivityAdolescent::class.java))
+        }
     }
 
     override fun onClick(view: View?) {
@@ -48,6 +60,9 @@ class AdolescentDashboardActivity : AppCompatActivity(), View.OnClickListener {
             }
             R.id.learnButton -> {
                 Toast.makeText(this, "Funcționalitate în dezvoltare!", Toast.LENGTH_SHORT).show()
+            }
+            R.id.profile_section -> {
+                startActivity(Intent(this, MyAccountActivity::class.java))
             }
         }
     }

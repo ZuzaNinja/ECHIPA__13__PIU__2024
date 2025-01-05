@@ -10,6 +10,7 @@ import androidx.appcompat.app.AppCompatActivity
 import com.example.proiectpiu_managementfinanciar.R
 import com.example.proiectpiu_managementfinanciar.adapters.IconSpinnerAdapter
 import com.example.proiectpiu_managementfinanciar.home_dashboard.AdolescentDashboardActivity
+import com.example.proiectpiu_managementfinanciar.login.MyAccountActivity
 import com.example.proiectpiu_managementfinanciar.models.Notification
 import com.example.proiectpiu_managementfinanciar.models.Objective
 import com.example.proiectpiu_managementfinanciar.settings.NotificationActivityAdolescent
@@ -28,6 +29,8 @@ class AddObjectiveActivityAdolescent : AppCompatActivity(), View.OnClickListener
     private lateinit var pusculitaButton: View
     private lateinit var goalsButton: View
     private lateinit var learnButton: View
+
+    private lateinit var profileSection: View
 
     private lateinit var errorMessageSection: LinearLayout
     private lateinit var errorMessageText: TextView
@@ -102,6 +105,8 @@ class AddObjectiveActivityAdolescent : AppCompatActivity(), View.OnClickListener
         goalsButton = findViewById(R.id.goalsButton)
         learnButton = findViewById(R.id.learnButton)
 
+        profileSection = findViewById(R.id.profile_section)
+
         errorMessageSection = findViewById(R.id.errorMessageSection)
         errorMessageText = findViewById(R.id.errorMessageText)
         successMessageSection = findViewById(R.id.successMessageSection)
@@ -125,6 +130,8 @@ class AddObjectiveActivityAdolescent : AppCompatActivity(), View.OnClickListener
         pusculitaButton.setOnClickListener(this)
         goalsButton.setOnClickListener(this)
         learnButton.setOnClickListener(this)
+
+        profileSection.setOnClickListener(this)
 
         notificationIcon.setOnClickListener {
             startActivity(Intent(this, NotificationActivityAdolescent::class.java))
@@ -153,6 +160,9 @@ class AddObjectiveActivityAdolescent : AppCompatActivity(), View.OnClickListener
             }
             R.id.learnButton -> {
                 Toast.makeText(this, "Învățare (în lucru)", Toast.LENGTH_SHORT).show()
+            }
+            R.id.profile_section -> {
+                startActivity(Intent(this, MyAccountActivity::class.java))
             }
             else -> {
                 Toast.makeText(this, "Acțiune necunoscută", Toast.LENGTH_SHORT).show()

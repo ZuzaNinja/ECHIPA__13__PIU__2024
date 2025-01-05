@@ -70,24 +70,26 @@ class AuthenticationActivity : AppCompatActivity() {
             if (validInputs) {
                 val enteredEmail = emailInput.text.toString()
                 val enteredPassword = passwordInput.text.toString()
+                val sharedPreferences = getSharedPreferences("UserPrefs", MODE_PRIVATE)
+                val editor = sharedPreferences.edit()
 
                 if (enteredEmail == parentEmail && enteredPassword == parentPassword) {
-                    afisareTemporaraMesaje(textViewSignInMessage, 3000)
+                    editor.putString("USER_EMAIL", enteredEmail)
+                    editor.putString("USER_TYPE", "Parent")
+                    editor.apply()
 
+                    afisareTemporaraMesaje(textViewSignInMessage, 3000)
                     handler.postDelayed({
-                        val intent = Intent(this, ParentDashboardActivity::class.java)
-                        intent.putExtra("EXTRA_EMAIL", enteredEmail)
-                        intent.putExtra("EXTRA_PASSWORD", enteredPassword)
-                        startActivity(intent)
+                        startActivity(Intent(this, ParentDashboardActivity::class.java))
                     }, 1000)
                 } else if (enteredEmail == adolescentEmail && enteredPassword == adolescentPassword) {
-                    afisareTemporaraMesaje(textViewSignInMessage, 3000)
+                    editor.putString("USER_EMAIL", enteredEmail)
+                    editor.putString("USER_TYPE", "Adolescent")
+                    editor.apply()
 
+                    afisareTemporaraMesaje(textViewSignInMessage, 3000)
                     handler.postDelayed({
-                        val intent = Intent(this, AdolescentDashboardActivity::class.java)
-                        intent.putExtra("EXTRA_EMAIL", enteredEmail)
-                        intent.putExtra("EXTRA_PASSWORD", enteredPassword)
-                        startActivity(intent)
+                        startActivity(Intent(this, AdolescentDashboardActivity::class.java))
                     }, 1000)
                 } else {
                     afisareTemporaraMesaje(textViewLoginFailed, 3000)
