@@ -16,6 +16,9 @@ import com.example.proiectpiu_managementfinanciar.R
 import com.example.proiectpiu_managementfinanciar.adapters.ObjectiveAdapter
 import com.example.proiectpiu_managementfinanciar.budget.MainBudgetActivity
 import com.example.proiectpiu_managementfinanciar.home_dashboard.ParentDashboardActivity
+import com.example.proiectpiu_managementfinanciar.models.Notification
+import com.example.proiectpiu_managementfinanciar.settings.SettingsStartActivity
+import com.example.proiectpiu_managementfinanciar.util.NotificationManager
 import com.example.proiectpiu_managementfinanciar.util.ObjectiveManager
 
 class ViewObjectivesActivity : AppCompatActivity(), View.OnClickListener {
@@ -138,6 +141,7 @@ class ViewObjectivesActivity : AppCompatActivity(), View.OnClickListener {
                 errorMessageText2.text = "Suma adăugată depășește obiectivul ales!"
 
                 sumaInput.text.clear()
+                return@setOnClickListener
 
             } else {
                 selectedObjective.sumaCurenta += sumaAdaugata
@@ -149,9 +153,24 @@ class ViewObjectivesActivity : AppCompatActivity(), View.OnClickListener {
                 adapter.updateObjectives(ObjectiveManager.getObjectives())
                 adapter.notifyDataSetChanged()
 
+                NotificationManager.addNotification(
+                    Notification(
+                        R.drawable.notification_icon,
+                        "Sumă Adăugată",
+                        "Ai adăugat $sumaAdaugata RON la obiectivul: ${selectedObjective.denumire}"
+                    )
+                )
 
                 if (selectedObjective.sumaCurenta == selectedObjective.sumaTotala) {
                     Toast.makeText(this, "Obiectiv completat! ✅", Toast.LENGTH_LONG).show()
+
+                    NotificationManager.addNotification(
+                        Notification(
+                            R.drawable.notification_icon,
+                            "Obiectiv Finalizat",
+                            "Felicitări! Ai finalizat obiectivul: ${selectedObjective.denumire}"
+                        )
+                    )
                 }
 
                 manageObjectiveSection.visibility = View.GONE
@@ -160,7 +179,6 @@ class ViewObjectivesActivity : AppCompatActivity(), View.OnClickListener {
                 adapter.unlockSelection()
             }
         }
-
 
         anuleazaSumaButton.setOnClickListener {
             manageObjectiveSection.visibility = View.GONE
@@ -187,7 +205,7 @@ class ViewObjectivesActivity : AppCompatActivity(), View.OnClickListener {
                 Toast.makeText(this, "Rapoarte (în lucru)", Toast.LENGTH_SHORT).show()
             }
             R.id.settingsButton -> {
-                Toast.makeText(this, "Setări (în lucru)", Toast.LENGTH_SHORT).show()
+                startActivity(Intent(this, SettingsStartActivity::class.java))
             }
             else -> {
                 Toast.makeText(this, "Acțiune necunoscută", Toast.LENGTH_SHORT).show()

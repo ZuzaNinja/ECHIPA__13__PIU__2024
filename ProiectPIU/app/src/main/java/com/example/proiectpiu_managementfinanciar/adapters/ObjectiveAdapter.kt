@@ -45,12 +45,11 @@ class ObjectiveAdapter(private var objectives: List<Objective>) :
         }
         holder.objectiveProgressBar.progress = progressPercentage
 
-        when (objective.iconita) {
-            "Mașină" -> holder.objectiveIcon.setImageResource(R.drawable.car_icon1)
-            "Căști" -> holder.objectiveIcon.setImageResource(R.drawable.headphones_icon2)
-            "Adidași" -> holder.objectiveIcon.setImageResource(R.drawable.sneakers_icon3)
-            else -> holder.objectiveIcon.setImageResource(R.drawable.object_icon)
+        when {
+            objective.iconita != 0 -> holder.objectiveIcon.setImageResource(objective.iconita)
+            else -> holder.objectiveIcon.setImageResource(R.drawable.object_icon) // Default icon
         }
+
 
         if (objective.sumaCurenta >= objective.sumaTotala) {
             holder.completedCheckIcon.visibility = View.VISIBLE

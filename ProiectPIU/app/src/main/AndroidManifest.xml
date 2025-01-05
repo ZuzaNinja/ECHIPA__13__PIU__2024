@@ -72,6 +72,14 @@
         <activity android:name=".objective.AddObjectiveActivityAdolescent"
             android:windowSoftInputMode="adjustPan"
             android:exported="false" />
+
+        <activity android:name=".settings.SettingsStartActivity"
+            android:windowSoftInputMode="adjustPan"
+            android:exported="false" />
+
+        <activity android:name=".settings.NotificationActivity"
+            android:windowSoftInputMode="adjustPan"
+            android:exported="false" />
     </application>
 
 </manifest>

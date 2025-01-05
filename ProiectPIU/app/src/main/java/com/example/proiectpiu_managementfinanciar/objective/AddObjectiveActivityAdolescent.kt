@@ -10,7 +10,10 @@ import androidx.appcompat.app.AppCompatActivity
 import com.example.proiectpiu_managementfinanciar.R
 import com.example.proiectpiu_managementfinanciar.adapters.IconSpinnerAdapter
 import com.example.proiectpiu_managementfinanciar.home_dashboard.AdolescentDashboardActivity
+import com.example.proiectpiu_managementfinanciar.models.Notification
 import com.example.proiectpiu_managementfinanciar.models.Objective
+import com.example.proiectpiu_managementfinanciar.util.NotificationManager
+import com.example.proiectpiu_managementfinanciar.util.ObjectiveManager
 import com.example.proiectpiu_managementfinanciar.util.ObjectiveManagerAdolescent
 
 class AddObjectiveActivityAdolescent : AppCompatActivity(), View.OnClickListener {
@@ -154,10 +157,16 @@ class AddObjectiveActivityAdolescent : AppCompatActivity(), View.OnClickListener
         val iconitaIndex = iconitaSpinner.selectedItemPosition
 
         if (denumire.isNotEmpty() && sumaTotala != null && iconitaIndex in iconLabels.indices && iconitaIndex > 0) {
-            val selectedIcon = iconLabels[iconitaIndex]
-            val newObjective = Objective(denumire, 0.0, sumaTotala, selectedIcon)
+            val newObjective = Objective(denumire, 0.0, sumaTotala, iconResources[iconitaIndex])
             ObjectiveManagerAdolescent.addObjective(newObjective)
 
+            NotificationManager.addNotification(
+                Notification(
+                    R.drawable.notification_icon,
+                    "Obiectiv Creat",
+                    "Ai adăugat un nou obiectiv: $denumire!"
+                )
+            )
             resetFields()
             showSuccessMessage("Obiectiv adăugat cu succes!")
             startActivity(Intent(this, ObjectiveStartPageActivityAdolescent::class.java))

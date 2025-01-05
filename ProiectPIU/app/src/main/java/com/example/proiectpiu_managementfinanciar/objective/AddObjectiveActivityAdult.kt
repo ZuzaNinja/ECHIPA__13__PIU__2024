@@ -11,7 +11,9 @@ import com.example.proiectpiu_managementfinanciar.R
 import com.example.proiectpiu_managementfinanciar.adapters.IconSpinnerAdapter
 import com.example.proiectpiu_managementfinanciar.budget.MainBudgetActivity
 import com.example.proiectpiu_managementfinanciar.home_dashboard.ParentDashboardActivity
+import com.example.proiectpiu_managementfinanciar.models.Notification
 import com.example.proiectpiu_managementfinanciar.models.Objective
+import com.example.proiectpiu_managementfinanciar.util.NotificationManager
 import com.example.proiectpiu_managementfinanciar.util.ObjectiveManager
 
 class AddObjectiveActivityAdult : AppCompatActivity(), View.OnClickListener {
@@ -143,14 +145,17 @@ private fun addObjective() {
     val sumaTotala = sumaInput.text.toString().toDoubleOrNull()
     val iconitaIndex = iconitaSpinner.selectedItemPosition
 
-    println("Denumire: $denumire")
-    println("Suma: $sumaTotala")
-    println("IconitaIndex: $iconitaIndex")
-    println("Iconita Size: ${iconLabels.size}")
-
     if (denumire.isNotEmpty() && sumaTotala != null && iconitaIndex in iconLabels.indices && iconitaIndex > 0) {
-        val newObjective = Objective(denumire, 0.0, sumaTotala, iconLabels[iconitaIndex])
+        val newObjective = Objective(denumire, 0.0, sumaTotala, iconResources[iconitaIndex])
         ObjectiveManager.addObjective(newObjective)
+
+        NotificationManager.addNotification(
+            Notification(
+                R.drawable.notification_icon,
+                "Obiectiv Creat",
+                "Ai adăugat un nou obiectiv: $denumire!"
+            )
+        )
 
         resetFields()
         showSuccessMessage("Obiectiv adăugat cu succes!")

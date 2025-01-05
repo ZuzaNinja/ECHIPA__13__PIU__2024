@@ -7,6 +7,7 @@ import androidx.appcompat.app.AppCompatActivity
 import com.example.proiectpiu_managementfinanciar.budget.MainBudgetActivity
 import com.example.proiectpiu_managementfinanciar.R
 import com.example.proiectpiu_managementfinanciar.objective.ObjectiveStartPageActivityAdult
+import com.example.proiectpiu_managementfinanciar.settings.SettingsStartActivity
 
 class ParentDashboardActivity : AppCompatActivity() {
     override fun onCreate(savedInstanceState: Bundle?) {
@@ -37,8 +38,7 @@ class ParentDashboardActivity : AppCompatActivity() {
                     startActivity(intent)
                 }
                 R.id.settingsButton -> {
-                    //val intent = Intent(this, SettingsActivity::class.java)
-                    startActivity(intent)
+                    startActivity(Intent(this, SettingsStartActivity::class.java))
                 }
             }
     }

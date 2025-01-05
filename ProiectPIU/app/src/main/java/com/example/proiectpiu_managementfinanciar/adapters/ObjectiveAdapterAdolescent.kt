@@ -45,20 +45,10 @@ class ObjectiveAdapterAdolescent(
         }
         holder.objectiveProgressBar.progress = progressPercentage
 
-        when (objective.iconita) {
-            "Mașină" -> holder.objectiveIcon.setImageResource(R.drawable.car_icon1)
-            "Căști" -> holder.objectiveIcon.setImageResource(R.drawable.headphones_icon2)
-            "Adidași" -> holder.objectiveIcon.setImageResource(R.drawable.sneakers_icon3)
-            "Smartphone" -> holder.objectiveIcon.setImageResource(R.drawable.smartphone_icon4)
-            "Tabletă" -> holder.objectiveIcon.setImageResource(R.drawable.tablet_icon5)
-            "Bicicletă" -> holder.objectiveIcon.setImageResource(R.drawable.bicycle_icon6)
-            "Schi" -> holder.objectiveIcon.setImageResource(R.drawable.ski_icon7)
-            "Role" -> holder.objectiveIcon.setImageResource(R.drawable.roller_skate_icon8)
-            "Vacanță" -> holder.objectiveIcon.setImageResource(R.drawable.vacation_icon9)
-            "Concert" -> holder.objectiveIcon.setImageResource(R.drawable.concert_icon10)
-            else -> holder.objectiveIcon.setImageResource(R.drawable.object_icon)
+        when {
+            objective.iconita != 0 -> holder.objectiveIcon.setImageResource(objective.iconita)
+            else -> holder.objectiveIcon.setImageResource(R.drawable.object_icon) // Default icon
         }
-
 
         if (objective.sumaCurenta >= objective.sumaTotala) {
             holder.completedCheckIcon.visibility = View.VISIBLE
