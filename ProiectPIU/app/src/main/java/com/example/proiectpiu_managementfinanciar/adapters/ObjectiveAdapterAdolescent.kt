@@ -12,12 +12,13 @@ import androidx.recyclerview.widget.RecyclerView
 import com.example.proiectpiu_managementfinanciar.R
 import com.example.proiectpiu_managementfinanciar.models.Objective
 
-class ObjectiveAdapter(private var objectives: List<Objective>) :
-    RecyclerView.Adapter<ObjectiveAdapter.ObjectiveViewHolder>() {
+class ObjectiveAdapterAdolescent(
+    private var objectives: List<Objective>,
+    private val onObjectiveSelected: () -> Unit
+) : RecyclerView.Adapter<ObjectiveAdapterAdolescent.ObjectiveViewHolder>() {
 
     private var selectedPosition: Int = RecyclerView.NO_POSITION
     private var isSelectionLocked: Boolean = false
-
 
     inner class ObjectiveViewHolder(itemView: View) : RecyclerView.ViewHolder(itemView) {
         val objectiveIcon: ImageView = itemView.findViewById(R.id.objectiveIcon)
@@ -37,7 +38,6 @@ class ObjectiveAdapter(private var objectives: List<Objective>) :
         holder.objectiveTitle.text = objective.denumire
         holder.objectiveAmount.text = "${objective.sumaCurenta} RON / ${objective.sumaTotala} RON"
 
-        // Calculare procentaj progres
         val progressPercentage = if (objective.sumaTotala > 0) {
             (objective.sumaCurenta / objective.sumaTotala * 100).toInt()
         } else {
@@ -49,8 +49,16 @@ class ObjectiveAdapter(private var objectives: List<Objective>) :
             "Mașină" -> holder.objectiveIcon.setImageResource(R.drawable.car_icon1)
             "Căști" -> holder.objectiveIcon.setImageResource(R.drawable.headphones_icon2)
             "Adidași" -> holder.objectiveIcon.setImageResource(R.drawable.sneakers_icon3)
+            "Smartphone" -> holder.objectiveIcon.setImageResource(R.drawable.smartphone_icon4)
+            "Tabletă" -> holder.objectiveIcon.setImageResource(R.drawable.tablet_icon5)
+            "Bicicletă" -> holder.objectiveIcon.setImageResource(R.drawable.bicycle_icon6)
+            "Schi" -> holder.objectiveIcon.setImageResource(R.drawable.ski_icon7)
+            "Role" -> holder.objectiveIcon.setImageResource(R.drawable.roller_skate_icon8)
+            "Vacanță" -> holder.objectiveIcon.setImageResource(R.drawable.vacation_icon9)
+            "Concert" -> holder.objectiveIcon.setImageResource(R.drawable.concert_icon10)
             else -> holder.objectiveIcon.setImageResource(R.drawable.object_icon)
         }
+
 
         if (objective.sumaCurenta >= objective.sumaTotala) {
             holder.completedCheckIcon.visibility = View.VISIBLE
@@ -76,6 +84,8 @@ class ObjectiveAdapter(private var objectives: List<Objective>) :
 
                 notifyItemChanged(previousPosition)
                 notifyItemChanged(selectedPosition)
+
+                onObjectiveSelected()
             }
         }
 
@@ -87,16 +97,11 @@ class ObjectiveAdapter(private var objectives: List<Objective>) :
         return selectedPosition
     }
 
-    fun lockSelection() {
-        isSelectionLocked = true
-    }
-
     fun unlockSelection() {
         isSelectionLocked = false
         notifyItemChanged(selectedPosition)
         selectedPosition = RecyclerView.NO_POSITION
     }
-
 
     fun updateObjectives(newObjectives: List<Objective>) {
         objectives = newObjectives

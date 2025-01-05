@@ -181,7 +181,7 @@ class ViewObjectivesActivity : AppCompatActivity(), View.OnClickListener {
                 startActivity(Intent(this, MainBudgetActivity::class.java))
             }
             R.id.goalsButton -> {
-                startActivity(Intent(this, ObjectiveStartPageActivity::class.java))
+                startActivity(Intent(this, ObjectiveStartPageActivityAdult::class.java))
             }
             R.id.reportsButton -> {
                 Toast.makeText(this, "Rapoarte (în lucru)", Toast.LENGTH_SHORT).show()

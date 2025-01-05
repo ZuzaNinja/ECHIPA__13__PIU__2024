@@ -11,7 +11,7 @@ import com.example.proiectpiu_managementfinanciar.R
 import com.example.proiectpiu_managementfinanciar.budget.MainBudgetActivity
 import com.example.proiectpiu_managementfinanciar.home_dashboard.ParentDashboardActivity
 
-class ObjectiveStartPageActivity : AppCompatActivity(), View.OnClickListener {
+class ObjectiveStartPageActivityAdult : AppCompatActivity(), View.OnClickListener {
 
     private lateinit var addObjectiveButton: ImageButton
     private lateinit var viewObjectivesButton: Button
@@ -56,7 +56,7 @@ class ObjectiveStartPageActivity : AppCompatActivity(), View.OnClickListener {
     override fun onClick(view: View?) {
         when (view?.id) {
             R.id.addObjectiveButton -> {
-                startActivity(Intent(this, AddObjectiveActivity::class.java))
+                startActivity(Intent(this, AddObjectiveActivityAdult::class.java))
             }
             R.id.viewObjectivesButton -> {
                 startActivity(Intent(this, ViewObjectivesActivity::class.java))
@@ -68,7 +68,7 @@ class ObjectiveStartPageActivity : AppCompatActivity(), View.OnClickListener {
                 startActivity(Intent(this, MainBudgetActivity::class.java))
             }
             R.id.goalsButton -> {
-                startActivity(Intent(this, ObjectiveStartPageActivity::class.java))
+                startActivity(Intent(this, ObjectiveStartPageActivityAdult::class.java))
             }
             R.id.reportsButton -> {
                 Toast.makeText(this, "Rapoarte (în lucru)", Toast.LENGTH_SHORT).show()

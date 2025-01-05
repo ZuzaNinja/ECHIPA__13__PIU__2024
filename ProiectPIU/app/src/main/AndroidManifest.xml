@@ -54,14 +54,23 @@
             android:name=".budget.EmergencyBudgetActivity"
             android:exported="false" />
 
-        <activity android:name=".objective.ObjectiveStartPageActivity"
+        <activity android:name=".objective.ObjectiveStartPageActivityAdult"
             android:exported="false" />
 
-        <activity android:name=".objective.AddObjectiveActivity"
+        <activity android:name=".objective.AddObjectiveActivityAdult"
             android:windowSoftInputMode="adjustPan"
             android:exported="false" />
 
         <activity android:name=".objective.ViewObjectivesActivity"
+            android:windowSoftInputMode="adjustPan"
+            android:exported="false" />
+
+        <activity android:name=".objective.ObjectiveStartPageActivityAdolescent"
+            android:windowSoftInputMode="adjustPan"
+            android:exported="false" />
+
+        <activity android:name=".objective.AddObjectiveActivityAdolescent"
+            android:windowSoftInputMode="adjustPan"
             android:exported="false" />
     </application>
 

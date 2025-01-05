@@ -29,6 +29,8 @@ class IconSpinnerAdapter(
         iconImageView.setImageResource(icons[position])
         iconTextView.text = labels[position]
 
+        iconTextView.textSize = 14f
+
         return view
     }
 
@@ -39,6 +41,8 @@ class IconSpinnerAdapter(
 
         iconImageView.setImageResource(icons[position])
         iconTextView.text = labels[position]
+
+        iconTextView.textSize = 14f
 
         return view
     }
