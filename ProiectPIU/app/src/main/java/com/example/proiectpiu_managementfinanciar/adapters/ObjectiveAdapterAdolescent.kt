@@ -10,7 +10,9 @@ import android.widget.TextView
 import android.widget.Toast
 import androidx.recyclerview.widget.RecyclerView
 import com.example.proiectpiu_managementfinanciar.R
+import com.example.proiectpiu_managementfinanciar.models.Notification
 import com.example.proiectpiu_managementfinanciar.models.Objective
+import com.example.proiectpiu_managementfinanciar.util.NotificationManagerAdolescent
 
 class ObjectiveAdapterAdolescent(
     private var objectives: List<Objective>,
@@ -47,13 +49,26 @@ class ObjectiveAdapterAdolescent(
 
         when {
             objective.iconita != 0 -> holder.objectiveIcon.setImageResource(objective.iconita)
-            else -> holder.objectiveIcon.setImageResource(R.drawable.object_icon) // Default icon
+            else -> holder.objectiveIcon.setImageResource(R.drawable.object_icon)
         }
 
         if (objective.sumaCurenta >= objective.sumaTotala) {
             holder.completedCheckIcon.visibility = View.VISIBLE
         } else {
             holder.completedCheckIcon.visibility = View.GONE
+        }
+
+        if (selectedPosition == position) {
+            holder.itemView.setBackgroundResource(R.drawable.selected_objective_border)
+            NotificationManagerAdolescent.addNotification(
+                Notification(
+                    R.drawable.notification_icon,
+                    "Obiectiv Finalizat",
+                    "Felicitări! Ai completat obiectivul: ${objective.denumire}"
+                )
+            )
+        } else {
+            holder.itemView.setBackgroundResource(R.drawable.objective_card_background)
         }
 
         if (selectedPosition == position) {

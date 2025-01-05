@@ -17,6 +17,7 @@ import com.example.proiectpiu_managementfinanciar.R
 import com.example.proiectpiu_managementfinanciar.adapters.ObjectiveAdapterAdolescent
 import com.example.proiectpiu_managementfinanciar.util.ObjectiveManagerAdolescent
 import com.example.proiectpiu_managementfinanciar.home_dashboard.AdolescentDashboardActivity
+import com.example.proiectpiu_managementfinanciar.settings.NotificationActivityAdolescent
 
 class ObjectiveStartPageActivityAdolescent : AppCompatActivity(), View.OnClickListener {
 
@@ -27,6 +28,8 @@ class ObjectiveStartPageActivityAdolescent : AppCompatActivity(), View.OnClickLi
     private lateinit var catPhoto: ImageView
     private lateinit var titleText: TextView
     private lateinit var addObjectiveButton: ImageButton
+
+    private lateinit var notificationIcon: ImageView
 
     private lateinit var homeButton: View
     private lateinit var pusculitaButton: View
@@ -82,6 +85,8 @@ class ObjectiveStartPageActivityAdolescent : AppCompatActivity(), View.OnClickLi
         titleText = findViewById(R.id.title_text)
         addObjectiveButton = findViewById(R.id.addObjectiveButton)
 
+        notificationIcon = findViewById(R.id.notification_icon_ring)
+
         homeButton = findViewById(R.id.homeButton)
         pusculitaButton = findViewById(R.id.pusculitaButton)
         goalsButton = findViewById(R.id.goalsButton)
@@ -102,8 +107,6 @@ class ObjectiveStartPageActivityAdolescent : AppCompatActivity(), View.OnClickLi
         manageObjectiveElements = findViewById(R.id.manageObjectiveElements)
         manageObjectiveTitle = findViewById(R.id.manageObjectiveTitle)
         manageObjectiveButton = findViewById(R.id.manageObjectiveButton)
-
-
     }
 
 
@@ -187,6 +190,10 @@ class ObjectiveStartPageActivityAdolescent : AppCompatActivity(), View.OnClickLi
         goalsButton.setOnClickListener(this)
         learnButton.setOnClickListener(this)
 
+        notificationIcon.setOnClickListener {
+            startActivity(Intent(this, NotificationActivityAdolescent::class.java))
+        }
+
         manageObjectiveButton.setOnClickListener {
             handleManageObjectiveButtonClick()
         }
@@ -243,7 +250,5 @@ class ObjectiveStartPageActivityAdolescent : AppCompatActivity(), View.OnClickLi
             adapter.unlockSelection()
             resetToHomeState()
         }
-
     }
-
 }

@@ -3,25 +3,36 @@ package com.example.proiectpiu_managementfinanciar.home_dashboard
 import android.content.Intent
 import android.os.Bundle
 import android.view.View
+import android.widget.ImageView
 import android.widget.Toast
 import androidx.appcompat.app.AppCompatActivity
 import com.example.proiectpiu_managementfinanciar.R
 import com.example.proiectpiu_managementfinanciar.objective.ObjectiveStartPageActivityAdolescent
+import com.example.proiectpiu_managementfinanciar.settings.NotificationActivityAdolescent
 
 class AdolescentDashboardActivity : AppCompatActivity(), View.OnClickListener {
+
+    private lateinit var notificationIcon: ImageView
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_adolescent_dashboard)
 
-        initializeFooterButtons()
+        initializeViews()
+
+        notificationIcon.setOnClickListener {
+            startActivity(Intent(this, NotificationActivityAdolescent::class.java))
+        }
     }
 
-    private fun initializeFooterButtons() {
+    private fun initializeViews() {
         findViewById<View>(R.id.homeButton).setOnClickListener(this)
         findViewById<View>(R.id.pusculitaButton).setOnClickListener(this)
         findViewById<View>(R.id.goalsButton).setOnClickListener(this)
         findViewById<View>(R.id.learnButton).setOnClickListener(this)
+
+        notificationIcon = findViewById(R.id.notification_icon)
+
     }
 
     override fun onClick(view: View?) {

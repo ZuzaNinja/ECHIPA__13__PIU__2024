@@ -12,8 +12,8 @@ import com.example.proiectpiu_managementfinanciar.adapters.IconSpinnerAdapter
 import com.example.proiectpiu_managementfinanciar.home_dashboard.AdolescentDashboardActivity
 import com.example.proiectpiu_managementfinanciar.models.Notification
 import com.example.proiectpiu_managementfinanciar.models.Objective
-import com.example.proiectpiu_managementfinanciar.util.NotificationManager
-import com.example.proiectpiu_managementfinanciar.util.ObjectiveManager
+import com.example.proiectpiu_managementfinanciar.settings.NotificationActivityAdolescent
+import com.example.proiectpiu_managementfinanciar.util.NotificationManagerAdolescent
 import com.example.proiectpiu_managementfinanciar.util.ObjectiveManagerAdolescent
 
 class AddObjectiveActivityAdolescent : AppCompatActivity(), View.OnClickListener {
@@ -33,6 +33,9 @@ class AddObjectiveActivityAdolescent : AppCompatActivity(), View.OnClickListener
     private lateinit var errorMessageText: TextView
     private lateinit var successMessageSection: LinearLayout
     private lateinit var successMessageText: TextView
+
+    private lateinit var notificationIcon: ImageView
+
 
     private val iconResources = listOf(
         R.drawable.object_icon,
@@ -103,6 +106,9 @@ class AddObjectiveActivityAdolescent : AppCompatActivity(), View.OnClickListener
         errorMessageText = findViewById(R.id.errorMessageText)
         successMessageSection = findViewById(R.id.successMessageSection)
         successMessageText = findViewById(R.id.successMessageText)
+
+        notificationIcon = findViewById(R.id.notification_icon)
+
     }
 
     private fun setupSpinner() {
@@ -119,6 +125,10 @@ class AddObjectiveActivityAdolescent : AppCompatActivity(), View.OnClickListener
         pusculitaButton.setOnClickListener(this)
         goalsButton.setOnClickListener(this)
         learnButton.setOnClickListener(this)
+
+        notificationIcon.setOnClickListener {
+            startActivity(Intent(this, NotificationActivityAdolescent::class.java))
+        }
     }
 
     private fun afisareTemporaraMesaje(view: View, durata: Long) {
@@ -150,7 +160,6 @@ class AddObjectiveActivityAdolescent : AppCompatActivity(), View.OnClickListener
         }
     }
 
-
     private fun addObjective() {
         val denumire = denumireInput.text.toString().trim()
         val sumaTotala = sumaInput.text.toString().toDoubleOrNull()
@@ -160,13 +169,14 @@ class AddObjectiveActivityAdolescent : AppCompatActivity(), View.OnClickListener
             val newObjective = Objective(denumire, 0.0, sumaTotala, iconResources[iconitaIndex])
             ObjectiveManagerAdolescent.addObjective(newObjective)
 
-            NotificationManager.addNotification(
+            NotificationManagerAdolescent.addNotification(
                 Notification(
                     R.drawable.notification_icon,
                     "Obiectiv Creat",
                     "Ai adăugat un nou obiectiv: $denumire!"
                 )
             )
+
             resetFields()
             showSuccessMessage("Obiectiv adăugat cu succes!")
             startActivity(Intent(this, ObjectiveStartPageActivityAdolescent::class.java))
