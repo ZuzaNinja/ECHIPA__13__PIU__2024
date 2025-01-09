@@ -36,7 +36,7 @@
             android:layout_width="0dp"
             android:layout_height="wrap_content"
             android:fontFamily="@font/rambla_italic"
-            android:text="Profil"
+            android:text="@string/profile_text"
             android:textSize="18sp"
             android:textColor="@color/black"
             android:layout_marginStart="30dp"
@@ -75,7 +75,7 @@
             android:layout_width="0dp"
             android:layout_height="wrap_content"
             android:fontFamily="@font/rambla_italic"
-            android:text="Notificări"
+            android:text="@string/notifications_text"
             android:textSize="18sp"
             android:textColor="@color/black"
             android:layout_marginStart="30dp"
@@ -114,7 +114,7 @@
             android:layout_width="0dp"
             android:layout_height="wrap_content"
             android:fontFamily="@font/rambla_italic"
-            android:text="Securitate"
+            android:text="@string/security_text"
             android:textSize="18sp"
             android:textColor="@color/black"
             android:layout_marginStart="30dp"
@@ -153,7 +153,7 @@
             android:layout_width="0dp"
             android:layout_height="wrap_content"
             android:fontFamily="@font/rambla_italic"
-            android:text="Setează o alertă"
+            android:text="@string/alert_text"
             android:textSize="18sp"
             android:textColor="@color/black"
             android:layout_marginStart="30dp"
@@ -192,7 +192,7 @@
             android:layout_width="0dp"
             android:layout_height="wrap_content"
             android:fontFamily="@font/rambla_italic"
-            android:text="Schimbă limba"
+            android:text="@string/language_text"
             android:textSize="18sp"
             android:textColor="@color/black"
             android:layout_marginStart="30dp"
@@ -231,14 +231,14 @@
             <TextView
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:text="Acasă"
-                android:textColor="#000000"
+                android:text="@string/home_text"
+                android:textColor="@color/black"
                 android:textSize="12sp" />
         </LinearLayout>
 
         <LinearLayout
             android:id="@+id/budgetButton"
-            android:layout_width="0dp"
+            android:layout_width="15dp"
             android:layout_height="match_parent"
             android:layout_weight="1"
             android:gravity="center"
@@ -252,7 +252,7 @@
             <TextView
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:text="Bugete"
+                android:text="@string/budget_text"
                 android:textColor="@color/black"
                 android:textSize="12sp" />
         </LinearLayout>
@@ -273,7 +273,7 @@
             <TextView
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:text="Obiective"
+                android:text="@string/goals_text"
                 android:textColor="@color/black"
                 android:textSize="12sp" />
         </LinearLayout>
@@ -294,14 +294,14 @@
             <TextView
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:text="Rapoarte"
-                android:textColor="#000000"
+                android:text="@string/reports_text"
+                android:textColor="@color/black"
                 android:textSize="12sp" />
         </LinearLayout>
 
         <LinearLayout
             android:id="@+id/settingsButton"
-            android:layout_width="0dp"
+            android:layout_width="15dp"
             android:layout_height="match_parent"
             android:layout_weight="1"
             android:gravity="center"
@@ -315,7 +315,7 @@
             <TextView
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:text="Setări"
+                android:text="@string/settings_text"
                 android:textColor="@color/white"
                 android:textSize="12sp" />
         </LinearLayout>

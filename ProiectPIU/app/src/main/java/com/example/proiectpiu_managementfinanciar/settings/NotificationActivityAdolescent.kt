@@ -29,7 +29,7 @@ class NotificationActivityAdolescent : AppCompatActivity(), View.OnClickListener
 
         recyclerView = findViewById(R.id.notificari_recyclerView_1)
         adapter = NotificationAdapterAdolescent(this, NotificationManagerAdolescent.getNotifications().toMutableList()) { notification ->
-            Toast.makeText(this, "Ai citit: ${notification.title}", Toast.LENGTH_SHORT).show()
+            Toast.makeText(this, getString(R.string.read_notification, notification.title), Toast.LENGTH_SHORT).show()
             val index = NotificationManagerAdolescent.getNotifications().indexOf(notification)
             NotificationManagerAdolescent.markNotificationAsRead(index)
         }
@@ -62,16 +62,16 @@ class NotificationActivityAdolescent : AppCompatActivity(), View.OnClickListener
                 startActivity(Intent(this, AdolescentDashboardActivity::class.java))
             }
             R.id.pusculitaButton -> {
-                Toast.makeText(this, "Pușculiță (în lucru)", Toast.LENGTH_SHORT).show()
+                Toast.makeText(this, getString(R.string.pusculita_in_progress), Toast.LENGTH_SHORT).show()
             }
             R.id.goalsButton -> {
                 startActivity(Intent(this, ObjectiveStartPageActivityAdolescent::class.java))
             }
             R.id.learnButton -> {
-                Toast.makeText(this, "Învățare (în lucru)", Toast.LENGTH_SHORT).show()
+                Toast.makeText(this, getString(R.string.learn_in_progress), Toast.LENGTH_SHORT).show()
             }
             else -> {
-                Toast.makeText(this, "Acțiune necunoscută", Toast.LENGTH_SHORT).show()
+                Toast.makeText(this, getString(R.string.unknown_action), Toast.LENGTH_SHORT).show()
             }
         }
     }

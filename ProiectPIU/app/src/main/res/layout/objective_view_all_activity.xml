@@ -77,7 +77,7 @@
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_marginTop="-10dp"
-        android:text="Gestionează obiectivul"
+        android:text="@string/manage_objective"
         android:textColor="@color/black"
         android:textSize="20sp"
         android:textStyle="bold"
@@ -127,7 +127,7 @@
                 android:id="@+id/sumaText"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:text="Suma adăugată (RON):"
+                android:text="@string/amount_added"
                 android:textSize="18sp"
                 android:textColor="@color/black"/>
 
@@ -154,7 +154,7 @@
 
                 <Button
                     android:id="@+id/adaugaSumaButton"
-                    android:text="Adaugă"
+                    android:text="@string/add_button"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
                     android:layout_marginRight="10dp"
@@ -162,7 +162,7 @@
 
                 <Button
                     android:id="@+id/anuleazaSumaButton"
-                    android:text="Anulează"
+                    android:text="@string/cancel_button"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
                     android:layout_marginLeft="10dp"
@@ -196,7 +196,7 @@
                     android:id="@+id/errorMessageText1"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
-                    android:text="Specifică suma de adăugat!"
+                    android:text="@string/error_message1"
                     android:textColor="@color/red"
                     android:textSize="16sp"
                     android:gravity="center"
@@ -221,7 +221,7 @@
                     android:id="@+id/errorMessageText2"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
-                    android:text="Suma adăugată depășește obiectivul ales!"
+                    android:text="@string/error_message2"
                     android:textColor="@color/red"
                     android:textSize="16sp"
                     android:gravity="center"
@@ -247,7 +247,7 @@
                     android:id="@+id/successMessageText"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
-                    android:text="Suma a fost adăugată cu succes!"
+                    android:text="@string/success_message"
                     android:textColor="@color/green"
                     android:textSize="16sp"
                     android:gravity="center"
@@ -285,8 +285,8 @@
                 <TextView
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
-                    android:text="Acasă"
-                    android:textColor="#000000"
+                    android:text="@string/home_text"
+                    android:textColor="@color/black"
                     android:textSize="12sp" />
             </LinearLayout>
 
@@ -306,7 +306,7 @@
                 <TextView
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
-                    android:text="Bugete"
+                    android:text="@string/budget_text"
                     android:textColor="@color/black"
                     android:textSize="12sp" />
             </LinearLayout>
@@ -327,7 +327,7 @@
                 <TextView
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
-                    android:text="Obiective"
+                    android:text="@string/goals_text"
                     android:textColor="@color/white"
                     android:textSize="12sp" />
             </LinearLayout>
@@ -348,8 +348,8 @@
                 <TextView
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
-                    android:text="Rapoarte"
-                    android:textColor="#000000"
+                    android:text="@string/reports_text"
+                    android:textColor="@color/black"
                     android:textSize="12sp" />
             </LinearLayout>
 
@@ -369,12 +369,10 @@
                 <TextView
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
-                    android:text="Setări"
-                    android:textColor="#000000"
+                    android:text="@string/settings_text"
+                    android:textColor="@color/black"
                     android:textSize="12sp" />
             </LinearLayout>
         </LinearLayout>
-
-
 
     </androidx.constraintlayout.widget.ConstraintLayout>

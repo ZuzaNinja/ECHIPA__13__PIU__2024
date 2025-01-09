@@ -62,7 +62,7 @@ class RegisterActivity : AppCompatActivity() {
                 val newUser = UserRegistration(name, email, phone, password)
                 RegistrationList.registrations.add(newUser)
 
-                showMessage(textViewSuccess, "Înregistrare cu success!")
+                showMessage(textViewSuccess, getString(R.string.registration_successful))
 
                 val intent = Intent(this, AuthenticationActivity::class.java)
                 intent.putExtra("EXTRA_NAME", name)
@@ -71,7 +71,7 @@ class RegisterActivity : AppCompatActivity() {
                 intent.putExtra("EXTRA_PASSWORD", password)
                 startActivity(intent)
             } else {
-                showMessage(textViewFail, "Înregistrare a eșuat!")
+                showMessage(textViewFail, getString(R.string.registration_failed))
             }
         }
 

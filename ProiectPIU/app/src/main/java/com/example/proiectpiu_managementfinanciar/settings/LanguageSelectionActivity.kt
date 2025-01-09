@@ -1,23 +1,22 @@
 package com.example.proiectpiu_managementfinanciar.settings
 
 import android.content.Intent
+import android.content.res.Configuration
 import android.os.Bundle
 import android.view.View
-import android.widget.Toast
+import android.widget.*
 import androidx.appcompat.app.AppCompatActivity
-import androidx.recyclerview.widget.LinearLayoutManager
-import androidx.recyclerview.widget.RecyclerView
 import com.example.proiectpiu_managementfinanciar.R
-import com.example.proiectpiu_managementfinanciar.adapters.NotificationAdapter
 import com.example.proiectpiu_managementfinanciar.budget.MainBudgetActivity
 import com.example.proiectpiu_managementfinanciar.home_dashboard.ParentDashboardActivity
 import com.example.proiectpiu_managementfinanciar.objective.ObjectiveStartPageActivityAdult
-import com.example.proiectpiu_managementfinanciar.util.NotificationManager
+import java.util.*
 
-class NotificationActivity : AppCompatActivity(), View.OnClickListener {
+class LanguageSelectionActivity : AppCompatActivity(), View.OnClickListener {
 
-    private lateinit var recyclerView: RecyclerView
-    private lateinit var adapter: NotificationAdapter
+    private lateinit var languageSpinner: Spinner
+    private lateinit var confirmButton: Button
+    private lateinit var errorMessageTextView: TextView
 
     private lateinit var homeButton: View
     private lateinit var budgetButton: View
@@ -27,26 +26,44 @@ class NotificationActivity : AppCompatActivity(), View.OnClickListener {
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
-        setContentView(R.layout.notificari_activity)
+        setContentView(R.layout.activity_language_selection_settings)
 
         initializeViews()
         setListeners()
 
-        recyclerView = findViewById(R.id.notificari_recyclerView)
-        adapter = NotificationAdapter(this, NotificationManager.getNotifications().toMutableList()) { notification ->
-            Toast.makeText(this, getString(R.string.read_notification, notification.title), Toast.LENGTH_SHORT).show()
-            val index = NotificationManager.getNotifications().indexOf(notification)
-            NotificationManager.markNotificationAsRead(index)
-        }
+        languageSpinner = findViewById(R.id.language_spinner)
+        confirmButton = findViewById(R.id.confirm_button)
+        errorMessageTextView = findViewById(R.id.errorMessageTextView)
 
-        recyclerView.layoutManager = LinearLayoutManager(this)
-        recyclerView.adapter = adapter
+        confirmButton.setOnClickListener {
+            val selectedPosition = languageSpinner.selectedItemPosition
+            val languages = resources.getStringArray(R.array.language_options)
 
-        NotificationManager.onNotificationUpdated = {
-            runOnUiThread {
-                adapter.notifyDataSetChanged()
+            if (selectedPosition == 0) {
+                errorMessageTextView.visibility = TextView.VISIBLE
+            } else {
+                val selectedLanguage = languageSpinner.selectedItem.toString()
+                errorMessageTextView.visibility = TextView.GONE
+                when (selectedLanguage) {
+                    languages[1] -> setLocale("ro")
+                    languages[2] -> setLocale("en")
+                    languages[3] -> setLocale("es")
+                    else -> Toast.makeText(this, getString(R.string.select_language_warning), Toast.LENGTH_SHORT).show()
+                }
             }
         }
+    }
+
+    private fun setLocale(languageCode: String) {
+        val locale = Locale(languageCode)
+        Locale.setDefault(locale)
+        val config = Configuration()
+        config.setLocale(locale)
+        resources.updateConfiguration(config, resources.displayMetrics)
+
+        Toast.makeText(this, getString(R.string.language_updated), Toast.LENGTH_SHORT).show()
+        startActivity(Intent(this, SettingsStartActivity::class.java))
+        finish()
     }
 
     private fun initializeViews() {

@@ -1,5 +1,6 @@
 package com.example.proiectpiu_managementfinanciar.objective
 
+import android.content.Context
 import android.content.Intent
 import android.os.Bundle
 import android.os.Handler
@@ -39,6 +40,7 @@ class AddObjectiveActivityAdult : AppCompatActivity(), View.OnClickListener {
 
     private lateinit var profile: View
 
+    private lateinit var iconLabels: List<String>
 
     private val iconResources = listOf(
         R.drawable.object_icon,
@@ -59,32 +61,16 @@ class AddObjectiveActivityAdult : AppCompatActivity(), View.OnClickListener {
         R.drawable.laptop_icon20
     )
 
-    private val iconLabels = listOf(
-        "Selectează...",
-        "Mașină",
-        "Căști",
-        "Adidași",
-        "Smartphone",
-        "Tabletă",
-        "Bicicletă",
-        "Schi",
-        "Vacanță",
-        "Concert",
-        "Cameră Foto",
-        "Parfum",
-        "Casă",
-        "Geacă",
-        "AirPods",
-        "Laptop"
-    )
-
     private val handler = Handler(Looper.getMainLooper())
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.objective_add_activity)
 
+        ObjectiveManager.init(this)
+
         initializeViews()
+
         setupSpinner()
         setListeners()
     }
@@ -108,6 +94,25 @@ class AddObjectiveActivityAdult : AppCompatActivity(), View.OnClickListener {
         successMessageText = findViewById(R.id.successMessageText)
 
         profile = findViewById(R.id.profile)
+
+        iconLabels = listOf(
+            getString(R.string.icon_select),
+            getString(R.string.icon_car),
+            getString(R.string.icon_headphones),
+            getString(R.string.icon_sneakers),
+            getString(R.string.icon_smartphone),
+            getString(R.string.icon_tablet),
+            getString(R.string.icon_bicycle),
+            getString(R.string.icon_ski),
+            getString(R.string.icon_vacation),
+            getString(R.string.icon_concert),
+            getString(R.string.icon_camera),
+            getString(R.string.icon_perfume),
+            getString(R.string.icon_house),
+            getString(R.string.icon_jacket),
+            getString(R.string.icon_airpods),
+            getString(R.string.icon_laptop)
+        )
 
     }
 
@@ -145,8 +150,8 @@ class AddObjectiveActivityAdult : AppCompatActivity(), View.OnClickListener {
             R.id.homeButton -> startActivity(Intent(this, ParentDashboardActivity::class.java))
             R.id.budgetButton -> startActivity(Intent(this, MainBudgetActivity::class.java))
             R.id.goalsButton -> startActivity(Intent(this, ObjectiveStartPageActivityAdult::class.java))
-            R.id.reportsButton -> Toast.makeText(this, "Rapoarte (în lucru)", Toast.LENGTH_SHORT).show()
-            R.id.settingsButton -> Toast.makeText(this, "Setări (în lucru)", Toast.LENGTH_SHORT).show()
+            R.id.reportsButton -> Toast.makeText(this, getString(R.string.reports_in_progress), Toast.LENGTH_SHORT).show()
+            R.id.settingsButton -> Toast.makeText(this, getString(R.string.settings_in_progress), Toast.LENGTH_SHORT).show()
             R.id.profile -> {
                 startActivity(Intent(this, MyAccountActivity::class.java))
             }
@@ -165,16 +170,16 @@ private fun addObjective() {
         NotificationManager.addNotification(
             Notification(
                 R.drawable.notification_icon,
-                "Obiectiv Creat",
-                "Ai adăugat un nou obiectiv: $denumire!"
+                getString(R.string.objective_created),
+                getString(R.string.objective_created_success, denumire)
             )
         )
 
         resetFields()
-        showSuccessMessage("Obiectiv adăugat cu succes!")
+        showSuccessMessage(getString(R.string.objective_added_success))
         startActivity(Intent(this, ViewObjectivesActivity::class.java))
     } else {
-        showErrorMessage("Completează toate câmpurile corect!")
+        showErrorMessage(getString(R.string.complete_all_fields))
     }
 }
 

@@ -83,7 +83,7 @@
             android:gravity="center_vertical">
 
             <TextView
-                android:text="Denumire:"
+                android:text="@string/denumire_label"
                 android:textSize="18sp"
                 android:textColor="@color/black"
                 android:fontFamily="@font/poppins_regular"
@@ -96,7 +96,7 @@
                 android:layout_height="50dp"
                 android:layout_weight="1"
                 android:background="@drawable/rounded_edittext"
-                android:hint="Scrie..."
+                android:hint="@string/hint_scrie"
                 android:padding="8dp"
                 android:textSize="16sp"
                 android:textColor="@color/black"
@@ -113,7 +113,7 @@
             android:layout_marginTop="30dp">
 
             <TextView
-                android:text="Suma (RON):"
+                android:text="@string/suma_label"
                 android:textSize="18sp"
                 android:textColor="@color/black"
                 android:fontFamily="@font/poppins_regular"
@@ -126,7 +126,7 @@
                 android:layout_height="50dp"
                 android:layout_weight="1"
                 android:background="@drawable/rounded_edittext"
-                android:hint="Scrie..."
+                android:hint="@string/hint_scrie"
                 android:padding="8dp"
                 android:textSize="16sp"
                 android:textColor="@color/black"
@@ -144,7 +144,7 @@
             android:layout_marginTop="30dp">
 
             <TextView
-                android:text="Iconiță:"
+                android:text="@string/iconita_label"
                 android:textSize="18sp"
                 android:textColor="@color/black"
                 android:fontFamily="@font/poppins_regular"
@@ -192,7 +192,7 @@
                     android:id="@+id/errorMessageText"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
-                    android:text="Completează toate câmpurile!"
+                    android:text="@string/error_message"
                     android:textColor="@color/red"
                     android:textSize="16sp"
                     android:gravity="center"
@@ -218,7 +218,7 @@
                     android:id="@+id/successMessageText"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
-                    android:text="Obiectivul a fost adăugat!"
+                    android:text="@string/success_message"
                     android:textColor="@color/green"
                     android:textSize="16sp"
                     android:gravity="center"
@@ -240,7 +240,7 @@
                 android:layout_width="150dp"
                 android:layout_height="90dp"
                 android:backgroundTint="@color/orange"
-                android:text="Adaugă"
+                android:text="@string/add_button"
                 android:textColor="@color/white"
                 android:textSize="18sp"
                 android:textStyle="bold"
@@ -248,7 +248,7 @@
 
             <Button
                 android:id="@+id/cancelButton"
-                android:text="Anulează"
+                android:text="@string/cancel_button"
                 android:layout_width="150dp"
                 android:layout_height="90dp"
                 android:textColor="@color/white"
@@ -289,8 +289,8 @@
             <TextView
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:text="Acasă"
-                android:textColor="#000000"
+                android:text="@string/home_button"
+                android:textColor="@color/black"
                 android:textSize="12sp" />
         </LinearLayout>
 
@@ -310,7 +310,7 @@
             <TextView
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:text="Bugete"
+                android:text="@string/budget_button"
                 android:textColor="@color/black"
                 android:textSize="12sp" />
         </LinearLayout>
@@ -331,7 +331,7 @@
             <TextView
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:text="Obiective"
+                android:text="@string/goals_button"
                 android:textColor="@color/white"
                 android:textSize="12sp" />
         </LinearLayout>
@@ -352,8 +352,8 @@
             <TextView
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:text="Rapoarte"
-                android:textColor="#000000"
+                android:text="@string/reports_button"
+                android:textColor="@color/black"
                 android:textSize="12sp" />
         </LinearLayout>
 
@@ -373,8 +373,8 @@
             <TextView
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:text="Setări"
-                android:textColor="#000000"
+                android:text="@string/settings_button"
+                android:textColor="@color/black"
                 android:textSize="12sp" />
         </LinearLayout>
     </LinearLayout>

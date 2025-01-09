@@ -116,14 +116,14 @@ class ViewObjectivesActivity : AppCompatActivity(), View.OnClickListener {
                 manageObjectiveButton.visibility = View.GONE
                 adapter.lockSelection()
             } else {
-                Toast.makeText(this, "Selectează un obiectiv înainte de a continua.", Toast.LENGTH_SHORT).show()
+                Toast.makeText(this, getString(R.string.toast_select_objective), Toast.LENGTH_SHORT).show()
             }
         }
 
         adaugaSumaButton.setOnClickListener {
             val selectedPosition = adapter.getSelectedPosition()
             if (selectedPosition == RecyclerView.NO_POSITION) {
-                Toast.makeText(this, "Selectează un obiectiv!", Toast.LENGTH_SHORT).show()
+                Toast.makeText(this, getString(R.string.toast_select_objective), Toast.LENGTH_SHORT).show()
                 return@setOnClickListener
             }
 
@@ -136,7 +136,7 @@ class ViewObjectivesActivity : AppCompatActivity(), View.OnClickListener {
 
             if (sumaAdaugata == null || sumaAdaugata <= 0) {
                 afisareTemporaraMesaje(errorMessage1, 3000)
-                errorMessageText1.text = "Specifică suma de adăugat!"
+                errorMessageText1.text = getString(R.string.error_specify_amount)
                 return@setOnClickListener
             }
 
@@ -144,7 +144,7 @@ class ViewObjectivesActivity : AppCompatActivity(), View.OnClickListener {
 
             if (selectedObjective.sumaCurenta + sumaAdaugata > selectedObjective.sumaTotala) {
                 afisareTemporaraMesaje(errorMessage2, 3000)
-                errorMessageText2.text = "Suma adăugată depășește obiectivul ales!"
+                errorMessageText2.text = getString(R.string.error_exceeds_objective)
 
                 sumaInput.text.clear()
                 return@setOnClickListener
@@ -152,7 +152,7 @@ class ViewObjectivesActivity : AppCompatActivity(), View.OnClickListener {
             } else {
                 selectedObjective.sumaCurenta += sumaAdaugata
                 afisareTemporaraMesaje(successMessage, 3000)
-                successMessageText.text = "Suma a fost adăugată cu succes!"
+                successMessageText.text = getString(R.string.success_amount_added)
 
                 sumaInput.text.clear()
 
@@ -162,19 +162,19 @@ class ViewObjectivesActivity : AppCompatActivity(), View.OnClickListener {
                 NotificationManager.addNotification(
                     Notification(
                         R.drawable.notification_icon,
-                        "Sumă Adăugată",
-                        "Ai adăugat $sumaAdaugata RON la obiectivul: ${selectedObjective.denumire}"
+                        getString(R.string.notification_amount_added_title),
+                        getString(R.string.notification_amount_added_message, sumaAdaugata.toString(), selectedObjective.denumire)
                     )
                 )
 
                 if (selectedObjective.sumaCurenta == selectedObjective.sumaTotala) {
-                    Toast.makeText(this, "Obiectiv completat! ✅", Toast.LENGTH_LONG).show()
+                    Toast.makeText(this, getString(R.string.toast_objective_completed), Toast.LENGTH_LONG).show()
 
                     NotificationManager.addNotification(
                         Notification(
                             R.drawable.notification_icon,
-                            "Obiectiv Finalizat",
-                            "Felicitări! Ai finalizat obiectivul: ${selectedObjective.denumire}"
+                            getString(R.string.objective_finished_title),
+                            getString(R.string.objective_finished_message, selectedObjective.denumire)
                         )
                     )
                 }
@@ -208,7 +208,7 @@ class ViewObjectivesActivity : AppCompatActivity(), View.OnClickListener {
                 startActivity(Intent(this, ObjectiveStartPageActivityAdult::class.java))
             }
             R.id.reportsButton -> {
-                Toast.makeText(this, "Rapoarte (în lucru)", Toast.LENGTH_SHORT).show()
+                Toast.makeText(this, getString(R.string.reports_in_progress), Toast.LENGTH_SHORT).show()
             }
             R.id.settingsButton -> {
                 startActivity(Intent(this, SettingsStartActivity::class.java))
@@ -219,7 +219,7 @@ class ViewObjectivesActivity : AppCompatActivity(), View.OnClickListener {
             }
 
             else -> {
-                Toast.makeText(this, "Acțiune necunoscută", Toast.LENGTH_SHORT).show()
+                Toast.makeText(this, getString(R.string.unknown_action), Toast.LENGTH_SHORT).show()
             }
         }
     }

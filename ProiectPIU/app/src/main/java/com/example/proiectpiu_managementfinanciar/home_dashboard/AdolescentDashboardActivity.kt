@@ -50,16 +50,16 @@ class AdolescentDashboardActivity : AppCompatActivity(), View.OnClickListener {
     override fun onClick(view: View?) {
         when (view?.id) {
             R.id.homeButton -> {
-                Toast.makeText(this, "Ești deja pe pagina principală!", Toast.LENGTH_SHORT).show()
+                Toast.makeText(this, getString(R.string.already_on_homepage), Toast.LENGTH_SHORT).show()
             }
             R.id.pusculitaButton -> {
-                Toast.makeText(this, "Funcționalitate în dezvoltare!", Toast.LENGTH_SHORT).show()
+                Toast.makeText(this, getString(R.string.feature_in_development), Toast.LENGTH_SHORT).show()
             }
             R.id.goalsButton -> {
                 startActivity(Intent(this, ObjectiveStartPageActivityAdolescent::class.java))
             }
             R.id.learnButton -> {
-                Toast.makeText(this, "Funcționalitate în dezvoltare!", Toast.LENGTH_SHORT).show()
+                Toast.makeText(this, getString(R.string.feature_in_development), Toast.LENGTH_SHORT).show()
             }
             R.id.profile_section -> {
                 startActivity(Intent(this, MyAccountActivity::class.java))

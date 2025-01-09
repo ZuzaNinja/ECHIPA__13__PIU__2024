@@ -139,7 +139,7 @@
                 <TextView
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
-                    android:text="Denumire:"
+                    android:text="@string/denumire_label"
                     android:textColor="@color/black"
                     android:textSize="16sp"
                     android:layout_marginEnd="8dp" />
@@ -149,10 +149,11 @@
                     android:layout_width="0dp"
                     android:layout_height="wrap_content"
                     android:layout_weight="1"
-                    android:padding="10dp"
                     android:background="@drawable/rounded_edittext"
+                    android:padding="10dp"
                     android:textColor="@color/black"
-                    android:textSize="16sp" />
+                    android:textSize="16sp"
+                    tools:ignore="SpeakableTextPresentCheck,TouchTargetSizeCheck" />
             </LinearLayout>
 
             <!-- Section for Suma(RON) -->
@@ -165,7 +166,7 @@
                 <TextView
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
-                    android:text="Suma(RON):"
+                    android:text="@string/amount_label"
                     android:textColor="@color/black"
                     android:textSize="16sp"
                     android:layout_marginEnd="8dp" />
@@ -175,11 +176,12 @@
                     android:layout_width="0dp"
                     android:layout_height="wrap_content"
                     android:layout_weight="1"
-                    android:padding="10dp"
                     android:background="@drawable/rounded_edittext"
+                    android:inputType="number"
+                    android:padding="10dp"
                     android:textColor="@color/black"
                     android:textSize="16sp"
-                    android:inputType="number" />
+                    tools:ignore="SpeakableTextPresentCheck,TouchTargetSizeCheck" />
             </LinearLayout>
         </LinearLayout>
 
@@ -260,7 +262,7 @@
                     android:layout_marginTop="9dp"
                     android:background="@null"
                     android:src="@drawable/white_plus"
-                    tools:ignore="SpeakableTextPresentCheck" />
+                    tools:ignore="SpeakableTextPresentCheck,TouchTargetSizeCheck" />
             </FrameLayout>
         </androidx.constraintlayout.widget.ConstraintLayout>
 
@@ -305,7 +307,7 @@
                     android:layout_marginTop="9dp"
                     android:background="@null"
                     android:src="@drawable/white_pencil"
-                    tools:ignore="SpeakableTextPresentCheck" />
+                    tools:ignore="SpeakableTextPresentCheck,TouchTargetSizeCheck" />
             </FrameLayout>
 
         </androidx.constraintlayout.widget.ConstraintLayout>
@@ -351,7 +353,7 @@
                     android:layout_marginTop="9dp"
                     android:background="@null"
                     android:src="@drawable/white_lock"
-                    tools:ignore="SpeakableTextPresentCheck" />
+                    tools:ignore="SpeakableTextPresentCheck,TouchTargetSizeCheck" />
             </FrameLayout>
         </androidx.constraintlayout.widget.ConstraintLayout>
 
@@ -396,7 +398,7 @@
                     android:layout_marginTop="9dp"
                     android:background="@null"
                     android:src="@drawable/white_calculator"
-                    tools:ignore="SpeakableTextPresentCheck" />
+                    tools:ignore="SpeakableTextPresentCheck,TouchTargetSizeCheck" />
             </FrameLayout>
         </androidx.constraintlayout.widget.ConstraintLayout>
 
@@ -430,8 +432,8 @@
             <TextView
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:text="Acasă"
-                android:textColor="#000000"
+                android:text="@string/home_label"
+                android:textColor="@color/black"
                 android:textSize="12sp" />
         </LinearLayout>
 
@@ -452,8 +454,8 @@
             <TextView
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:text="Bugete"
-                android:textColor="#FFFFFF"
+                android:text="@string/budget_label"
+                android:textColor="@color/white"
                 android:textSize="12sp" />
         </LinearLayout>
 
@@ -474,8 +476,8 @@
             <TextView
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:text="Obiective"
-                android:textColor="#000000"
+                android:text="@string/goals_label"
+                android:textColor="@color/black"
                 android:textSize="12sp" />
         </LinearLayout>
 
@@ -496,8 +498,8 @@
             <TextView
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:text="Rapoarte"
-                android:textColor="#000000"
+                android:text="@string/reports_label"
+                android:textColor="@color/black"
                 android:textSize="12sp" />
         </LinearLayout>
 
@@ -518,8 +520,8 @@
             <TextView
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:text="Setări"
-                android:textColor="#000000"
+                android:text="@string/settings_label"
+                android:textColor="@color/black"
                 android:textSize="12sp" />
         </LinearLayout>
     </LinearLayout>

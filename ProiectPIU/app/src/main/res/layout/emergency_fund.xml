@@ -68,7 +68,7 @@
         app:layout_constraintTop_toBottomOf="@id/headerSection"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
-        android:text="Fond de urgență"
+        android:text="@string/emergency_fund_text"
         android:textStyle="bold"
         android:textSize="22sp"/>
 
@@ -97,7 +97,7 @@
             app:layout_constraintTop_toBottomOf="@id/headerSection"
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintStart_toStartOf="parent"
-            android:text="Alocând o sumă dedicată pentru ..."
+            android:text="@string/info_text"
             android:layout_marginTop="5dp"
             android:layout_marginBottom="5dp"
             android:layout_marginStart="10dp"
@@ -124,20 +124,21 @@
         android:id="@+id/sectionAmount"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:layout_weight="1"
         android:layout_marginStart="20dp"
-        android:layout_marginEnd="20dp"
         android:layout_marginTop="20dp"
+        android:layout_marginEnd="20dp"
+        android:layout_weight="1"
         android:background="@drawable/rounded_edittext2"
-        android:textColor="@color/black"
-        android:hint="Suma pentru fond"
-        android:padding="5dp"
-        android:textSize="24sp"
+        android:hint="@string/hint_suma_fond"
         android:inputType="number"
-        app:layout_constraintTop_toBottomOf="@id/info_section"
+        android:padding="5dp"
+        android:textColor="@color/black"
+        android:textSize="24sp"
+        android:visibility="visible"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
-        android:visibility="visible"/>
+        app:layout_constraintTop_toBottomOf="@id/info_section"
+        tools:ignore="TouchTargetSizeCheck" />
 
     <Button
         android:id="@+id/save_button"
@@ -182,7 +183,7 @@
             app:layout_constraintTop_toBottomOf="@id/headerSection"
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintStart_toStartOf="parent"
-            android:text="Introdu suma dorită!"
+            android:text="@string/enter_amount_text"
             android:textColor="@color/orange"
             android:layout_marginTop="8dp"
             android:layout_marginStart="8dp"
@@ -206,7 +207,7 @@
             app:layout_constraintTop_toBottomOf="@id/headerSection"
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintStart_toStartOf="parent"
-            android:text="Fond creat!"
+            android:text="@string/fund_created_text"
             android:textColor="@color/orange"
             android:layout_marginTop="8dp"
             android:layout_marginStart="8dp"
@@ -268,7 +269,7 @@
                     android:layout_marginTop="9dp"
                     android:background="@null"
                     android:src="@drawable/white_plus"
-                    tools:ignore="SpeakableTextPresentCheck" />
+                    tools:ignore="SpeakableTextPresentCheck,TouchTargetSizeCheck" />
             </FrameLayout>
         </androidx.constraintlayout.widget.ConstraintLayout>
 
@@ -313,7 +314,7 @@
                     android:layout_marginTop="9dp"
                     android:background="@null"
                     android:src="@drawable/white_pencil"
-                    tools:ignore="SpeakableTextPresentCheck" />
+                    tools:ignore="SpeakableTextPresentCheck,TouchTargetSizeCheck" />
             </FrameLayout>
 
         </androidx.constraintlayout.widget.ConstraintLayout>
@@ -359,7 +360,7 @@
                     android:layout_marginTop="9dp"
                     android:background="@null"
                     android:src="@drawable/white_lock"
-                    tools:ignore="SpeakableTextPresentCheck" />
+                    tools:ignore="SpeakableTextPresentCheck,TouchTargetSizeCheck" />
             </FrameLayout>
         </androidx.constraintlayout.widget.ConstraintLayout>
 
@@ -404,7 +405,7 @@
                     android:layout_marginTop="9dp"
                     android:background="@null"
                     android:src="@drawable/white_calculator"
-                    tools:ignore="SpeakableTextPresentCheck" />
+                    tools:ignore="SpeakableTextPresentCheck,TouchTargetSizeCheck" />
             </FrameLayout>
         </androidx.constraintlayout.widget.ConstraintLayout>
 
@@ -438,8 +439,8 @@
             <TextView
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:text="Acasă"
-                android:textColor="#000000"
+                android:text="@string/home_text"
+                android:textColor="@color/black"
                 android:textSize="12sp" />
         </LinearLayout>
 
@@ -460,8 +461,8 @@
             <TextView
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:text="Bugete"
-                android:textColor="#FFFFFF"
+                android:text="@string/budget_text"
+                android:textColor="@color/white"
                 android:textSize="12sp" />
         </LinearLayout>
 
@@ -482,8 +483,8 @@
             <TextView
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:text="Obiective"
-                android:textColor="#000000"
+                android:text="@string/goals_text"
+                android:textColor="@color/black"
                 android:textSize="12sp" />
         </LinearLayout>
 
@@ -504,8 +505,8 @@
             <TextView
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:text="Rapoarte"
-                android:textColor="#000000"
+                android:text="@string/reports_text"
+                android:textColor="@color/black"
                 android:textSize="12sp" />
         </LinearLayout>
 
@@ -526,8 +527,8 @@
             <TextView
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:text="Setări"
-                android:textColor="#000000"
+                android:text="@string/settings_text"
+                android:textColor="@color/black"
                 android:textSize="12sp" />
         </LinearLayout>
     </LinearLayout>

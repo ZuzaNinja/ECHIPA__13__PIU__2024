@@ -124,19 +124,19 @@ class ObjectiveStartPageActivityAdolescent : AppCompatActivity(), View.OnClickLi
                 startActivity(Intent(this, AdolescentDashboardActivity::class.java))
             }
             R.id.pusculitaButton -> {
-                Toast.makeText(this, "Pușculiță (în lucru)", Toast.LENGTH_SHORT).show()
+                Toast.makeText(this, getString(R.string.piggy_bank_not_ready), Toast.LENGTH_SHORT).show()
             }
             R.id.goalsButton -> {
                 startActivity(Intent(this, ObjectiveStartPageActivityAdolescent::class.java))
             }
             R.id.learnButton -> {
-                Toast.makeText(this, "Învățare (în lucru)", Toast.LENGTH_SHORT).show()
+                Toast.makeText(this, getString(R.string.learning_not_ready), Toast.LENGTH_SHORT).show()
             }
             R.id.profile_section -> {
                 startActivity(Intent(this, MyAccountActivity::class.java))
             }
             else -> {
-                Toast.makeText(this, "Acțiune necunoscută", Toast.LENGTH_SHORT).show()
+                Toast.makeText(this, getString(R.string.unknown_action), Toast.LENGTH_SHORT).show()
             }
         }
     }
@@ -211,7 +211,7 @@ class ObjectiveStartPageActivityAdolescent : AppCompatActivity(), View.OnClickLi
         adaugaSumaButton.setOnClickListener {
             val selectedPosition = adapter.getSelectedPosition()
             if (selectedPosition == RecyclerView.NO_POSITION) {
-                Toast.makeText(this, "Selectează un obiectiv!", Toast.LENGTH_SHORT).show()
+                Toast.makeText(this, getString(R.string.toast_select_objective), Toast.LENGTH_SHORT).show()
                 return@setOnClickListener
             }
 
@@ -222,7 +222,7 @@ class ObjectiveStartPageActivityAdolescent : AppCompatActivity(), View.OnClickLi
 
             if (sumaAdaugata == null || sumaAdaugata <= 0) {
                 afisareTemporaraMesaje(errorMessage1, 3000)
-                errorMessageText1.text = "Specifică suma de adăugat!"
+                errorMessageText1.text = getString(R.string.error_specify_amount)
                 return@setOnClickListener
             }
 
@@ -230,21 +230,21 @@ class ObjectiveStartPageActivityAdolescent : AppCompatActivity(), View.OnClickLi
 
             if (selectedObjective.sumaCurenta + sumaAdaugata > selectedObjective.sumaTotala) {
                 afisareTemporaraMesaje(errorMessage2, 3000)
-                errorMessageText2.text = "Suma adăugată depășește obiectivul ales!"
+                errorMessageText2.text = getString(R.string.error_exceeds_objective)
                 sumaInput.text.clear()
                 return@setOnClickListener
             }
 
             selectedObjective.sumaCurenta += sumaAdaugata
             afisareTemporaraMesaje(successMessage, 3000)
-            successMessageText.text = "Suma a fost adăugată cu succes!"
+            successMessageText.text = getString(R.string.success_amount_added)
             adapter.updateObjectives(ObjectiveManagerAdolescent.getObjectives())
             adapter.notifyDataSetChanged()
 
             sumaInput.text.clear()
 
             if (selectedObjective.sumaCurenta == selectedObjective.sumaTotala) {
-                Toast.makeText(this, "Obiectiv completat! ✅", Toast.LENGTH_LONG).show()
+                Toast.makeText(this, getString(R.string.toast_objective_completed), Toast.LENGTH_LONG).show()
             }
 
             adapter.unlockSelection()

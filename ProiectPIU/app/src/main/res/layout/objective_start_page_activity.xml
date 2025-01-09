@@ -77,7 +77,7 @@
             android:id="@+id/title_text"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:text="Adaugă obiectiv"
+            android:text="@string/add_objective"
             android:textColor="@color/black"
             android:textSize="18sp"
             android:textStyle="bold"
@@ -97,7 +97,8 @@
                 android:layout_height="60dp"
                 android:background="@drawable/circle_shape_2"
                 android:scaleType="centerInside"
-                android:src="@drawable/white_plus" />
+                android:src="@drawable/white_plus"
+                tools:ignore="SpeakableTextPresentCheck" />
         </FrameLayout>
 
         <!-- Buton pentru Vizualizare -->
@@ -106,7 +107,7 @@
             android:layout_width="300dp"
             android:layout_height="wrap_content"
             android:backgroundTint="@color/orange"
-            android:text="Vizualizează-ți obiectivele"
+            android:text="@string/view_objectives_text"
             android:textColor="@color/white"
             android:textSize="18sp"
             android:textStyle="bold"
@@ -150,8 +151,8 @@
             <TextView
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:text="Acasă"
-                android:textColor="#000000"
+                android:text="@string/home_text"
+                android:textColor="@color/black"
                 android:textSize="12sp" />
         </LinearLayout>
 
@@ -171,7 +172,7 @@
             <TextView
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:text="Bugete"
+                android:text="@string/budget_text"
                 android:textColor="@color/black"
                 android:textSize="12sp" />
         </LinearLayout>
@@ -192,7 +193,7 @@
             <TextView
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:text="Obiective"
+                android:text="@string/goals_text"
                 android:textColor="@color/white"
                 android:textSize="12sp" />
         </LinearLayout>
@@ -213,8 +214,8 @@
             <TextView
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:text="Rapoarte"
-                android:textColor="#000000"
+                android:text="@string/reports_text"
+                android:textColor="@color/black"
                 android:textSize="12sp" />
         </LinearLayout>
 
@@ -234,8 +235,8 @@
             <TextView
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:text="Setări"
-                android:textColor="#000000"
+                android:text="@string/settings_text"
+                android:textColor="@color/black"
                 android:textSize="12sp" />
         </LinearLayout>
     </LinearLayout>

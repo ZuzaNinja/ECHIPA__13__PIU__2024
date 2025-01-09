@@ -24,11 +24,12 @@ class ParentDashboardActivity : AppCompatActivity(), View.OnClickListener {
         setContentView(R.layout.activity_parent_dashboard)
 
         val sharedPreferences = getSharedPreferences("UserPrefs", MODE_PRIVATE)
-        val userEmail = sharedPreferences.getString("USER_EMAIL", "N/A")
-        val userType = sharedPreferences.getString("USER_TYPE", "N/A")
+        val userEmail = sharedPreferences.getString("USER_EMAIL", getString(R.string.default_email))
+        val userType = sharedPreferences.getString("USER_TYPE", getString(R.string.default_user_type))
 
-        println("User Email: $userEmail")
-        println("User Type: $userType")
+        println(getString(R.string.user_email_log, userEmail))
+        println(getString(R.string.user_type_log, userType))
+
 
         profile = findViewById(R.id.profile)
         homeButton = findViewById(R.id.homeButton)
@@ -51,7 +52,7 @@ class ParentDashboardActivity : AppCompatActivity(), View.OnClickListener {
             R.id.budgetButton -> startActivity(Intent(this, MainBudgetActivity::class.java))
             R.id.goalsButton -> startActivity(Intent(this, ObjectiveStartPageActivityAdult::class.java))
             R.id.reportsButton -> {
-                println("Repoartele nu sunt implementate încă!")
+                println(getString(R.string.reports_not_implemented))
             }
             R.id.settingsButton -> startActivity(Intent(this, SettingsStartActivity::class.java))
             R.id.profile -> startActivity(Intent(this, MyAccountActivity::class.java))

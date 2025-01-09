@@ -39,6 +39,7 @@ class AddObjectiveActivityAdolescent : AppCompatActivity(), View.OnClickListener
 
     private lateinit var notificationIcon: ImageView
 
+    private lateinit var iconLabels: List<String>
 
     private val iconResources = listOf(
         R.drawable.object_icon,
@@ -61,32 +62,13 @@ class AddObjectiveActivityAdolescent : AppCompatActivity(), View.OnClickListener
         R.drawable.laptop_icon20
     )
 
-    private val iconLabels = listOf(
-        "Selectează o iconiță",
-        "Căști",
-        "Adidași",
-        "Smartphone",
-        "Tabletă",
-        "Bicicletă",
-        "Schi",
-        "Role",
-        "Concert",
-        "Bomboane",
-        "Controller",
-        "Cameră Foto",
-        "Skateboard",
-        "Cărți",
-        "Parfum",
-        "Geacă",
-        "AirPods",
-        "Laptop"
-    )
-
     private val handler = Handler(Looper.getMainLooper())
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.objective_adolescent_add_activity)
+
+        ObjectiveManagerAdolescent.initialize(this)
 
         initializeViews()
         setupSpinner()
@@ -114,6 +96,26 @@ class AddObjectiveActivityAdolescent : AppCompatActivity(), View.OnClickListener
 
         notificationIcon = findViewById(R.id.notification_icon)
 
+        iconLabels = listOf(
+            getString(R.string.select_icon),
+            getString(R.string.headphones),
+            getString(R.string.sneakers),
+            getString(R.string.smartphone),
+            getString(R.string.tablet),
+            getString(R.string.bicycle),
+            getString(R.string.ski),
+            getString(R.string.roller_skate),
+            getString(R.string.concert),
+            getString(R.string.candy),
+            getString(R.string.controller),
+            getString(R.string.camera),
+            getString(R.string.skateboard),
+            getString(R.string.books),
+            getString(R.string.perfume),
+            getString(R.string.jacket),
+            getString(R.string.airpods),
+            getString(R.string.laptop)
+        )
     }
 
     private fun setupSpinner() {
@@ -153,19 +155,19 @@ class AddObjectiveActivityAdolescent : AppCompatActivity(), View.OnClickListener
                 startActivity(Intent(this, AdolescentDashboardActivity::class.java))
             }
             R.id.pusculitaButton -> {
-                Toast.makeText(this, "Pușculiță (în lucru)", Toast.LENGTH_SHORT).show()
+                Toast.makeText(this, getString(R.string.piggy_bank_not_ready), Toast.LENGTH_SHORT).show()
             }
             R.id.goalsButton -> {
                 startActivity(Intent(this, ObjectiveStartPageActivityAdolescent::class.java))
             }
             R.id.learnButton -> {
-                Toast.makeText(this, "Învățare (în lucru)", Toast.LENGTH_SHORT).show()
+                Toast.makeText(this, getString(R.string.learning_not_ready), Toast.LENGTH_SHORT).show()
             }
             R.id.profile_section -> {
                 startActivity(Intent(this, MyAccountActivity::class.java))
             }
             else -> {
-                Toast.makeText(this, "Acțiune necunoscută", Toast.LENGTH_SHORT).show()
+                Toast.makeText(this, getString(R.string.unknown_action), Toast.LENGTH_SHORT).show()
             }
         }
     }
@@ -182,16 +184,17 @@ class AddObjectiveActivityAdolescent : AppCompatActivity(), View.OnClickListener
             NotificationManagerAdolescent.addNotification(
                 Notification(
                     R.drawable.notification_icon,
-                    "Obiectiv Creat",
-                    "Ai adăugat un nou obiectiv: $denumire!"
+                    getString(R.string.objective_created),
+                    getString(R.string.objective_created_message, denumire)
                 )
             )
 
+
             resetFields()
-            showSuccessMessage("Obiectiv adăugat cu succes!")
+            showSuccessMessage(getString(R.string.objective_added_success))
             startActivity(Intent(this, ObjectiveStartPageActivityAdolescent::class.java))
         } else {
-            showErrorMessage("Completează toate câmpurile corect!")
+            showErrorMessage(getString(R.string.complete_all_fields))
         }
     }
 

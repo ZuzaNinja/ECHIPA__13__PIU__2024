@@ -1,5 +1,6 @@
 <androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     android:background="#FFFFFF">
@@ -31,8 +32,8 @@
             android:layout_marginStart="8dp"
             android:layout_marginTop="35dp"
             android:gravity="center_vertical"
-            android:text="Bine ai revenit, Kate!"
-            android:textColor="#000000"
+            android:text="@string/welcome_back_message"
+            android:textColor="@color/black"
             android:textSize="16sp"
             android:textStyle="bold" />
     </LinearLayout>
@@ -88,8 +89,8 @@
                 android:layout_gravity="center" />
 
             <TextView
-                android:text="Adaugă"
-                android:textColor="#000000"
+                android:text="@string/action_add"
+                android:textColor="@color/black"
                 android:textSize="14sp"
                 android:layout_height="20dp"
                 android:layout_width="60dp"
@@ -116,8 +117,8 @@
                 android:layout_gravity="center" />
 
             <TextView
-                android:text="Cere"
-                android:textColor="#000000"
+                android:text="@string/action_request"
+                android:textColor="@color/black"
                 android:textSize="14sp"
                 android:layout_height="20dp"
                 android:layout_width="35dp"
@@ -144,8 +145,8 @@
                 android:layout_gravity="center" />
 
             <TextView
-                android:text="Trimite"
-                android:textColor="#000000"
+                android:text="@string/action_send"
+                android:textColor="@color/black"
                 android:textSize="14sp"
                 android:layout_height="20dp"
                 android:layout_width="60dp"
@@ -177,8 +178,8 @@
             <TextView
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:text="Provocări"
-                android:textColor="#000000"
+                android:text="@string/challenges_title"
+                android:textColor="@color/black"
                 android:textSize="16sp" />
 
             <View
@@ -189,8 +190,8 @@
             <TextView
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:text="Vezi tot"
-                android:textColor="#F59227"
+                android:text="@string/see_all"
+                android:textColor="@color/orange"
                 android:textSize="14sp" />
         </LinearLayout>
 
@@ -225,8 +226,8 @@
             <TextView
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:text="Tranzacții recente"
-                android:textColor="#000000"
+                android:text="@string/recent_transactions"
+                android:textColor="@color/black"
                 android:textSize="16sp" />
 
             <View
@@ -237,8 +238,8 @@
             <TextView
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:text="Vezi tot"
-                android:textColor="#F59227"
+                android:text="@string/see_all"
+                android:textColor="@color/orange"
                 android:textSize="14sp" />
         </LinearLayout>
 
@@ -270,8 +271,9 @@
             android:layout_height="wrap_content"
             android:layout_weight="1"
             android:gravity="center"
+            android:onClick="onNavigationClick"
             android:orientation="vertical"
-            android:onClick="onNavigationClick">
+            tools:ignore="TouchTargetSizeCheck">
 
             <ImageView
                 android:layout_width="24dp"
@@ -281,8 +283,8 @@
             <TextView
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:text="Acasă"
-                android:textColor="#FFFFFF"
+                android:text="@string/home_button"
+                android:textColor="@color/white"
                 android:textSize="12sp" />
         </LinearLayout>
 
@@ -292,8 +294,9 @@
             android:layout_height="wrap_content"
             android:layout_weight="1"
             android:gravity="center"
+            android:onClick="onNavigationClick"
             android:orientation="vertical"
-            android:onClick="onNavigationClick">
+            tools:ignore="TouchTargetSizeCheck">
 
             <ImageView
                 android:layout_width="24dp"
@@ -303,8 +306,8 @@
             <TextView
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:text="Pușculiță"
-                android:textColor="#000000"
+                android:text="@string/piggy_bank_button"
+                android:textColor="@color/black"
                 android:textSize="12sp" />
         </LinearLayout>
 
@@ -314,8 +317,9 @@
             android:layout_height="wrap_content"
             android:layout_weight="1"
             android:gravity="center"
+            android:onClick="onNavigationClick"
             android:orientation="vertical"
-            android:onClick="onNavigationClick">
+            tools:ignore="TouchTargetSizeCheck">
 
             <ImageView
                 android:layout_width="24dp"
@@ -325,8 +329,8 @@
             <TextView
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:text="Obiective"
-                android:textColor="#000000"
+                android:text="@string/goals_button"
+                android:textColor="@color/black"
                 android:textSize="12sp" />
         </LinearLayout>
 
@@ -336,8 +340,9 @@
             android:layout_height="wrap_content"
             android:layout_weight="1"
             android:gravity="center"
+            android:onClick="onNavigationClick"
             android:orientation="vertical"
-            android:onClick="onNavigationClick">
+            tools:ignore="TouchTargetSizeCheck">
 
             <ImageView
                 android:layout_width="24dp"
@@ -347,8 +352,8 @@
             <TextView
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:text="Învață"
-                android:textColor="#000000"
+                android:text="@string/learn_button"
+                android:textColor="@color/black"
                 android:textSize="12sp" />
         </LinearLayout>
 

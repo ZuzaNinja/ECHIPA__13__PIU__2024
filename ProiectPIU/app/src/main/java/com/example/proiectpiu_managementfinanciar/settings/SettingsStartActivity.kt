@@ -8,6 +8,7 @@ import androidx.appcompat.app.AppCompatActivity
 import com.example.proiectpiu_managementfinanciar.R
 import com.example.proiectpiu_managementfinanciar.budget.MainBudgetActivity
 import com.example.proiectpiu_managementfinanciar.home_dashboard.ParentDashboardActivity
+import com.example.proiectpiu_managementfinanciar.login.MyAccountActivity
 import com.example.proiectpiu_managementfinanciar.objective.ObjectiveStartPageActivityAdult
 
 class SettingsStartActivity : AppCompatActivity(), View.OnClickListener {
@@ -52,23 +53,21 @@ class SettingsStartActivity : AppCompatActivity(), View.OnClickListener {
     override fun onClick(v: View?) {
         when (v?.id) {
             R.id.profile_button -> {
-                //startActivity(Intent(this, ProfileActivity::class.java))
-                Toast.makeText(this, "Profile (în lucru)", Toast.LENGTH_SHORT).show()
+                startActivity(Intent(this, MyAccountActivity::class.java))
             }
             R.id.notifications_button -> {
                 startActivity(Intent(this, NotificationActivity::class.java))
             }
             R.id.security_button -> {
                 //startActivity(Intent(this, SecurityActivity::class.java))
-                Toast.makeText(this, "Securitate (în lucru)", Toast.LENGTH_SHORT).show()
+                Toast.makeText(this, getString(R.string.security_toast), Toast.LENGTH_SHORT).show()
             }
             R.id.alert_button -> {
                 //startActivity(Intent(this, AlertActivity::class.java))
-                Toast.makeText(this, "Alerte (în lucru)", Toast.LENGTH_SHORT).show()
+                Toast.makeText(this, getString(R.string.alert_toast), Toast.LENGTH_SHORT).show()
             }
             R.id.language_button -> {
-                //startActivity(Intent(this, LanguageActivity::class.java))
-                Toast.makeText(this, "Limbă (în lucru)", Toast.LENGTH_SHORT).show()
+                startActivity(Intent(this, LanguageSelectionActivity::class.java))
             }
             R.id.homeButton -> {
                 startActivity(Intent(this, ParentDashboardActivity::class.java))
@@ -80,13 +79,13 @@ class SettingsStartActivity : AppCompatActivity(), View.OnClickListener {
                 startActivity(Intent(this, ObjectiveStartPageActivityAdult::class.java))
             }
             R.id.reportsButton -> {
-                Toast.makeText(this, "Rapoarte (în lucru)", Toast.LENGTH_SHORT).show()
+                Toast.makeText(this, getString(R.string.reports_toast), Toast.LENGTH_SHORT).show()
             }
             R.id.settingsButton -> {
                 startActivity(Intent(this, SettingsStartActivity::class.java))
             }
             else -> {
-                Toast.makeText(this, "Acțiune necunoscută", Toast.LENGTH_SHORT).show()
+                Toast.makeText(this, getString(R.string.unknown_action), Toast.LENGTH_SHORT).show()
             }
         }
     }

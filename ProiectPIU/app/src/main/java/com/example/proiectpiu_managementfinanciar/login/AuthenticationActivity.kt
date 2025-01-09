@@ -76,6 +76,10 @@ class AuthenticationActivity : AppCompatActivity() {
                 if (enteredEmail == parentEmail && enteredPassword == parentPassword) {
                     editor.putString("USER_EMAIL", enteredEmail)
                     editor.putString("USER_TYPE", "Parent")
+
+                    editor.putString("USER_PHONE", "0712345678")
+                    editor.putString("USER_PASSWORD", enteredPassword)
+
                     editor.apply()
 
                     afisareTemporaraMesaje(textViewSignInMessage, 3000)
@@ -85,6 +89,10 @@ class AuthenticationActivity : AppCompatActivity() {
                 } else if (enteredEmail == adolescentEmail && enteredPassword == adolescentPassword) {
                     editor.putString("USER_EMAIL", enteredEmail)
                     editor.putString("USER_TYPE", "Adolescent")
+
+                    editor.putString("USER_PHONE", "0723456789")
+                    editor.putString("USER_PASSWORD", enteredPassword)
+
                     editor.apply()
 
                     afisareTemporaraMesaje(textViewSignInMessage, 3000)

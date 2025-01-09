@@ -65,7 +65,7 @@ class ObjectiveAdapter(private var objectives: List<Objective>) :
 
         holder.itemView.setOnClickListener {
             if (objective.sumaCurenta >= objective.sumaTotala) {
-                Toast.makeText(holder.itemView.context, "Obiectiv deja atins!", Toast.LENGTH_SHORT).show()
+                Toast.makeText(holder.itemView.context, holder.itemView.context.getString(R.string.objective_completed_message), Toast.LENGTH_SHORT).show()
                 return@setOnClickListener
             }
 

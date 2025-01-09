@@ -59,7 +59,7 @@
 
         <activity android:name=".objective.AddObjectiveActivityAdult"
             android:windowSoftInputMode="adjustPan"
-            android:exported="false" />
+            android:exported="true" />
 
         <activity android:name=".objective.ViewObjectivesActivity"
             android:windowSoftInputMode="adjustPan"
@@ -86,6 +86,10 @@
             android:exported="false" />
 
         <activity android:name=".login.MyAccountActivity"
+            android:windowSoftInputMode="adjustPan"
+            android:exported="false" />
+
+        <activity android:name=".settings.LanguageSelectionActivity"
             android:windowSoftInputMode="adjustPan"
             android:exported="false" />
 

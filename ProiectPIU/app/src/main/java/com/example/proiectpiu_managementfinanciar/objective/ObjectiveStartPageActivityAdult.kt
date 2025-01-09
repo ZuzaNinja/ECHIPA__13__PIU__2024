@@ -82,7 +82,7 @@ class ObjectiveStartPageActivityAdult : AppCompatActivity(), View.OnClickListene
                 startActivity(Intent(this, ObjectiveStartPageActivityAdult::class.java))
             }
             R.id.reportsButton -> {
-                Toast.makeText(this, "Rapoarte (în lucru)", Toast.LENGTH_SHORT).show()
+                Toast.makeText(this, getString(R.string.reports_in_progress), Toast.LENGTH_SHORT).show()
             }
             R.id.settingsButton -> {
                 startActivity(Intent(this, SettingsStartActivity::class.java))
@@ -93,7 +93,7 @@ class ObjectiveStartPageActivityAdult : AppCompatActivity(), View.OnClickListene
             }
 
             else -> {
-                Toast.makeText(this, "Acțiune necunoscută", Toast.LENGTH_SHORT).show()
+                Toast.makeText(this, getString(R.string.unknown_action), Toast.LENGTH_SHORT).show()
             }
         }
     }

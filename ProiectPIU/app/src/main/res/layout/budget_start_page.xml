@@ -87,7 +87,7 @@
             android:id="@+id/plan_button"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:text="Planifica pe termen lung"
+            android:text="@string/plan_long_term"
             android:textColor="@color/black"
             android:textSize="18sp"
             android:paddingTop="10dp"
@@ -162,7 +162,7 @@
                     android:layout_marginTop="9dp"
                     android:background="@null"
                     android:src="@drawable/white_plus"
-                    tools:ignore="SpeakableTextPresentCheck" />
+                    tools:ignore="SpeakableTextPresentCheck,TouchTargetSizeCheck" />
             </FrameLayout>
         </androidx.constraintlayout.widget.ConstraintLayout>
 
@@ -207,7 +207,7 @@
                     android:layout_marginTop="9dp"
                     android:background="@null"
                     android:src="@drawable/white_pencil"
-                    tools:ignore="SpeakableTextPresentCheck" />
+                    tools:ignore="SpeakableTextPresentCheck,TouchTargetSizeCheck" />
             </FrameLayout>
 
         </androidx.constraintlayout.widget.ConstraintLayout>
@@ -253,7 +253,7 @@
                     android:layout_marginTop="9dp"
                     android:background="@null"
                     android:src="@drawable/white_lock"
-                    tools:ignore="SpeakableTextPresentCheck" />
+                    tools:ignore="SpeakableTextPresentCheck,TouchTargetSizeCheck" />
             </FrameLayout>
         </androidx.constraintlayout.widget.ConstraintLayout>
 
@@ -298,7 +298,7 @@
                     android:layout_marginTop="9dp"
                     android:background="@null"
                     android:src="@drawable/white_calculator"
-                    tools:ignore="SpeakableTextPresentCheck" />
+                    tools:ignore="SpeakableTextPresentCheck,TouchTargetSizeCheck" />
             </FrameLayout>
         </androidx.constraintlayout.widget.ConstraintLayout>
 
@@ -332,8 +332,8 @@
             <TextView
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:text="Acasă"
-                android:textColor="#000000"
+                android:text="@string/home_label"
+                android:textColor="@color/black"
                 android:textSize="12sp" />
         </LinearLayout>
 
@@ -354,8 +354,8 @@
             <TextView
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:text="Bugete"
-                android:textColor="#FFFFFF"
+                android:text="@string/budget_label"
+                android:textColor="@color/white"
                 android:textSize="12sp" />
         </LinearLayout>
 
@@ -376,8 +376,8 @@
             <TextView
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:text="Obiective"
-                android:textColor="#000000"
+                android:text="@string/goals_label"
+                android:textColor="@color/black"
                 android:textSize="12sp" />
         </LinearLayout>
 
@@ -398,8 +398,8 @@
             <TextView
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:text="Rapoarte"
-                android:textColor="#000000"
+                android:text="@string/reports_label"
+                android:textColor="@color/black"
                 android:textSize="12sp" />
         </LinearLayout>
 
@@ -420,8 +420,8 @@
             <TextView
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:text="Setări"
-                android:textColor="#000000"
+                android:text="@string/settings_label"
+                android:textColor="@color/black"
                 android:textSize="12sp" />
         </LinearLayout>
     </LinearLayout>

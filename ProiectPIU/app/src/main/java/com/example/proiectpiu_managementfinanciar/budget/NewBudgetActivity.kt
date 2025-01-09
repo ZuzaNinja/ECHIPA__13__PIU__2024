@@ -55,9 +55,9 @@ class NewBudgetActivity : AppCompatActivity(), View.OnClickListener {
 
         // Example data for the budget list
         val budgetItems = listOf(
-            BudgetItem("Groceries", 300),
-            BudgetItem("Rent", 1200),
-            BudgetItem("Utilities", 150)
+            BudgetItem(getString(R.string.budget_groceries), 300),
+            BudgetItem(getString(R.string.budget_rent), 1200),
+            BudgetItem(getString(R.string.budget_utilities), 150)
         )
 
         // Set adapter

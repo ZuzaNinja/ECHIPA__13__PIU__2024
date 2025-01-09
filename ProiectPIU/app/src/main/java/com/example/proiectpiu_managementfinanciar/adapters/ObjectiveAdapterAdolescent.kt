@@ -63,8 +63,8 @@ class ObjectiveAdapterAdolescent(
             NotificationManagerAdolescent.addNotification(
                 Notification(
                     R.drawable.notification_icon,
-                    "Obiectiv Finalizat",
-                    "Felicitări! Ai completat obiectivul: ${objective.denumire}"
+                    holder.itemView.context.getString(R.string.objective_finished_title),
+                    holder.itemView.context.getString(R.string.objective_finished_message, objective.denumire)
                 )
             )
         } else {
@@ -79,7 +79,7 @@ class ObjectiveAdapterAdolescent(
 
         holder.itemView.setOnClickListener {
             if (objective.sumaCurenta >= objective.sumaTotala) {
-                Toast.makeText(holder.itemView.context, "Obiectiv deja atins!", Toast.LENGTH_SHORT).show()
+                Toast.makeText(holder.itemView.context, holder.itemView.context.getString(R.string.objective_completed_message), Toast.LENGTH_SHORT).show()
                 return@setOnClickListener
             }
 
