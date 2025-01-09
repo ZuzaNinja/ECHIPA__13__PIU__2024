@@ -35,6 +35,8 @@ class AuthenticationActivity : AppCompatActivity() {
     private val adolescentEmail = "adolescent@gmail.com"
     private val adolescentPassword = "12345"
 
+    private var selectedUserType: String? = null
+
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_authentication)
@@ -47,6 +49,9 @@ class AuthenticationActivity : AppCompatActivity() {
 
         emailInput.setText(email)
         passwordInput.setText(password)
+
+        selectedUserType = intent.getStringExtra("USER_TYPE")
+
     }
 
     private fun initializeViews() {
@@ -73,7 +78,7 @@ class AuthenticationActivity : AppCompatActivity() {
                 val sharedPreferences = getSharedPreferences("UserPrefs", MODE_PRIVATE)
                 val editor = sharedPreferences.edit()
 
-                if (enteredEmail == parentEmail && enteredPassword == parentPassword) {
+                if (selectedUserType == "Parent" && enteredEmail == parentEmail && enteredPassword == parentPassword) {
                     editor.putString("USER_EMAIL", enteredEmail)
                     editor.putString("USER_TYPE", "Parent")
 
@@ -86,7 +91,7 @@ class AuthenticationActivity : AppCompatActivity() {
                     handler.postDelayed({
                         startActivity(Intent(this, ParentDashboardActivity::class.java))
                     }, 1000)
-                } else if (enteredEmail == adolescentEmail && enteredPassword == adolescentPassword) {
+                } else if (selectedUserType == "Adolescent" && enteredEmail == adolescentEmail && enteredPassword == adolescentPassword) {
                     editor.putString("USER_EMAIL", enteredEmail)
                     editor.putString("USER_TYPE", "Adolescent")
 

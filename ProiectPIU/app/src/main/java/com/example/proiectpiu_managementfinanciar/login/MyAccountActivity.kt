@@ -22,8 +22,6 @@ class MyAccountActivity : AppCompatActivity() {
     private lateinit var savePasswordButton: Button
 
     private val handler = Handler(Looper.getMainLooper())
-    private var isPasswordVisible = false
-    private var isPasswordEditable = false
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
@@ -48,7 +46,15 @@ class MyAccountActivity : AppCompatActivity() {
         passwordEditText.isEnabled = false
         passwordEditText.isFocusable = false
         passwordEditText.isFocusableInTouchMode = false
-        passwordEditText.inputType = InputType.TYPE_CLASS_TEXT or InputType.TYPE_TEXT_VARIATION_PASSWORD
+        setPasswordMask(true)
+    }
+
+    private fun setPasswordMask(mask: Boolean) {
+        passwordEditText.inputType = if (mask) {
+            InputType.TYPE_CLASS_TEXT or InputType.TYPE_TEXT_VARIATION_PASSWORD
+        } else {
+            InputType.TYPE_CLASS_TEXT
+        }
     }
 
     private fun loadUserData() {
@@ -86,12 +92,12 @@ class MyAccountActivity : AppCompatActivity() {
             val password = sharedPreferences.getString("USER_PASSWORD", "******")
 
             passwordEditText.setText(password)
-            passwordEditText.inputType = InputType.TYPE_CLASS_TEXT
+            setPasswordMask(false)
             togglePasswordButton.isEnabled = false
 
             handler.postDelayed({
                 passwordEditText.setText("*******")
-                passwordEditText.inputType = InputType.TYPE_CLASS_TEXT or InputType.TYPE_TEXT_VARIATION_PASSWORD
+                setPasswordMask(true)
                 togglePasswordButton.isEnabled = true
             }, 3000)
         }
@@ -100,7 +106,7 @@ class MyAccountActivity : AppCompatActivity() {
             passwordEditText.isEnabled = true
             passwordEditText.isFocusable = true
             passwordEditText.isFocusableInTouchMode = true
-            passwordEditText.inputType = InputType.TYPE_CLASS_TEXT
+            setPasswordMask(false)
             val sharedPreferences = getSharedPreferences("UserPrefs", MODE_PRIVATE)
             val password = sharedPreferences.getString("USER_PASSWORD", "******")
             passwordEditText.setText(password)
@@ -120,7 +126,7 @@ class MyAccountActivity : AppCompatActivity() {
                 passwordEditText.isFocusable = false
                 passwordEditText.isFocusableInTouchMode = false
                 passwordEditText.setText("*******")
-                passwordEditText.inputType = InputType.TYPE_CLASS_TEXT or InputType.TYPE_TEXT_VARIATION_PASSWORD
+                setPasswordMask(true)
 
                 Toast.makeText(this, getString(R.string.password_updated), Toast.LENGTH_SHORT).show()
             } else {

@@ -69,12 +69,16 @@ class SelectionActivity : AppCompatActivity(), View.OnClickListener {
                 }
             }
             R.id.authenticate_button -> {
-                if (!adolescentRadioButton.isChecked && !parentRadioButton.isChecked) {
-                    Toast.makeText(this, getString(R.string.select_account_type), Toast.LENGTH_SHORT).show()
+                val intent = Intent(this, AuthenticationActivity::class.java)
+                if (adolescentRadioButton.isChecked) {
+                    intent.putExtra("USER_TYPE", "Adolescent")
+                } else if (parentRadioButton.isChecked) {
+                    intent.putExtra("USER_TYPE", "Parent")
                 } else {
-                    val intent = Intent(this, AuthenticationActivity::class.java)
-                    startActivity(intent)
+                    Toast.makeText(this, getString(R.string.select_account_type), Toast.LENGTH_SHORT).show()
+                    return
                 }
+                startActivity(intent)
             }
         }
     }
