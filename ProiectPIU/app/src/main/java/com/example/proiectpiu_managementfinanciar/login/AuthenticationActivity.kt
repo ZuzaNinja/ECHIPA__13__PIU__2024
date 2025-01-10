@@ -14,6 +14,7 @@ import androidx.appcompat.app.AppCompatActivity
 import com.example.proiectpiu_managementfinanciar.R
 import com.example.proiectpiu_managementfinanciar.home_dashboard.AdolescentDashboardActivity
 import com.example.proiectpiu_managementfinanciar.home_dashboard.ParentDashboardActivity
+import com.example.proiectpiu_managementfinanciar.util.RegistrationList
 
 class AuthenticationActivity : AppCompatActivity() {
 
@@ -50,7 +51,10 @@ class AuthenticationActivity : AppCompatActivity() {
         emailInput.setText(email)
         passwordInput.setText(password)
 
-        selectedUserType = intent.getStringExtra("USER_TYPE")
+        selectedUserType = intent.getStringExtra("USER_TYPE") ?: run {
+            val sharedPreferences = getSharedPreferences("UserPrefs", MODE_PRIVATE)
+            sharedPreferences.getString("USER_TYPE", "")
+        }
 
     }
 
@@ -75,37 +79,75 @@ class AuthenticationActivity : AppCompatActivity() {
             if (validInputs) {
                 val enteredEmail = emailInput.text.toString()
                 val enteredPassword = passwordInput.text.toString()
+
+                selectedUserType = intent.getStringExtra("USER_TYPE") ?: ""
+
                 val sharedPreferences = getSharedPreferences("UserPrefs", MODE_PRIVATE)
                 val editor = sharedPreferences.edit()
 
-                if (selectedUserType == "Parent" && enteredEmail == parentEmail && enteredPassword == parentPassword) {
-                    editor.putString("USER_EMAIL", enteredEmail)
-                    editor.putString("USER_TYPE", "Parent")
+                if (enteredEmail == parentEmail && enteredPassword == parentPassword) {
+                    if(selectedUserType == "Parent"){
+                        editor.putString("USER_EMAIL", enteredEmail)
+                        editor.putString("USER_TYPE", "Parent")
 
-                    editor.putString("USER_PHONE", "0712345678")
-                    editor.putString("USER_PASSWORD", enteredPassword)
+                        editor.putString("USER_PHONE", "0712345678")
+                        editor.putString("USER_PASSWORD", enteredPassword)
 
-                    editor.apply()
+                        editor.apply()
+                        afisareTemporaraMesaje(textViewSignInMessage, 3000)
+                        handler.postDelayed({
+                            startActivity(Intent(this, ParentDashboardActivity::class.java))
+                        }, 1000)
+                    }
+                    else{
+                        afisareTemporaraMesaje(textViewLoginFailed, 3000)
+                    }
+                } else if (enteredEmail == adolescentEmail && enteredPassword == adolescentPassword) {
+                    if(selectedUserType == "Adolescent"){
+                        editor.putString("USER_EMAIL", enteredEmail)
+                        editor.putString("USER_TYPE", "Adolescent")
 
-                    afisareTemporaraMesaje(textViewSignInMessage, 3000)
-                    handler.postDelayed({
-                        startActivity(Intent(this, ParentDashboardActivity::class.java))
-                    }, 1000)
-                } else if (selectedUserType == "Adolescent" && enteredEmail == adolescentEmail && enteredPassword == adolescentPassword) {
-                    editor.putString("USER_EMAIL", enteredEmail)
-                    editor.putString("USER_TYPE", "Adolescent")
+                        editor.putString("USER_PHONE", "0723456789")
+                        editor.putString("USER_PASSWORD", enteredPassword)
 
-                    editor.putString("USER_PHONE", "0723456789")
-                    editor.putString("USER_PASSWORD", enteredPassword)
+                        editor.apply()
 
-                    editor.apply()
-
-                    afisareTemporaraMesaje(textViewSignInMessage, 3000)
-                    handler.postDelayed({
-                        startActivity(Intent(this, AdolescentDashboardActivity::class.java))
-                    }, 1000)
+                        afisareTemporaraMesaje(textViewSignInMessage, 3000)
+                        handler.postDelayed({
+                            startActivity(Intent(this, AdolescentDashboardActivity::class.java))
+                        }, 1000)
+                    }
+                    else{
+                        afisareTemporaraMesaje(textViewLoginFailed, 3000)
+                    }
                 } else {
-                    afisareTemporaraMesaje(textViewLoginFailed, 3000)
+                    val registeredUser = RegistrationList.findUserByEmailAndType(
+                        enteredEmail.trim(),
+                        enteredPassword.trim(),
+                        selectedUserType?.trim() ?: ""
+                    )
+
+                    if (registeredUser != null) {
+                        val isParent = registeredUser.userType.trim().equals(getString(R.string.role_parent).trim())
+                        val isAdolescent = registeredUser.userType.trim() == getString(R.string.role_adolescent).trim()
+
+                        if (isParent) {
+                            editor.putString("USER_EMAIL", registeredUser.email)
+                            editor.putString("USER_TYPE", getString(R.string.role_parent).trim())
+                            editor.apply()
+                            startActivity(Intent(this, ParentDashboardActivity::class.java))
+                        } else if (isAdolescent) {
+                            editor.putString("USER_EMAIL", registeredUser.email)
+                            editor.putString("USER_TYPE", getString(R.string.role_adolescent).trim())
+                            editor.apply()
+                            startActivity(Intent(this, AdolescentDashboardActivity::class.java))
+                        } else {
+                            afisareTemporaraMesaje(textViewLoginFailed, 3000)
+                        }
+                    } else {
+                        afisareTemporaraMesaje(textViewLoginFailed, 3000)
+                    }
+
                 }
             }
         }

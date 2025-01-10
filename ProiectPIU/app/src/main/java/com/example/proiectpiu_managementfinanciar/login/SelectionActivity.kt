@@ -31,9 +31,34 @@ class SelectionActivity : AppCompatActivity(), View.OnClickListener {
     }
 
     private fun setListeners() {
-        registerButton.setOnClickListener(this)
-        authenticateButton.setOnClickListener(this)
+        registerButton.setOnClickListener {
+            val intent = Intent(this, RegisterActivity::class.java)
+            val selectedRole = when {
+                adolescentRadioButton.isChecked -> "Adolescent"
+                parentRadioButton.isChecked -> "Parent"
+                else -> {
+                    Toast.makeText(this, getString(R.string.select_account_type), Toast.LENGTH_SHORT).show()
+                    return@setOnClickListener
+                }
+            }
+            intent.putExtra("USER_TYPE", selectedRole)
+            startActivity(intent)
+        }
 
+
+
+        authenticateButton.setOnClickListener {
+            val intent = Intent(this, AuthenticationActivity::class.java)
+            if (adolescentRadioButton.isChecked) {
+                intent.putExtra("USER_TYPE", "Adolescent")
+            } else if (parentRadioButton.isChecked) {
+                intent.putExtra("USER_TYPE", "Parent")
+            } else {
+                Toast.makeText(this, getString(R.string.select_account_type), Toast.LENGTH_SHORT).show()
+                return@setOnClickListener
+            }
+            startActivity(intent)
+        }
         findViewById<View>(R.id.adolescent_option).setOnClickListener(this)
         findViewById<View>(R.id.parent_option).setOnClickListener(this)
     }

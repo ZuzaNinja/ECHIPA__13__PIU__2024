@@ -6,5 +6,6 @@ data class UserRegistration(
     val name: String,
     val email: String,
     val phone: String,
-    val password: String): Serializable{
+    var password: String,
+    val userType: String): Serializable{
 }

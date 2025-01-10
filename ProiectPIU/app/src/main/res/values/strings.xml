@@ -187,7 +187,7 @@
     <string name="button_manage_objective">Gestionează Obiectivul</string>
 
     <!-- layout -->
-    <string name="welcome_back_message">Bine ai revenit, Kate!</string>
+    <string name="welcome_back_message">Bine ai revenit!</string>
     <string name="action_add">Adaugă</string>
     <string name="action_request">Cere</string>
     <string name="action_send">Trimite</string>
@@ -270,7 +270,7 @@
 
     <string name="button_confirm">Confirmă</string>
     <string name="select_language_warning">Te rog, selectează o opțiune!</string>
-    <string name="select_language_title">Selectează Limba</string>
+    <string name="select_language_title">Selectează limba aplicației din meniul de mai jos:</string>
     <string name="language_updated">Limba a fost actualizată cu succes!</string>
     <string-array name="language_options">
         <item>Selectează o opțiune</item>
@@ -292,5 +292,10 @@
     <string name="logout_button">Deconectare</string>
     <string name="password_updated">Parola a fost actualizată cu succes!</string>
     <string name="edit_password_message">Acum poți edita parola.</string>
+
+    <string name="role_adolescent">Adolescent</string>
+    <string name="role_parent">Parent</string>
+
+    <string name="error_updating_password">Eroare la actualizarea parolei. Vă rugăm să încercați din nou.</string>
 
 </resources>

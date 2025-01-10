@@ -190,7 +190,7 @@
     <string name="button_manage_objective">Manage Objective</string>
 
     <!-- Layout -->
-    <string name="welcome_back_message">Welcome back, Kate!</string>
+    <string name="welcome_back_message">Welcome back!</string>
     <string name="action_add">Add</string>
     <string name="action_request">Request</string>
     <string name="action_send">Send</string>
@@ -295,5 +295,10 @@
     <string name="logout_button">Logout</string>
     <string name="password_updated">The password has been successfully updated!</string>
     <string name="edit_password_message">You can now edit the password.</string>
+
+    <string name="role_adolescent">Adolescent</string>
+    <string name="role_parent">Parent</string>
+
+    <string name="error_updating_password">Error updating password. Please try again.</string>
 
 </resources>

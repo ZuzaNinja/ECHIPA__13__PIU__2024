@@ -186,7 +186,7 @@
     <string name="button_manage_objective">Gestionar Objetivo</string>
 
     <!-- layout -->
-    <string name="welcome_back_message">¡Bienvenido de nuevo, Kate!</string>
+    <string name="welcome_back_message">¡Bienvenido de nuevo!</string>
     <string name="action_add">Agregar</string>
     <string name="action_request">Solicitar</string>
     <string name="action_send">Enviar</string>
@@ -291,5 +291,10 @@
     <string name="logout_button">Cerrar sesión</string>
     <string name="password_updated">¡La contraseña ha sido actualizada con éxito!</string>
     <string name="edit_password_message">Ahora puedes editar la contraseña.</string>
+
+    <string name="role_adolescent">Adolescent</string>
+    <string name="role_parent">Parent</string>
+
+    <string name="error_updating_password">Error al actualizar la contraseña. Por favor, inténtelo de nuevo.</string>
 
 </resources>

@@ -8,6 +8,7 @@ import android.text.InputType
 import android.widget.*
 import androidx.appcompat.app.AppCompatActivity
 import com.example.proiectpiu_managementfinanciar.R
+import com.example.proiectpiu_managementfinanciar.util.RegistrationList
 
 class MyAccountActivity : AppCompatActivity() {
 
@@ -62,30 +63,44 @@ class MyAccountActivity : AppCompatActivity() {
         val userEmail = sharedPreferences.getString("USER_EMAIL", "N/A")
         val userType = sharedPreferences.getString("USER_TYPE", "N/A")
         val phoneNumber = sharedPreferences.getString("USER_PHONE", "0000000000")
-        val password = sharedPreferences.getString("USER_PASSWORD", "******")
+        val storedPassword = sharedPreferences.getString("USER_PASSWORD", "******")
 
-        emailTextView.text = userEmail
-        usernameTextView.text = userType
-        phoneTextView.text = phoneNumber
-        passwordEditText.setText("*******")
+        val registeredUser = RegistrationList.findUserByEmailAndType(userEmail ?: "", storedPassword ?: "", userType ?: "")
 
-        if (userType == "Parent") {
+        if (registeredUser != null) {
+            emailTextView.text = registeredUser.email
+            usernameTextView.text = registeredUser.name
+            phoneTextView.text = registeredUser.phone
+            passwordEditText.setText("*******")
+        } else {
+            emailTextView.text = userEmail
+            usernameTextView.text = userType
+            phoneTextView.text = phoneNumber
+            passwordEditText.setText("*******")
+        }
+
+        if (userType?.trim() == getString(R.string.role_parent).trim()){
             profileImage.setImageResource(R.drawable.adults)
         } else {
             profileImage.setImageResource(R.drawable.teenagers)
         }
     }
 
+
+
     private fun setupListeners() {
         logoutButton.setOnClickListener {
             val sharedPreferences = getSharedPreferences("UserPrefs", MODE_PRIVATE)
             val editor = sharedPreferences.edit()
-            editor.clear()
+
+            editor.putBoolean("IS_LOGGED_IN", false)
             editor.apply()
+
             startActivity(Intent(this, StartActivity::class.java).apply {
                 flags = Intent.FLAG_ACTIVITY_NEW_TASK or Intent.FLAG_ACTIVITY_CLEAR_TASK
             })
         }
+
 
         togglePasswordButton.setOnClickListener {
             val sharedPreferences = getSharedPreferences("UserPrefs", MODE_PRIVATE)
@@ -99,7 +114,7 @@ class MyAccountActivity : AppCompatActivity() {
                 passwordEditText.setText("*******")
                 setPasswordMask(true)
                 togglePasswordButton.isEnabled = true
-            }, 3000)
+            }, 1000)
         }
 
         changePasswordButton.setOnClickListener {
@@ -116,22 +131,35 @@ class MyAccountActivity : AppCompatActivity() {
 
         savePasswordButton.setOnClickListener {
             val newPassword = passwordEditText.text.toString()
+            val sharedPreferences = getSharedPreferences("UserPrefs", MODE_PRIVATE)
+            val userEmail = sharedPreferences.getString("USER_EMAIL", "")
+            val userType = sharedPreferences.getString("USER_TYPE", "")
+
             if (newPassword.length >= 5) {
-                val sharedPreferences = getSharedPreferences("UserPrefs", MODE_PRIVATE)
-                val editor = sharedPreferences.edit()
-                editor.putString("USER_PASSWORD", newPassword)
-                editor.apply()
+                val passwordUpdated = RegistrationList.updateUserPassword(userEmail ?: "", newPassword, userType ?: "")
 
-                passwordEditText.isEnabled = false
-                passwordEditText.isFocusable = false
-                passwordEditText.isFocusableInTouchMode = false
-                passwordEditText.setText("*******")
-                setPasswordMask(true)
+                if (passwordUpdated) {
+                    val editor = sharedPreferences.edit()
+                    editor.putString("USER_PASSWORD", newPassword)
+                    editor.apply()
 
-                Toast.makeText(this, getString(R.string.password_updated), Toast.LENGTH_SHORT).show()
+                    passwordEditText.isEnabled = false
+                    passwordEditText.setText("*******")
+                    setPasswordMask(true)
+
+                    val updatedUser = RegistrationList.findUserByEmailAndType(userEmail ?: "", newPassword, userType ?: "")
+                    if (updatedUser != null) {
+                        Toast.makeText(this, getString(R.string.password_updated), Toast.LENGTH_SHORT).show()
+                    } else {
+                        Toast.makeText(this, getString(R.string.error_updating_password), Toast.LENGTH_SHORT).show()
+                    }
+                } else {
+                    Toast.makeText(this, getString(R.string.error_updating_password), Toast.LENGTH_SHORT).show()
+                }
             } else {
                 Toast.makeText(this, getString(R.string.password_minimum_length), Toast.LENGTH_SHORT).show()
             }
         }
+
     }
 }
