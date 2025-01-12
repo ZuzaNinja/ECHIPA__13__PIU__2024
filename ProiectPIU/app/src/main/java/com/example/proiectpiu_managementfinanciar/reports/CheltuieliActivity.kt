@@ -14,7 +14,6 @@ class CheltuieliActivity : AppCompatActivity() {
         setContentView(R.layout.activity_cheltuieli)
 
         val pieChartView = findViewById<CustomPieChart>(R.id.pieChartView)
-        val selectedSliceInfo = findViewById<TextView>(R.id.selectedSliceInfo)
         val budgets = BudgetManager.getAllBudgets()
         val colors = listOf(
             Color.parseColor("#F59227"), Color.parseColor("#F8BC79"),

@@ -9,6 +9,7 @@ import androidx.appcompat.app.AppCompatActivity
 import com.example.proiectpiu_managementfinanciar.R
 import com.example.proiectpiu_managementfinanciar.login.MyAccountActivity
 import com.example.proiectpiu_managementfinanciar.objective.ObjectiveStartPageActivityAdolescent
+import com.example.proiectpiu_managementfinanciar.reports.ReportsActivityTeen
 import com.example.proiectpiu_managementfinanciar.settings.NotificationActivityAdolescent
 
 class AdolescentDashboardActivity : AppCompatActivity(), View.OnClickListener {
@@ -53,7 +54,7 @@ class AdolescentDashboardActivity : AppCompatActivity(), View.OnClickListener {
                 Toast.makeText(this, getString(R.string.already_on_homepage), Toast.LENGTH_SHORT).show()
             }
             R.id.pusculitaButton -> {
-                Toast.makeText(this, getString(R.string.feature_in_development), Toast.LENGTH_SHORT).show()
+                startActivity(Intent(this, ReportsActivityTeen::class.java))
             }
             R.id.goalsButton -> {
                 startActivity(Intent(this, ObjectiveStartPageActivityAdolescent::class.java))

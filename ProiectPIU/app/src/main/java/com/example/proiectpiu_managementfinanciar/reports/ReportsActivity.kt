@@ -5,11 +5,7 @@ import android.os.Bundle
 import android.view.View
 import androidx.appcompat.app.AppCompatActivity
 import com.example.proiectpiu_managementfinanciar.R
-import com.example.proiectpiu_managementfinanciar.budget.MainBudgetActivity
-import com.example.proiectpiu_managementfinanciar.home_dashboard.ParentDashboardActivity
 import com.example.proiectpiu_managementfinanciar.login.MyAccountActivity
-import com.example.proiectpiu_managementfinanciar.objective.ObjectiveStartPageActivityAdult
-import com.example.proiectpiu_managementfinanciar.settings.SettingsStartActivity
 
 class ReportsActivity : AppCompatActivity() {
     override fun onCreate(savedInstanceState: Bundle?) {
