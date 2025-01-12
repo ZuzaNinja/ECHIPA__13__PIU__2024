@@ -97,6 +97,13 @@
             android:windowSoftInputMode="adjustPan"
             android:exported="false" />
 
+        <activity android:name=".reports.ReportsActivity"
+            android:exported="false" />
+
+        <activity
+            android:name=".reports.CheltuieliActivity"
+            android:exported="true" />
+
     </application>
 
 </manifest>

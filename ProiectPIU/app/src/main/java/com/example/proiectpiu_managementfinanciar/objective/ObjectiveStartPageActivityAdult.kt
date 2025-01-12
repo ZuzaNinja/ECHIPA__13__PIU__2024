@@ -11,6 +11,7 @@ import com.example.proiectpiu_managementfinanciar.R
 import com.example.proiectpiu_managementfinanciar.budget.MainBudgetActivity
 import com.example.proiectpiu_managementfinanciar.home_dashboard.ParentDashboardActivity
 import com.example.proiectpiu_managementfinanciar.login.MyAccountActivity
+import com.example.proiectpiu_managementfinanciar.reports.ReportsActivity
 import com.example.proiectpiu_managementfinanciar.settings.SettingsStartActivity
 
 class ObjectiveStartPageActivityAdult : AppCompatActivity(), View.OnClickListener {
@@ -81,9 +82,9 @@ class ObjectiveStartPageActivityAdult : AppCompatActivity(), View.OnClickListene
             R.id.goalsButton -> {
                 startActivity(Intent(this, ObjectiveStartPageActivityAdult::class.java))
             }
-            R.id.reportsButton -> {
-                Toast.makeText(this, getString(R.string.reports_in_progress), Toast.LENGTH_SHORT).show()
-            }
+            R.id.reportsButton ->
+                startActivity(Intent(this, ReportsActivity::class.java))
+
             R.id.settingsButton -> {
                 startActivity(Intent(this, SettingsStartActivity::class.java))
             }
