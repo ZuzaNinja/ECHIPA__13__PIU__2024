@@ -1,9 +1,8 @@
 <resources>
-    <string name="app_name">ProiectPIU_GestiónFinanciera</string>
 
     <!-- Mesaje pentru StartActivity -->
     <string name="welcome_message">Monitorea y planifica tu presupuesto</string>
-    <string name="sub_message">Sigue y mejora tus ingresos de forma segura y sin esfuerzo</string>
+    <string name="sub_message">Realice un seguimiento y mejore sus ingresos de forma segura y sin esfuerzo</string>
     <string name="start_button">Empecemos</string>
 
     <!-- Textul din SelectionActivity -->
@@ -296,5 +295,9 @@
     <string name="role_parent">Parent</string>
 
     <string name="error_updating_password">Error al actualizar la contraseña. Por favor, inténtelo de nuevo.</string>
+    <string name="calculeaza">Computador</string>
+    <string name="venit_lunar">Venidos lunaros</string>
+    <string name="introdu_venitul_lunar">Introdos lunaros venidos</string>
+    <string name="se_va_aplica_regula_50_30_20">Se aplicará la regla 50/30/20</string>
 
 </resources>

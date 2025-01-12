@@ -3,8 +3,14 @@ package com.example.proiectpiu_managementfinanciar.budget
 import android.content.Intent
 import android.graphics.Rect
 import android.os.Bundle
+import android.os.Handler
 import android.view.View
+import android.widget.EditText
 import android.widget.ImageButton
+import android.widget.Toast
+import android.widget.Button
+import android.widget.ImageView
+import android.widget.TextView
 import androidx.appcompat.app.AppCompatActivity
 import androidx.recyclerview.widget.LinearLayoutManager
 import androidx.recyclerview.widget.RecyclerView
@@ -23,46 +29,54 @@ class NewBudgetActivity : AppCompatActivity(), View.OnClickListener {
     private lateinit var goalsButton: View
     private lateinit var reportsButton: View
     private lateinit var settingsButton: View
+    private lateinit var nameTextEdit: EditText
+    private lateinit var amountTextEdit: EditText
+    private lateinit var saveButton: Button
+    private lateinit var adapter: BudgetListAdapter
+    private lateinit var cancelButton: Button
+    private lateinit var messageSection: View
+    private val budgetItems = mutableListOf<BudgetItem>()
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
-        setContentView(R.layout.budget_add_section) // Your main layout file
+        setContentView(R.layout.budget_add_section)
 
-        val addBudgetsButton : ImageButton = findViewById(R.id.add_section_button)
+        val addBudgetsButton: ImageButton = findViewById(R.id.add_section_button)
         addBudgetsButton.setOnClickListener {
             val intent = Intent(this, NewBudgetActivity::class.java)
             intent.flags = Intent.FLAG_ACTIVITY_NEW_TASK or Intent.FLAG_ACTIVITY_CLEAR_TASK
             startActivity(intent)
         }
 
-        val editBudgetsButton : ImageButton = findViewById(R.id.modify_section_button)
+        val editBudgetsButton: ImageButton = findViewById(R.id.modify_section_button)
         editBudgetsButton.setOnClickListener {
             val intent = Intent(this, ModifyBudgetsActivity::class.java)
             intent.flags = Intent.FLAG_ACTIVITY_NEW_TASK or Intent.FLAG_ACTIVITY_CLEAR_TASK
             startActivity(intent)
         }
 
-        val emergencyBudgetButton : ImageButton = findViewById(R.id.emergency_fund_button)
+        val emergencyBudgetButton: ImageButton = findViewById(R.id.emergency_fund_button)
         emergencyBudgetButton.setOnClickListener {
             val intent = Intent(this, EmergencyBudgetActivity::class.java)
             intent.flags = Intent.FLAG_ACTIVITY_NEW_TASK or Intent.FLAG_ACTIVITY_CLEAR_TASK
             startActivity(intent)
         }
 
-        // Initialize RecyclerView
         val recyclerView: RecyclerView = findViewById(R.id.budgets_recycler)
         recyclerView.layoutManager = LinearLayoutManager(this)
 
-        // Example data for the budget list
-        val budgetItems = listOf(
-            BudgetItem(getString(R.string.budget_groceries), 300),
-            BudgetItem(getString(R.string.budget_rent), 1200),
-            BudgetItem(getString(R.string.budget_utilities), 150)
+        adapter = BudgetListAdapter(budgetItems)
+        recyclerView.adapter = adapter
+
+        budgetItems.addAll(
+            listOf(
+                BudgetItem(getString(R.string.budget_groceries), 300),
+                BudgetItem(getString(R.string.budget_rent), 1200),
+                BudgetItem(getString(R.string.budget_utilities), 150)
+            )
         )
 
-        // Set adapter
-        val adapter = BudgetListAdapter(budgetItems)
-        recyclerView.adapter = adapter
+        adapter.notifyDataSetChanged()
 
         setKeyboardVisibilityListener()
 
@@ -72,6 +86,61 @@ class NewBudgetActivity : AppCompatActivity(), View.OnClickListener {
         goalsButton = findViewById(R.id.goalsButton)
         reportsButton = findViewById(R.id.reportsButton)
         settingsButton = findViewById(R.id.settingsButton)
+        nameTextEdit = findViewById(R.id.sectionName)
+        amountTextEdit = findViewById(R.id.sectionAmount)
+        saveButton = findViewById(R.id.save_button)
+        cancelButton = findViewById(R.id.cancel_button)
+        messageSection = findViewById(R.id.succes_section)
+
+        cancelButton.setOnClickListener{
+            amountTextEdit.text.clear()
+            nameTextEdit.text.clear()
+        }
+
+        saveButton.setOnClickListener {
+            val name = nameTextEdit.text.toString().trim()
+            val amountText = amountTextEdit.text.toString().trim()
+
+            if (name.isEmpty() || amountText.isEmpty()) {
+                messageSection.visibility = View.VISIBLE
+
+                val importantIcon : ImageView = findViewById(R.id.success_message_icon2)
+                importantIcon.visibility = View.VISIBLE
+
+                val whatEverText : TextView = findViewById(R.id.success_message2)
+                whatEverText.visibility = View.VISIBLE
+
+                Handler().postDelayed({
+                    messageSection.visibility = View.GONE
+                    importantIcon.visibility = View.GONE
+                    whatEverText.visibility = View.GONE
+                }, 2000)
+            }else{
+                messageSection.visibility = View.VISIBLE
+
+                val bell : ImageView = findViewById(R.id.success_message_icon)
+                bell.visibility = View.VISIBLE
+
+                val whatEverText2 : TextView = findViewById(R.id.success_message)
+                whatEverText2.visibility = View.VISIBLE
+                amountTextEdit.text.clear()
+
+                Handler().postDelayed({
+                    messageSection.visibility = View.GONE
+                    bell.visibility = View.GONE
+                    whatEverText2.visibility = View.GONE
+                }, 2000)
+            }
+
+            val amount = amountText.toIntOrNull() ?: return@setOnClickListener
+            val newBudgetItem = BudgetItem(name, amount)
+            budgetItems.add(newBudgetItem)
+
+            adapter.notifyItemInserted(budgetItems.size - 1)
+
+            nameTextEdit.text.clear()
+            amountTextEdit.text.clear()
+        }
 
         profile.setOnClickListener(this)
         homeButton.setOnClickListener(this)
@@ -79,7 +148,6 @@ class NewBudgetActivity : AppCompatActivity(), View.OnClickListener {
         goalsButton.setOnClickListener(this)
         reportsButton.setOnClickListener(this)
         settingsButton.setOnClickListener(this)
-
     }
 
     private fun setKeyboardVisibilityListener() {

@@ -1,5 +1,5 @@
 <resources>
-    <string name="app_name">ProiectPIU_ManagementFinanciar</string>
+    <string name="app_name" translatable="false">ProiectPIU_ManagementFinanciar</string>
 
     <!-- Mesaje pentru StartActivity -->
     <string name="welcome_message">Monitorizează și planifică bugetul</string>
@@ -54,6 +54,8 @@
     <string name="suma">Suma(RON)</string>
     <string name="salveaza">Salvează ✓</string>
     <string name="anuleaza">Anulează ✗</string>
+    <string name="calculeaza">Calculează</string>
+    <string name="venit_lunar">Venit lunar</string>
     <string name="add_section">Adaugă secțiune</string>
     <string name="modify_section">Modifică secțiune</string>
     <string name="fond_urgenta">Fond de urgență</string>
@@ -62,6 +64,7 @@
     <string name="rate">Rate</string>
     <string name="selecteaza_categorie">Selecteaza o categorie</string>
     <string name="modifica">Modifică</string>
+    <string name="plan_long_term">Planifică pe termen lung</string>
     <string name="noua_valoare_suma">Adaugă noua valoare a sumei!</string>
     <string name="sectiune_modificata">Secțiunea a fost modificată!</string>
     <string name="text_lung_bugete">Alocând o sumă dedicată pentru situații neprevăzute, precum reparații, cheltuieli medicale sau alte evenimente neaşteptate, vă asigurati că aveți resurse la îndemână fără a afecta alte obiective financiare. Stabilirea unui fond de urgență vă ajută să reduceți stresul şi să vă menţineţi controlul asupra finanţelor, indiferent de circumstanțe. Începeţi acum prin a adăuga o sumă, oricât de mică, pentru a construi o rezervă de siguranță!</string>
@@ -230,9 +233,6 @@
     <string name="security_label">Securitate</string>
     <string name="set_alert_label">Setează o alertă</string>
     <string name="change_language_label">Schimbă limba</string>
-
-    <string name="plan_long_term">Planifică pe termen lung</string>
-
     <string name="emergency_fund_text">Fond de urgență</string>
     <string name="info_text">Alocând o sumă dedicată pentru ...</string>
     <string name="fund_hint">Suma pentru fond</string>
@@ -297,5 +297,6 @@
     <string name="role_parent">Parent</string>
 
     <string name="error_updating_password">Eroare la actualizarea parolei. Vă rugăm să încercați din nou.</string>
-
+    <string name="introdu_venitul_lunar">Introdu venitul lunar</string>
+    <string name="se_va_aplica_regula_50_30_20">Se va aplica regula 50/30/20</string>
 </resources>

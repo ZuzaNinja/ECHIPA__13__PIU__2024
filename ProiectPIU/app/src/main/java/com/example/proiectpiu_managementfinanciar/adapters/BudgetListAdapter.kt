@@ -11,7 +11,6 @@ import com.example.proiectpiu_managementfinanciar.R
 class BudgetListAdapter(private val budgetList: List<BudgetItem>) :
     RecyclerView.Adapter<BudgetListAdapter.BudgetViewHolder>() {
 
-    // ViewHolder to represent a single item view
     class BudgetViewHolder(itemView: View) : RecyclerView.ViewHolder(itemView) {
         val nameTextView: TextView = itemView.findViewById(R.id.budget_item_name)
         val amountTextView: TextView = itemView.findViewById(R.id.budget_item_amount)

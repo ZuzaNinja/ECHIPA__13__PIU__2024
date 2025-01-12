@@ -1,6 +1,7 @@
 package com.example.proiectpiu_managementfinanciar.budget
 
 import android.content.Intent
+import android.graphics.Rect
 import android.os.Bundle
 import android.os.Handler
 import android.view.View
@@ -8,6 +9,7 @@ import android.widget.Button
 import android.widget.EditText
 import android.widget.ImageButton
 import android.widget.ImageView
+import android.widget.LinearLayout
 import android.widget.TextView
 import androidx.appcompat.app.AppCompatActivity
 import com.example.proiectpiu_managementfinanciar.R
@@ -16,21 +18,17 @@ import com.example.proiectpiu_managementfinanciar.login.MyAccountActivity
 import com.example.proiectpiu_managementfinanciar.objective.ObjectiveStartPageActivityAdult
 import com.example.proiectpiu_managementfinanciar.settings.SettingsStartActivity
 
-class ModifyBudgetsActivity : AppCompatActivity(), View.OnClickListener {
+class LongTermBudgetActivity : AppCompatActivity(), View.OnClickListener {
     private lateinit var profile: View
     private lateinit var homeButton: View
     private lateinit var budgetButton: View
     private lateinit var goalsButton: View
     private lateinit var reportsButton: View
-    private lateinit var saveButton: Button
     private lateinit var settingsButton: View
-    private lateinit var amountTextEdit: EditText
-    private lateinit var messageSection: View
-    private lateinit var cancelButton: Button
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
-        setContentView(R.layout.budget_modify_section)
+        setContentView(R.layout.budget_longterm)
 
         val addBudgetsButton : ImageButton = findViewById(R.id.add_section_button)
         addBudgetsButton.setOnClickListener {
@@ -53,48 +51,45 @@ class ModifyBudgetsActivity : AppCompatActivity(), View.OnClickListener {
             startActivity(intent)
         }
 
-        amountTextEdit = findViewById(R.id.sectionAmount)
-        saveButton = findViewById(R.id.save_button)
-        messageSection = findViewById(R.id.succes_section)
-        cancelButton = findViewById(R.id.cancel_button)
 
-        cancelButton.setOnClickListener{
-            amountTextEdit.text.clear()
-        }
+        val amountTextfield : EditText = findViewById(R.id.sectionAmount)
+        val computeButton : Button = findViewById(R.id.compute_button)
+        val notifSection : LinearLayout = findViewById(R.id.notif_section)
 
-        saveButton.setOnClickListener {
-            if (amountTextEdit.getText().toString().isEmpty()){
-                messageSection.visibility = View.VISIBLE
+        computeButton.setOnClickListener {
+            if (amountTextfield.getText().toString().isEmpty()){
+                notifSection.visibility = View.VISIBLE
 
-                val importantIcon : ImageView = findViewById(R.id.success_message_icon)
+                val importantIcon : ImageView = findViewById(R.id.important_icon)
                 importantIcon.visibility = View.VISIBLE
 
                 val whatEverText : TextView = findViewById(R.id.success_message)
                 whatEverText.visibility = View.VISIBLE
 
                 Handler().postDelayed({
-                    messageSection.visibility = View.GONE
+                    notifSection.visibility = View.GONE
                     importantIcon.visibility = View.GONE
                     whatEverText.visibility = View.GONE
                 }, 2000)
             }
             else{
-                messageSection.visibility = View.VISIBLE
+                notifSection.visibility = View.VISIBLE
 
-                val bell : ImageView = findViewById(R.id.success_message_icon2)
+                val bell : ImageView = findViewById(R.id.bell_icon)
                 bell.visibility = View.VISIBLE
 
                 val whatEverText2 : TextView = findViewById(R.id.success_message2)
                 whatEverText2.visibility = View.VISIBLE
-                amountTextEdit.text.clear()
 
                 Handler().postDelayed({
-                    messageSection.visibility = View.GONE
+                    notifSection.visibility = View.GONE
                     bell.visibility = View.GONE
                     whatEverText2.visibility = View.GONE
                 }, 2000)
             }
         }
+
+        setKeyboardVisibilityListener()
 
         profile = findViewById(R.id.profile)
         homeButton = findViewById(R.id.homeButton)
@@ -109,7 +104,28 @@ class ModifyBudgetsActivity : AppCompatActivity(), View.OnClickListener {
         goalsButton.setOnClickListener(this)
         reportsButton.setOnClickListener(this)
         settingsButton.setOnClickListener(this)
+    }
 
+    private fun setKeyboardVisibilityListener() {
+        val rootView = findViewById<View>(android.R.id.content)
+        val footerMenu = findViewById<View>(R.id.footer_menu)
+        val navigationMenu = findViewById<View>(R.id.navigationMenu)
+
+        rootView.viewTreeObserver.addOnGlobalLayoutListener {
+            val rect = Rect()
+            rootView.getWindowVisibleDisplayFrame(rect)
+
+            val screenHeight = rootView.rootView.height
+            val keypadHeight = screenHeight - rect.bottom
+
+            if (keypadHeight > screenHeight * 0.15) {
+                footerMenu.visibility = View.GONE
+                navigationMenu.visibility = View.GONE
+            } else {
+                footerMenu.visibility = View.VISIBLE
+                navigationMenu.visibility = View.VISIBLE
+            }
+        }
     }
 
     override fun onClick(v: View?) {

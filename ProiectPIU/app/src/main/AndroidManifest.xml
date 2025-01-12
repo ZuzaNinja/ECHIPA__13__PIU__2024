@@ -54,6 +54,10 @@
             android:name=".budget.EmergencyBudgetActivity"
             android:exported="false" />
 
+        <activity
+            android:name=".budget.LongTermBudgetActivity"
+            android:exported="false" />
+
         <activity android:name=".objective.ObjectiveStartPageActivityAdult"
             android:exported="false" />
 

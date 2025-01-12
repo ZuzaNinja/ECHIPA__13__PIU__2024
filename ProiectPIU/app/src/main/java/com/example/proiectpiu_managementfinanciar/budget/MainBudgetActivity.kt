@@ -4,6 +4,7 @@ import android.content.Intent
 import android.graphics.Rect
 import android.os.Bundle
 import android.view.View
+import android.widget.Button
 import android.widget.ImageButton
 import androidx.appcompat.app.AppCompatActivity
 import androidx.recyclerview.widget.LinearLayoutManager
@@ -23,10 +24,18 @@ class MainBudgetActivity : AppCompatActivity(), View.OnClickListener {
     private lateinit var goalsButton: View
     private lateinit var reportsButton: View
     private lateinit var settingsButton: View
+    private lateinit var planButton: View
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.budget_start_page)
+
+        val planButton : Button = findViewById(R.id.plan_button)
+        planButton.setOnClickListener {
+            val intent = Intent(this, LongTermBudgetActivity::class.java)
+            intent.flags = Intent.FLAG_ACTIVITY_NEW_TASK or Intent.FLAG_ACTIVITY_CLEAR_TASK
+            startActivity(intent)
+        }
 
         val addBudgetsButton : ImageButton = findViewById(R.id.add_section_button)
         addBudgetsButton.setOnClickListener {
