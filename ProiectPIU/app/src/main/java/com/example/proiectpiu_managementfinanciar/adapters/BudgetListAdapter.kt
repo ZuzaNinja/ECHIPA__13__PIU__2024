@@ -8,9 +8,8 @@ import androidx.recyclerview.widget.RecyclerView
 import com.example.proiectpiu_managementfinanciar.models.BudgetItem
 import com.example.proiectpiu_managementfinanciar.R
 
-class BudgetListAdapter(private val budgetList: List<BudgetItem>) :
+class BudgetListAdapter(private var budgets: MutableList<BudgetItem>) :
     RecyclerView.Adapter<BudgetListAdapter.BudgetViewHolder>() {
-
     class BudgetViewHolder(itemView: View) : RecyclerView.ViewHolder(itemView) {
         val nameTextView: TextView = itemView.findViewById(R.id.budget_item_name)
         val amountTextView: TextView = itemView.findViewById(R.id.budget_item_amount)
@@ -23,10 +22,17 @@ class BudgetListAdapter(private val budgetList: List<BudgetItem>) :
     }
 
     override fun onBindViewHolder(holder: BudgetViewHolder, position: Int) {
-        val budgetItem = budgetList[position]
+        val budgetItem = budgets[position]
         holder.nameTextView.text = budgetItem.name
-        holder.amountTextView.text = budgetItem.amount.toString()
+        holder.amountTextView.text = "${budgetItem.amount} lei"
     }
 
-    override fun getItemCount(): Int = budgetList.size
+    override fun getItemCount(): Int = budgets.size
+
+    // Metoda pentru actualizarea listei de bugete
+    fun updateData(newBudgets: List<BudgetItem>) {
+        budgets.clear() // Golește lista actuală
+        budgets.addAll(newBudgets) // Adaugă noile bugete
+        notifyDataSetChanged() // Actualizează interfața vizuală
+    }
 }

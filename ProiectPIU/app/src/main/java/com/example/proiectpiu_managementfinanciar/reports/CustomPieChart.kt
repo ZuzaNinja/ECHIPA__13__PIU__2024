@@ -15,12 +15,7 @@ class CustomPieChart @JvmOverloads constructor(
 
     private val paint = Paint(Paint.ANTI_ALIAS_FLAG)
     private val rectF = RectF()
-    private val data = listOf(
-        Triple(40f, Color.parseColor("#F59227"), "Facturi"),  // 40% Facturi
-        Triple(30f, Color.parseColor("#F8BC79"), "Alimente"), // 30% Alimente
-        Triple(20f, Color.parseColor("#FCDB80"), "Rate"),     // 20% Rate
-        Triple(10f, Color.parseColor("#D76A00"), "Altele")    // 10% Altele
-    )
+    private var data = listOf<Triple<Float, Int, String>>()
     private var selectedIndex: Int? = null
     private var onSliceSelected: ((Int, Triple<Float, Int, String>) -> Unit)? = null
 
@@ -57,6 +52,11 @@ class CustomPieChart @JvmOverloads constructor(
 
             startAngle += sweepAngle
         }
+    }
+
+    fun setData(newData: List<Triple<Float, Int, String>>) {
+        data = newData
+        invalidate()
     }
 
     override fun onTouchEvent(event: MotionEvent): Boolean {

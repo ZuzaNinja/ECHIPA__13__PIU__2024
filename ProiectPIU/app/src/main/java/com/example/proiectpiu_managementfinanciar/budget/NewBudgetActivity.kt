@@ -4,7 +4,10 @@ import android.content.Intent
 import android.graphics.Rect
 import android.os.Bundle
 import android.view.View
+import android.widget.Button
+import android.widget.EditText
 import android.widget.ImageButton
+import android.widget.Toast
 import androidx.appcompat.app.AppCompatActivity
 import androidx.recyclerview.widget.LinearLayoutManager
 import androidx.recyclerview.widget.RecyclerView
@@ -16,6 +19,7 @@ import com.example.proiectpiu_managementfinanciar.models.BudgetItem
 import com.example.proiectpiu_managementfinanciar.objective.ObjectiveStartPageActivityAdult
 import com.example.proiectpiu_managementfinanciar.reports.ReportsActivity
 import com.example.proiectpiu_managementfinanciar.settings.SettingsStartActivity
+import com.example.proiectpiu_managementfinanciar.util.BudgetManager
 
 class NewBudgetActivity : AppCompatActivity(), View.OnClickListener {
     private lateinit var profile: View
@@ -62,8 +66,28 @@ class NewBudgetActivity : AppCompatActivity(), View.OnClickListener {
         )
 
         // Set adapter
-        val adapter = BudgetListAdapter(budgetItems)
+        val adapter = BudgetListAdapter(budgetItems.toMutableList())
         recyclerView.adapter = adapter
+
+
+        val saveButton: Button = findViewById(R.id.save_button)
+        saveButton.setOnClickListener {
+            val sectionName = findViewById<EditText>(R.id.sectionName).text.toString()
+            val sectionAmount = findViewById<EditText>(R.id.sectionAmount).text.toString()
+
+            if (sectionName.isNotEmpty() && sectionAmount.isNotEmpty()) {
+                val newBudget = BudgetItem(sectionName, sectionAmount.toInt())
+                BudgetManager.addTemporaryBudget(newBudget)
+
+                // Reveniți la activitatea principală
+                val intent = Intent(this, MainBudgetActivity::class.java)
+                intent.flags = Intent.FLAG_ACTIVITY_NEW_TASK or Intent.FLAG_ACTIVITY_CLEAR_TASK
+                startActivity(intent)
+            } else {
+                Toast.makeText(this, "Completează toate câmpurile!", Toast.LENGTH_SHORT).show()
+            }
+        }
+
 
         setKeyboardVisibilityListener()
 

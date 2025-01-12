@@ -58,7 +58,20 @@
         android:textSize="24sp"
         android:textStyle="bold"
         android:textColor="@color/black" />
-    
+
+    <TextView
+        android:id="@+id/totalAmountText"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_below="@id/selectedSliceInfo"
+        android:layout_centerHorizontal="true"
+        android:layout_marginTop="16dp"
+        android:text="Total: 0 lei"
+        android:textSize="18sp"
+        android:textStyle="bold"
+        android:textColor="@color/black" />
+
+
 
     <!-- Grafic -->
     <com.example.proiectpiu_managementfinanciar.reports.CustomPieChart

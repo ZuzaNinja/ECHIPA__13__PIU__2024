@@ -16,6 +16,7 @@ import com.example.proiectpiu_managementfinanciar.home_dashboard.ParentDashboard
 import com.example.proiectpiu_managementfinanciar.login.MyAccountActivity
 import com.example.proiectpiu_managementfinanciar.objective.ObjectiveStartPageActivityAdult
 import com.example.proiectpiu_managementfinanciar.settings.SettingsStartActivity
+import com.example.proiectpiu_managementfinanciar.util.BudgetManager
 
 class MainBudgetActivity : AppCompatActivity(), View.OnClickListener {
     private lateinit var profile: View
@@ -24,34 +25,35 @@ class MainBudgetActivity : AppCompatActivity(), View.OnClickListener {
     private lateinit var goalsButton: View
     private lateinit var reportsButton: View
     private lateinit var settingsButton: View
-    private lateinit var planButton: View
+    private lateinit var adapter: BudgetListAdapter
+
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.budget_start_page)
 
-        val planButton : Button = findViewById(R.id.plan_button)
+        val planButton: Button = findViewById(R.id.plan_button)
         planButton.setOnClickListener {
             val intent = Intent(this, LongTermBudgetActivity::class.java)
             intent.flags = Intent.FLAG_ACTIVITY_NEW_TASK or Intent.FLAG_ACTIVITY_CLEAR_TASK
             startActivity(intent)
         }
 
-        val addBudgetsButton : ImageButton = findViewById(R.id.add_section_button)
+        val addBudgetsButton: ImageButton = findViewById(R.id.add_section_button)
         addBudgetsButton.setOnClickListener {
             val intent = Intent(this, NewBudgetActivity::class.java)
             intent.flags = Intent.FLAG_ACTIVITY_NEW_TASK or Intent.FLAG_ACTIVITY_CLEAR_TASK
             startActivity(intent)
         }
 
-        val editBudgetsButton : ImageButton = findViewById(R.id.modify_section_button)
+        val editBudgetsButton: ImageButton = findViewById(R.id.modify_section_button)
         editBudgetsButton.setOnClickListener {
             val intent = Intent(this, ModifyBudgetsActivity::class.java)
             intent.flags = Intent.FLAG_ACTIVITY_NEW_TASK or Intent.FLAG_ACTIVITY_CLEAR_TASK
             startActivity(intent)
         }
 
-        val emergencyBudgetButton : ImageButton = findViewById(R.id.emergency_fund_button)
+        val emergencyBudgetButton: ImageButton = findViewById(R.id.emergency_fund_button)
         emergencyBudgetButton.setOnClickListener {
             val intent = Intent(this, EmergencyBudgetActivity::class.java)
             intent.flags = Intent.FLAG_ACTIVITY_NEW_TASK or Intent.FLAG_ACTIVITY_CLEAR_TASK
@@ -61,14 +63,10 @@ class MainBudgetActivity : AppCompatActivity(), View.OnClickListener {
         val recyclerView: RecyclerView = findViewById(R.id.budgets_recycler)
         recyclerView.layoutManager = LinearLayoutManager(this)
 
-        val budgetItems = listOf(
-            BudgetItem("Groceries", 300),
-            BudgetItem("Rent", 1200),
-            BudgetItem("Utilities", 150)
-        )
 
-        val adapter = BudgetListAdapter(budgetItems)
+        adapter = BudgetListAdapter(BudgetManager.getAllBudgets())
         recyclerView.adapter = adapter
+
 
         setKeyboardVisibilityListener()
 
@@ -85,6 +83,10 @@ class MainBudgetActivity : AppCompatActivity(), View.OnClickListener {
         goalsButton.setOnClickListener(this)
         reportsButton.setOnClickListener(this)
         settingsButton.setOnClickListener(this)
+    }
+
+    fun refreshBudgetList() {
+        adapter.updateData(BudgetManager.getAllBudgets())
     }
 
     private fun setKeyboardVisibilityListener() {
