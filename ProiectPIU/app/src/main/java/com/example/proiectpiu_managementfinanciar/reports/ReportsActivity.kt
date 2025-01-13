@@ -17,6 +17,8 @@ class ReportsActivity : AppCompatActivity() {
         when (v?.id) {
             R.id.profile -> startActivity(Intent(this, MyAccountActivity::class.java))
             R.id.cheltuieliButton -> startActivity(Intent(this, CheltuieliActivity::class.java))
+            R.id.economiiButton -> startActivity(Intent(this, SavingsAdult::class.java))
+
         }
     }
 }

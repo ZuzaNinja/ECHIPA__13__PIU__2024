@@ -112,6 +112,14 @@
             android:name=".reports.ReportsActivityTeen"
             android:exported="true" />
 
+        <activity
+            android:name=".reports.SavingsAdult"
+            android:exported="true" />
+
+        <activity
+            android:name=".reports.SavingsTeen"
+            android:exported="true" />
+
     </application>
 
 </manifest>

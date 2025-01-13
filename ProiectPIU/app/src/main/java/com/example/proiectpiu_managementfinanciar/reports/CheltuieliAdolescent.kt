@@ -15,6 +15,7 @@ class CheltuieliAdolescent : AppCompatActivity() {
 
         val pieChartViewAdolescent = findViewById<CustomPieChart>(R.id.pieChartViewAdolescent)
         val selectedSliceInfoAdolescent = findViewById<TextView>(R.id.selectedSliceInfoAdolescent)
+        val totalAmountText = findViewById<TextView>(R.id.totalAmountText)
 
         // Date pentru cheltuielile adolescentului
         val adolescentBudgets = listOf(
@@ -24,6 +25,7 @@ class CheltuieliAdolescent : AppCompatActivity() {
             BudgetItem("Transport", 70)
         )
 
+        // Culori pentru grafic
         val colorsAdolescent = listOf(
             Color.parseColor("#F59227"),
             Color.parseColor("#F8BC79"),
@@ -31,6 +33,7 @@ class CheltuieliAdolescent : AppCompatActivity() {
             Color.parseColor("#D76A00")
         )
 
+        // Date pentru grafic
         val dataForChartAdolescent = adolescentBudgets.mapIndexed { index, budget ->
             Triple(budget.amount.toFloat(), colorsAdolescent[index % colorsAdolescent.size], budget.name)
         }
@@ -38,17 +41,23 @@ class CheltuieliAdolescent : AppCompatActivity() {
         // Configurare grafic
         pieChartViewAdolescent.setData(dataForChartAdolescent)
 
+        // Calculăm suma totală a cheltuielilor
+        val totalAmount = adolescentBudgets.sumOf { it.amount }
+        totalAmountText.text = "Total: $totalAmount lei"
+
         // Afișare detalii felie selectată
         pieChartViewAdolescent.setOnSliceSelectedListener { _, slice ->
-            val percentage = slice.first
+            val value = slice.first
             val color = slice.second
             val name = slice.third
+
+            val totalSum = dataForChartAdolescent.sumOf { it.first.toDouble() }
 
             selectedSliceInfoAdolescent.text = String.format(
                 "Categorie: %s\nSuma: %.0f lei\nProcent: %.1f%%",
                 name,
-                percentage,
-                (percentage / dataForChartAdolescent.sumOf { it.first.toDouble() }) * 100
+                value,
+                (value / totalSum) * 100
             )
             selectedSliceInfoAdolescent.setTextColor(color)
         }

@@ -7,7 +7,15 @@ import com.example.proiectpiu_managementfinanciar.models.Objective
 object ObjectiveManagerAdolescent {
     private val objectiveList: MutableList<Objective> = mutableListOf()
 
+    /**
+     * Inițializează lista de obiective pentru un utilizator adolescent.
+     * Această metodă trebuie apelată o singură dată la startul aplicației.
+     */
     fun initialize(context: Context) {
+        if (objectiveList.isNotEmpty()) {
+            println("ObjectiveManagerAdolescent: Already initialized. Skipping reinitialization.")
+            return
+        }
         objectiveList.clear()
         objectiveList.addAll(
             listOf(
@@ -16,11 +24,23 @@ object ObjectiveManagerAdolescent {
                 Objective(context.getString(R.string.objective_smartphone), 700.0, 1200.0, R.drawable.smartphone_icon4)
             )
         )
+        println("ObjectiveManagerAdolescent: Initialized successfully")
     }
 
     fun addObjective(objective: Objective) {
+        require(objective.sumaCurenta <= objective.sumaTotala) { "sumaCurenta nu poate fi mai mare decât sumaTotala" }
         objectiveList.add(objective)
     }
 
-    fun getObjectives(): List<Objective> = objectiveList
+    fun getObjectives(): List<Objective> {
+        if (objectiveList.isEmpty()) {
+            println("ObjectiveManagerAdolescent: List is empty. Did you call initialize(context)?")
+        }
+        return objectiveList
+    }
+
+    fun resetObjectives() {
+        objectiveList.clear()
+        println("ObjectiveManagerAdolescent: List has been reset")
+    }
 }

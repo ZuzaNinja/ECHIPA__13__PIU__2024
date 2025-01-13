@@ -15,13 +15,13 @@ class ReportsActivityTeen : AppCompatActivity() {
     fun onClick(v: View?) {
         when (v?.id) {
             R.id.bani_economisiti_section -> {
-                val intent = Intent(this, CheltuieliAdolescent::class.java)
+                val intent = Intent(this, SavingsTeen::class.java)
                 startActivity(intent)
             }
-//            R.id.cheltuieli_section -> {
-//                val intent = Intent(this, CheltuieliActivity::class.java)
-//                startActivity(intent)
-//            }
+            R.id.cheltuieli_section -> {
+                val intent = Intent(this, CheltuieliAdolescent::class.java)
+               startActivity(intent)
+           }
         }
     }
 }
