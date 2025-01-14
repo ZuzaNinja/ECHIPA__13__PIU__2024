@@ -16,6 +16,7 @@ import com.example.proiectpiu_managementfinanciar.models.Objective
 import com.example.proiectpiu_managementfinanciar.settings.NotificationActivityAdolescent
 import com.example.proiectpiu_managementfinanciar.util.NotificationManagerAdolescent
 import com.example.proiectpiu_managementfinanciar.util.ObjectiveManagerAdolescent
+import com.example.proiectpiu_managementfinanciar.reports.ReportsActivityTeen
 
 class AddObjectiveActivityAdolescent : AppCompatActivity(), View.OnClickListener {
 
@@ -155,7 +156,7 @@ class AddObjectiveActivityAdolescent : AppCompatActivity(), View.OnClickListener
                 startActivity(Intent(this, AdolescentDashboardActivity::class.java))
             }
             R.id.pusculitaButton -> {
-                Toast.makeText(this, getString(R.string.piggy_bank_not_ready), Toast.LENGTH_SHORT).show()
+                startActivity(Intent(this, ReportsActivityTeen::class.java))
             }
             R.id.goalsButton -> {
                 startActivity(Intent(this, ObjectiveStartPageActivityAdolescent::class.java))

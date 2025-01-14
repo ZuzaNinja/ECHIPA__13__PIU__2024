@@ -14,6 +14,7 @@ import com.example.proiectpiu_managementfinanciar.R
 import com.example.proiectpiu_managementfinanciar.home_dashboard.ParentDashboardActivity
 import com.example.proiectpiu_managementfinanciar.login.MyAccountActivity
 import com.example.proiectpiu_managementfinanciar.objective.ObjectiveStartPageActivityAdult
+import com.example.proiectpiu_managementfinanciar.reports.ReportsActivity
 import com.example.proiectpiu_managementfinanciar.settings.SettingsStartActivity
 
 class ModifyBudgetsActivity : AppCompatActivity(), View.OnClickListener {
@@ -115,7 +116,7 @@ class ModifyBudgetsActivity : AppCompatActivity(), View.OnClickListener {
     override fun onClick(v: View?) {
         when (v?.id) {
             R.id.adolescentButton -> {
-                //val intent = Intent(this, ContAdolescentActivity::class.java)
+                //todo
                 startActivity(intent)
             }
             R.id.homeButton -> {
@@ -131,7 +132,7 @@ class ModifyBudgetsActivity : AppCompatActivity(), View.OnClickListener {
                 startActivity(intent)
             }
             R.id.reportsButton -> {
-                //val intent = Intent(this, ReportsActivity::class.java)
+                val intent = Intent(this, ReportsActivity::class.java)
                 startActivity(intent)
             }
             R.id.settingsButton -> {

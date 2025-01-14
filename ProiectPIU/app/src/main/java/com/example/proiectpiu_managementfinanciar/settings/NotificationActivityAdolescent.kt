@@ -12,6 +12,7 @@ import com.example.proiectpiu_managementfinanciar.adapters.NotificationAdapterAd
 import com.example.proiectpiu_managementfinanciar.home_dashboard.AdolescentDashboardActivity
 import com.example.proiectpiu_managementfinanciar.objective.ObjectiveStartPageActivityAdolescent
 import com.example.proiectpiu_managementfinanciar.util.NotificationManagerAdolescent
+import com.example.proiectpiu_managementfinanciar.reports.ReportsActivityTeen
 
 class NotificationActivityAdolescent : AppCompatActivity(), View.OnClickListener {
 
@@ -62,7 +63,7 @@ class NotificationActivityAdolescent : AppCompatActivity(), View.OnClickListener
                 startActivity(Intent(this, AdolescentDashboardActivity::class.java))
             }
             R.id.pusculitaButton -> {
-                Toast.makeText(this, getString(R.string.pusculita_in_progress), Toast.LENGTH_SHORT).show()
+                startActivity(Intent(this, ReportsActivityTeen::class.java))
             }
             R.id.goalsButton -> {
                 startActivity(Intent(this, ObjectiveStartPageActivityAdolescent::class.java))

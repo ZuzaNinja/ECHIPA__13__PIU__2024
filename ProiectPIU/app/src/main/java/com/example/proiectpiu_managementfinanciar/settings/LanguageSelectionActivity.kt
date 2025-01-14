@@ -10,6 +10,7 @@ import com.example.proiectpiu_managementfinanciar.R
 import com.example.proiectpiu_managementfinanciar.budget.MainBudgetActivity
 import com.example.proiectpiu_managementfinanciar.home_dashboard.ParentDashboardActivity
 import com.example.proiectpiu_managementfinanciar.objective.ObjectiveStartPageActivityAdult
+import com.example.proiectpiu_managementfinanciar.reports.ReportsActivity
 import java.util.*
 
 class LanguageSelectionActivity : AppCompatActivity(), View.OnClickListener {
@@ -87,7 +88,7 @@ class LanguageSelectionActivity : AppCompatActivity(), View.OnClickListener {
             R.id.homeButton -> startActivity(Intent(this, ParentDashboardActivity::class.java))
             R.id.budgetButton -> startActivity(Intent(this, MainBudgetActivity::class.java))
             R.id.goalsButton -> startActivity(Intent(this, ObjectiveStartPageActivityAdult::class.java))
-            R.id.reportsButton -> Toast.makeText(this, getString(R.string.reports_in_progress), Toast.LENGTH_SHORT).show()
+            R.id.reportsButton -> startActivity(Intent(this, ReportsActivity::class.java))
             R.id.settingsButton -> startActivity(Intent(this, SettingsStartActivity::class.java))
             else -> Toast.makeText(this, getString(R.string.unknown_action), Toast.LENGTH_SHORT).show()
         }

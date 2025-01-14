@@ -19,7 +19,7 @@ import com.example.proiectpiu_managementfinanciar.util.ObjectiveManagerAdolescen
 import com.example.proiectpiu_managementfinanciar.home_dashboard.AdolescentDashboardActivity
 import com.example.proiectpiu_managementfinanciar.login.MyAccountActivity
 import com.example.proiectpiu_managementfinanciar.settings.NotificationActivityAdolescent
-
+import com.example.proiectpiu_managementfinanciar.reports.ReportsActivityTeen
 class ObjectiveStartPageActivityAdolescent : AppCompatActivity(), View.OnClickListener {
 
     private lateinit var recyclerView: RecyclerView
@@ -124,7 +124,7 @@ class ObjectiveStartPageActivityAdolescent : AppCompatActivity(), View.OnClickLi
                 startActivity(Intent(this, AdolescentDashboardActivity::class.java))
             }
             R.id.pusculitaButton -> {
-                Toast.makeText(this, getString(R.string.piggy_bank_not_ready), Toast.LENGTH_SHORT).show()
+                startActivity(Intent(this, ReportsActivityTeen::class.java))
             }
             R.id.goalsButton -> {
                 startActivity(Intent(this, ObjectiveStartPageActivityAdolescent::class.java))

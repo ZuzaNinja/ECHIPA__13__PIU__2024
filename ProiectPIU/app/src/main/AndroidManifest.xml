@@ -120,6 +120,10 @@
             android:name=".reports.SavingsTeen"
             android:exported="true" />
 
+        <activity
+            android:name=".reports.ComparareActivity"
+            android:exported="true" />
+
     </application>
 
 </manifest>

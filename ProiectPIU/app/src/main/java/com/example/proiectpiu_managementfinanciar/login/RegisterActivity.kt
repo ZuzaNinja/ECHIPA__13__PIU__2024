@@ -189,8 +189,6 @@ class RegisterActivity : AppCompatActivity() {
         return true
     }
 
-
-
     private fun showMessage(textView: TextView, message: String) {
         textView.text = message
         textView.visibility = View.VISIBLE

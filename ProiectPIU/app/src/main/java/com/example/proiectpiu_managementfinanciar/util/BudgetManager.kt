@@ -3,7 +3,7 @@ package com.example.proiectpiu_managementfinanciar.util
 import com.example.proiectpiu_managementfinanciar.models.BudgetItem
 
 object BudgetManager {
-    private val temporaryBudgets = mutableListOf<BudgetItem>() // Lista temporară
+    private val temporaryBudgets = mutableListOf<BudgetItem>()
 
     private val predefinedBudgets = listOf(
         BudgetItem("Groceries", 300),
@@ -20,19 +20,12 @@ object BudgetManager {
         }
     }
 
-
-
     fun getAllBudgets(): MutableList<BudgetItem> {
         return (predefinedBudgets + temporaryBudgets).toMutableList()
     }
 
-
     fun getTotalAmount(): Int {
         return getAllBudgets().sumOf { it.amount }
-    }
-
-    fun clearTemporaryBudgets() {
-        temporaryBudgets.clear()
     }
 
 

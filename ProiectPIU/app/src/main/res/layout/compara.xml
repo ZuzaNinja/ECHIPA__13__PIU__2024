@@ -30,7 +30,6 @@
         android:src="@drawable/female_avatar"
         android:onClick="onClick" />
 
-
     <RelativeLayout
         android:id="@+id/walletSection"
         android:layout_width="35dp"
@@ -47,6 +46,7 @@
             android:src="@drawable/black_wallet" />
     </RelativeLayout>
 
+    <!-- Titlu -->
     <TextView
         android:id="@+id/chartTitle"
         android:layout_width="wrap_content"
@@ -54,47 +54,56 @@
         android:layout_centerHorizontal="true"
         android:layout_below="@id/headerShape"
         android:layout_marginTop="16dp"
-        android:text="Cheltuieli"
+        android:text="Comparare"
         android:textSize="24sp"
         android:textStyle="bold"
         android:textColor="@color/black" />
 
+    <!-- Combo Box pentru selecția lunii -->
+    <Spinner
+        android:id="@+id/monthSpinner"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_below="@id/chartTitle"
+        android:layout_marginTop="16dp"
+        android:layout_centerHorizontal="true"
+        android:entries="@array/months_array" />
+
+    <!-- Totalul pentru lună -->
     <TextView
         android:id="@+id/totalAmountText"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_below="@id/selectedSliceInfo"
-        android:layout_centerHorizontal="true"
+        android:layout_below="@id/monthSpinner"
         android:layout_marginTop="16dp"
+        android:layout_centerHorizontal="true"
         android:text="Total: 0 lei"
         android:textSize="18sp"
         android:textStyle="bold"
         android:textColor="@color/black" />
 
-
-
-    <!-- Grafic -->
+    <!-- Pie Chart -->
     <com.example.proiectpiu_managementfinanciar.reports.CustomPieChart
-        android:id="@+id/pieChartView"
+        android:id="@+id/comparisonPieChart"
         android:layout_width="300dp"
         android:layout_height="300dp"
-        android:layout_below="@id/chartTitle"
-        android:layout_centerHorizontal="true"
-        android:layout_marginTop="16dp" />
+        android:layout_below="@id/totalAmountText"
+        android:layout_marginTop="16dp"
+        android:layout_centerHorizontal="true" />
 
     <!-- Informații felie selectată -->
     <TextView
         android:id="@+id/selectedSliceInfo"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_below="@id/pieChartView"
-        android:layout_centerHorizontal="true"
+        android:layout_below="@id/comparisonPieChart"
         android:layout_marginTop="16dp"
+        android:layout_centerHorizontal="true"
         android:text=""
         android:textSize="16sp"
         android:textColor="@color/black" />
 
-    <!--Footer Nav Bar-->
+    <!-- Footer Nav Bar -->
     <LinearLayout
         android:id="@+id/navigationMenu"
         android:layout_width="match_parent"

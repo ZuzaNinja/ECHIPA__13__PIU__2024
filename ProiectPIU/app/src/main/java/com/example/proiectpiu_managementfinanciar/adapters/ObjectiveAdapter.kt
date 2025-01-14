@@ -37,7 +37,6 @@ class ObjectiveAdapter(private var objectives: List<Objective>) :
         holder.objectiveTitle.text = objective.denumire
         holder.objectiveAmount.text = "${objective.sumaCurenta} RON / ${objective.sumaTotala} RON"
 
-        // Calculare procentaj progres
         val progressPercentage = if (objective.sumaTotala > 0) {
             (objective.sumaCurenta / objective.sumaTotala * 100).toInt()
         } else {
@@ -47,7 +46,7 @@ class ObjectiveAdapter(private var objectives: List<Objective>) :
 
         when {
             objective.iconita != 0 -> holder.objectiveIcon.setImageResource(objective.iconita)
-            else -> holder.objectiveIcon.setImageResource(R.drawable.object_icon) // Default icon
+            else -> holder.objectiveIcon.setImageResource(R.drawable.object_icon)
         }
 
 

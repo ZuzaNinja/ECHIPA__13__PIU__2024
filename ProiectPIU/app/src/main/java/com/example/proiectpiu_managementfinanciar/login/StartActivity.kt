@@ -31,7 +31,6 @@ class StartActivity : AppCompatActivity(), View.OnClickListener {
         if (p0.id == R.id.start_button) {
             val intent = Intent(this, SelectionActivity::class.java)
             startActivity(intent)
-            //finish()
         }
     }
 }

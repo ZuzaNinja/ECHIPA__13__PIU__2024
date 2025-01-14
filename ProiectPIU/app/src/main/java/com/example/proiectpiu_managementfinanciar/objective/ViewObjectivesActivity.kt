@@ -18,6 +18,7 @@ import com.example.proiectpiu_managementfinanciar.budget.MainBudgetActivity
 import com.example.proiectpiu_managementfinanciar.home_dashboard.ParentDashboardActivity
 import com.example.proiectpiu_managementfinanciar.login.MyAccountActivity
 import com.example.proiectpiu_managementfinanciar.models.Notification
+import com.example.proiectpiu_managementfinanciar.reports.ReportsActivity
 import com.example.proiectpiu_managementfinanciar.settings.SettingsStartActivity
 import com.example.proiectpiu_managementfinanciar.util.NotificationManager
 import com.example.proiectpiu_managementfinanciar.util.ObjectiveManager
@@ -129,7 +130,6 @@ class ViewObjectivesActivity : AppCompatActivity(), View.OnClickListener {
 
             val sumaAdaugata = sumaInput.text.toString().toDoubleOrNull()
 
-            // Resetare mesaje
             errorMessage1.visibility = View.GONE
             errorMessage2.visibility = View.GONE
             successMessage.visibility = View.GONE
@@ -192,8 +192,6 @@ class ViewObjectivesActivity : AppCompatActivity(), View.OnClickListener {
             manageObjectiveButton.visibility = View.VISIBLE
             adapter.unlockSelection()
         }
-
-
     }
 
     override fun onClick(view: View?) {
@@ -208,7 +206,7 @@ class ViewObjectivesActivity : AppCompatActivity(), View.OnClickListener {
                 startActivity(Intent(this, ObjectiveStartPageActivityAdult::class.java))
             }
             R.id.reportsButton -> {
-                Toast.makeText(this, getString(R.string.reports_in_progress), Toast.LENGTH_SHORT).show()
+                startActivity(Intent(this, ReportsActivity::class.java))
             }
             R.id.settingsButton -> {
                 startActivity(Intent(this, SettingsStartActivity::class.java))

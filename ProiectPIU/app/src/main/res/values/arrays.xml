@@ -8,4 +8,11 @@
         <item android:background="@drawable/rounded_edittext">Meditatii</item>
         <item android:background="@drawable/rounded_edittext">Inca ceva</item>
     </string-array>
+
+    <string-array name="months_array">
+        <item>Noiembrie</item>
+        <item>Decembrie</item>
+        <item>Ianuarie</item>
+    </string-array>
+
 </resources>

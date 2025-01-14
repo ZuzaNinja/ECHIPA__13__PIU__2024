@@ -1,11 +1,17 @@
 package com.example.proiectpiu_managementfinanciar.reports
 
+import android.content.Intent
 import android.graphics.Color
 import android.os.Bundle
+import android.view.View
 import android.widget.TextView
+import android.widget.Toast
 import androidx.appcompat.app.AppCompatActivity
 import com.example.proiectpiu_managementfinanciar.R
+import com.example.proiectpiu_managementfinanciar.home_dashboard.AdolescentDashboardActivity
+import com.example.proiectpiu_managementfinanciar.login.MyAccountActivity
 import com.example.proiectpiu_managementfinanciar.models.BudgetItem
+import com.example.proiectpiu_managementfinanciar.objective.ObjectiveStartPageActivityAdolescent
 
 class CheltuieliAdolescent : AppCompatActivity() {
 
@@ -17,7 +23,6 @@ class CheltuieliAdolescent : AppCompatActivity() {
         val selectedSliceInfoAdolescent = findViewById<TextView>(R.id.selectedSliceInfoAdolescent)
         val totalAmountText = findViewById<TextView>(R.id.totalAmountText)
 
-        // Date pentru cheltuielile adolescentului
         val adolescentBudgets = listOf(
             BudgetItem("Mâncare", 150),
             BudgetItem("Haine", 100),
@@ -25,7 +30,6 @@ class CheltuieliAdolescent : AppCompatActivity() {
             BudgetItem("Transport", 70)
         )
 
-        // Culori pentru grafic
         val colorsAdolescent = listOf(
             Color.parseColor("#F59227"),
             Color.parseColor("#F8BC79"),
@@ -33,19 +37,15 @@ class CheltuieliAdolescent : AppCompatActivity() {
             Color.parseColor("#D76A00")
         )
 
-        // Date pentru grafic
         val dataForChartAdolescent = adolescentBudgets.mapIndexed { index, budget ->
             Triple(budget.amount.toFloat(), colorsAdolescent[index % colorsAdolescent.size], budget.name)
         }
 
-        // Configurare grafic
         pieChartViewAdolescent.setData(dataForChartAdolescent)
 
-        // Calculăm suma totală a cheltuielilor
         val totalAmount = adolescentBudgets.sumOf { it.amount }
         totalAmountText.text = "Total: $totalAmount lei"
 
-        // Afișare detalii felie selectată
         pieChartViewAdolescent.setOnSliceSelectedListener { _, slice ->
             val value = slice.first
             val color = slice.second
@@ -60,6 +60,26 @@ class CheltuieliAdolescent : AppCompatActivity() {
                 (value / totalSum) * 100
             )
             selectedSliceInfoAdolescent.setTextColor(color)
+        }
+    }
+
+    fun onClick(view: View?) {
+        when (view?.id) {
+            R.id.homeButton -> {
+                startActivity(Intent(this, AdolescentDashboardActivity::class.java))
+            }
+            R.id.pusculitaButton -> {
+                startActivity(Intent(this, ReportsActivityTeen::class.java))
+            }
+            R.id.goalsButton -> {
+                startActivity(Intent(this, ObjectiveStartPageActivityAdolescent::class.java))
+            }
+            R.id.learnButton -> {
+                Toast.makeText(this, getString(R.string.feature_in_development), Toast.LENGTH_SHORT).show()
+            }
+            R.id.profile_section -> {
+                startActivity(Intent(this, MyAccountActivity::class.java))
+            }
         }
     }
 }

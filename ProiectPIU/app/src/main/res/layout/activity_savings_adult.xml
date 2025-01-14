@@ -111,7 +111,7 @@
             android:layout_weight="1"
             android:gravity="center"
             android:orientation="vertical"
-            android:onClick="onNavigationClick">
+            android:onClick="onClick">
 
             <ImageView
                 android:layout_width="24dp"
@@ -133,7 +133,7 @@
             android:layout_weight="1"
             android:gravity="center"
             android:orientation="vertical"
-            android:onClick="onNavigationClick">
+            android:onClick="onClick">
 
             <ImageView
                 android:layout_width="24dp"
@@ -155,7 +155,7 @@
             android:layout_weight="1"
             android:gravity="center"
             android:orientation="vertical"
-            android:onClick="onNavigationClick">
+            android:onClick="onClick">
 
             <ImageView
                 android:layout_width="24dp"
@@ -177,7 +177,7 @@
             android:layout_weight="1"
             android:gravity="center"
             android:orientation="vertical"
-            android:onClick="onNavigationClick">
+            android:onClick="onClick">
 
             <ImageView
                 android:layout_width="24dp"
@@ -199,7 +199,7 @@
             android:layout_weight="1"
             android:gravity="center"
             android:orientation="vertical"
-            android:onClick="onNavigationClick">
+            android:onClick="onClick">
 
             <ImageView
                 android:layout_width="24dp"

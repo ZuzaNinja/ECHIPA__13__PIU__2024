@@ -11,10 +11,10 @@ import androidx.recyclerview.widget.LinearLayoutManager
 import androidx.recyclerview.widget.RecyclerView
 import com.example.proiectpiu_managementfinanciar.R
 import com.example.proiectpiu_managementfinanciar.adapters.BudgetListAdapter
-import com.example.proiectpiu_managementfinanciar.models.BudgetItem
 import com.example.proiectpiu_managementfinanciar.home_dashboard.ParentDashboardActivity
 import com.example.proiectpiu_managementfinanciar.login.MyAccountActivity
 import com.example.proiectpiu_managementfinanciar.objective.ObjectiveStartPageActivityAdult
+import com.example.proiectpiu_managementfinanciar.reports.ReportsActivity
 import com.example.proiectpiu_managementfinanciar.settings.SettingsStartActivity
 import com.example.proiectpiu_managementfinanciar.util.BudgetManager
 
@@ -85,10 +85,6 @@ class MainBudgetActivity : AppCompatActivity(), View.OnClickListener {
         settingsButton.setOnClickListener(this)
     }
 
-    fun refreshBudgetList() {
-        adapter.updateData(BudgetManager.getAllBudgets())
-    }
-
     private fun setKeyboardVisibilityListener() {
         val rootView = findViewById<View>(android.R.id.content)
         val footerMenu = findViewById<View>(R.id.footer_menu)
@@ -114,7 +110,7 @@ class MainBudgetActivity : AppCompatActivity(), View.OnClickListener {
     override fun onClick(v: View?) {
         when (v?.id) {
             R.id.adolescentButton -> {
-                //val intent = Intent(this, ContAdolescentActivity::class.java)
+                //todo
                 startActivity(intent)
             }
             R.id.homeButton -> {
@@ -130,7 +126,7 @@ class MainBudgetActivity : AppCompatActivity(), View.OnClickListener {
                 startActivity(intent)
             }
             R.id.reportsButton -> {
-                //val intent = Intent(this, ReportsActivity::class.java)
+                val intent = Intent(this, ReportsActivity::class.java)
                 startActivity(intent)
             }
             R.id.settingsButton -> {

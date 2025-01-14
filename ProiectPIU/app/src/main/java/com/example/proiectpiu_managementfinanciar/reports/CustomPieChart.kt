@@ -26,7 +26,6 @@ class CustomPieChart @JvmOverloads constructor(
     override fun onDraw(canvas: Canvas) {
         super.onDraw(canvas)
 
-        // Calculăm suma totală a valorilor
         val total = data.sumOf { it.first.toDouble() }.toFloat()
         var startAngle = 0f
 
@@ -41,7 +40,6 @@ class CustomPieChart @JvmOverloads constructor(
             val sweepAngle = (value / total) * 360f
             paint.color = color
 
-            // Evidențierea feliei selectate
             if (selectedIndex == index) {
                 paint.setShadowLayer(15f, 0f, 0f, Color.BLACK)
                 canvas.drawArc(rectF, startAngle, sweepAngle, true, paint)
@@ -64,10 +62,9 @@ class CustomPieChart @JvmOverloads constructor(
             val x = event.x - width / 2
             val y = event.y - height / 2
 
-            // Calcul unghi relativ față de centrul graficului
             var angle = Math.toDegrees(Math.atan2(y.toDouble(), x.toDouble()))
             if (angle < 0) {
-                angle += 360 // Transformăm unghiul în intervalul [0, 360]
+                angle += 360
             }
 
             val total = data.sumOf { it.first.toDouble() }.toFloat()
@@ -76,10 +73,9 @@ class CustomPieChart @JvmOverloads constructor(
             data.forEachIndexed { index, (value, _, _) ->
                 val sweepAngle = (value / total) * 360f
 
-                // Verificăm dacă unghiul calculat este în interiorul feliei curente
                 if (angle >= startAngle && angle < startAngle + sweepAngle) {
                     selectedIndex = index
-                    invalidate() // Re-randăm graficul pentru evidențierea feliei selectate
+                    invalidate()
                     onSliceSelected?.invoke(index, data[index])
                     return true
                 }

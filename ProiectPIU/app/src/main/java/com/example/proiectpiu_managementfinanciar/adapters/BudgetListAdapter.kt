@@ -28,11 +28,4 @@ class BudgetListAdapter(private var budgets: MutableList<BudgetItem>) :
     }
 
     override fun getItemCount(): Int = budgets.size
-
-    // Metoda pentru actualizarea listei de bugete
-    fun updateData(newBudgets: List<BudgetItem>) {
-        budgets.clear() // Golește lista actuală
-        budgets.addAll(newBudgets) // Adaugă noile bugete
-        notifyDataSetChanged() // Actualizează interfața vizuală
     }
-}

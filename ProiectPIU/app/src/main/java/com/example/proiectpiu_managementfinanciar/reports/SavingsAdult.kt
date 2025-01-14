@@ -1,11 +1,18 @@
 package com.example.proiectpiu_managementfinanciar.reports
 
+import android.content.Intent
 import android.graphics.Color
 import android.os.Bundle
 import android.util.Log
+import android.view.View
 import android.widget.TextView
 import androidx.appcompat.app.AppCompatActivity
 import com.example.proiectpiu_managementfinanciar.R
+import com.example.proiectpiu_managementfinanciar.budget.MainBudgetActivity
+import com.example.proiectpiu_managementfinanciar.home_dashboard.ParentDashboardActivity
+import com.example.proiectpiu_managementfinanciar.login.MyAccountActivity
+import com.example.proiectpiu_managementfinanciar.objective.ObjectiveStartPageActivityAdult
+import com.example.proiectpiu_managementfinanciar.settings.SettingsStartActivity
 import com.example.proiectpiu_managementfinanciar.util.ObjectiveManager
 
 class SavingsAdult : AppCompatActivity() {
@@ -14,14 +21,12 @@ class SavingsAdult : AppCompatActivity() {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_savings_adult)
 
-        // Inițializăm ObjectiveManager
         ObjectiveManager.init(this)
 
         val pieChartView = findViewById<CustomPieChart>(R.id.pieChartView)
         val selectedSliceInfo = findViewById<TextView>(R.id.selectedSliceInfo)
         val totalAmountText = findViewById<TextView>(R.id.totalAmountText)
 
-        // Preluăm obiectivele
         val objectives = ObjectiveManager.getObjectives()
         Log.d("SavingsAdult", "Objectives: $objectives")
 
@@ -30,18 +35,17 @@ class SavingsAdult : AppCompatActivity() {
             return
         }
 
-        // Culorile pentru grafic
-// Culorile pentru grafic
+
         val colors = listOf(
-            Color.parseColor("#FF9966"), // atomic_tangerine
-            Color.parseColor("#FE6F5E"), // bittersweet_orange
-            Color.parseColor("#e24c00"), // bright_orange
-            Color.parseColor("#E6812F"), // cadmium_orange
-            Color.parseColor("#FAB972"), // calm_orange
-            Color.parseColor("#FF7F50"), // coral
-            Color.parseColor("#e9967a"), // dark_salmon
-            Color.parseColor("#FFC3C3"), // blush_pink
-            Color.parseColor("#FFD8D8")  // powder_pink
+            Color.parseColor("#FF9966"),
+            Color.parseColor("#FE6F5E"),
+            Color.parseColor("#e24c00"),
+            Color.parseColor("#E6812F"),
+            Color.parseColor("#FAB972"),
+            Color.parseColor("#FF7F50"),
+            Color.parseColor("#e9967a"),
+            Color.parseColor("#FFC3C3"),
+            Color.parseColor("#FFD8D8")
         )
 
 
@@ -54,14 +58,11 @@ class SavingsAdult : AppCompatActivity() {
         }
         Log.d("SavingsAdult", "Data for chart: $dataForChart")
 
-        // Setăm datele în grafic
         pieChartView.setData(dataForChart)
 
-        // Calculăm suma totală
         val totalAmount = objectives.sumOf { it.sumaCurenta }
         totalAmountText.text = "Total: $totalAmount lei"
 
-        // Afișăm detalii despre felia selectată
         pieChartView.setOnSliceSelectedListener { _, slice ->
             val value = slice.first
             val color = slice.second
@@ -75,6 +76,17 @@ class SavingsAdult : AppCompatActivity() {
                 (value / totalSum) * 100
             )
             selectedSliceInfo.setTextColor(color)
+        }
+    }
+
+    fun onClick(v: View?) {
+        when (v?.id) {
+            R.id.homeButton -> startActivity(Intent(this, ParentDashboardActivity::class.java))
+            R.id.budgetButton -> startActivity(Intent(this, MainBudgetActivity::class.java))
+            R.id.goalsButton -> startActivity(Intent(this, ObjectiveStartPageActivityAdult::class.java))
+            R.id.reportsButton -> startActivity(Intent(this, ReportsActivity::class.java))
+            R.id.settingsButton -> startActivity(Intent(this, SettingsStartActivity::class.java))
+            R.id.profile -> startActivity(Intent(this, MyAccountActivity::class.java))
         }
     }
 }

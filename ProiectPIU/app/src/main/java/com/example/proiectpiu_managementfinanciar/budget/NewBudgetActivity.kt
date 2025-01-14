@@ -31,7 +31,7 @@ class NewBudgetActivity : AppCompatActivity(), View.OnClickListener {
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
-        setContentView(R.layout.budget_add_section) // Your main layout file
+        setContentView(R.layout.budget_add_section)
 
         val addBudgetsButton : ImageButton = findViewById(R.id.add_section_button)
         addBudgetsButton.setOnClickListener {
@@ -54,18 +54,15 @@ class NewBudgetActivity : AppCompatActivity(), View.OnClickListener {
             startActivity(intent)
         }
 
-        // Initialize RecyclerView
         val recyclerView: RecyclerView = findViewById(R.id.budgets_recycler)
         recyclerView.layoutManager = LinearLayoutManager(this)
 
-        // Example data for the budget list
         val budgetItems = listOf(
             BudgetItem(getString(R.string.budget_groceries), 300),
             BudgetItem(getString(R.string.budget_rent), 1200),
             BudgetItem(getString(R.string.budget_utilities), 150)
         )
 
-        // Set adapter
         val adapter = BudgetListAdapter(budgetItems.toMutableList())
         recyclerView.adapter = adapter
 
@@ -79,7 +76,6 @@ class NewBudgetActivity : AppCompatActivity(), View.OnClickListener {
                 val newBudget = BudgetItem(sectionName, sectionAmount.toInt())
                 BudgetManager.addTemporaryBudget(newBudget)
 
-                // Reveniți la activitatea principală
                 val intent = Intent(this, MainBudgetActivity::class.java)
                 intent.flags = Intent.FLAG_ACTIVITY_NEW_TASK or Intent.FLAG_ACTIVITY_CLEAR_TASK
                 startActivity(intent)
@@ -132,7 +128,7 @@ class NewBudgetActivity : AppCompatActivity(), View.OnClickListener {
     override fun onClick(v: View?) {
         when (v?.id) {
             R.id.adolescentButton -> {
-                //val intent = Intent(this, ContAdolescentActivity::class.java)
+                //todo
                 startActivity(intent)
             }
             R.id.homeButton -> {

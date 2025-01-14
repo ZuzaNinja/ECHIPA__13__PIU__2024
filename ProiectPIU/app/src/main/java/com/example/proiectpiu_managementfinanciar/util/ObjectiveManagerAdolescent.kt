@@ -7,10 +7,6 @@ import com.example.proiectpiu_managementfinanciar.models.Objective
 object ObjectiveManagerAdolescent {
     private val objectiveList: MutableList<Objective> = mutableListOf()
 
-    /**
-     * Inițializează lista de obiective pentru un utilizator adolescent.
-     * Această metodă trebuie apelată o singură dată la startul aplicației.
-     */
     fun initialize(context: Context) {
         if (objectiveList.isNotEmpty()) {
             println("ObjectiveManagerAdolescent: Already initialized. Skipping reinitialization.")
@@ -37,10 +33,5 @@ object ObjectiveManagerAdolescent {
             println("ObjectiveManagerAdolescent: List is empty. Did you call initialize(context)?")
         }
         return objectiveList
-    }
-
-    fun resetObjectives() {
-        objectiveList.clear()
-        println("ObjectiveManagerAdolescent: List has been reset")
     }
 }
